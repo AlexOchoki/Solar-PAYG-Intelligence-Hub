@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SunCulture | Credit & Finance Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --sc-green: #1B5E20;
+  --sc-green-mid: #2E7D32;
+  --sc-green-light: #4CAF50;
+  --sc-green-pale: #C8E6C9;
+  --sc-orange: #F57C00;
+  --sc-orange-light: #FFB74D;
+  --sc-orange-pale: #FFF3E0;
+  --sc-yellow: #FFC107;
+  --sc-white: #FFFFFF;
+  --sc-bg: #F4F7F4;
+  --sc-card: #FFFFFF;
+  --sc-text: #1A2E1A;
+  --sc-text-mid: #4A5E4A;
+  --sc-text-light: #7A8D7A;
+  --sc-border: #E0EBE0;
+  --sc-red: #C62828;
+  --sc-red-pale: #FFEBEE;
+  --sc-blue: #1565C0;
+  --sc-blue-pale: #E3F2FD;
+  --sc-purple: #6A1B9A;
+  --sc-purple-pale: #F3E5F5;
+  --sidebar-w: 220px;
+  --header-h: 64px;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(27,94,32,0.08);
+  --shadow-md: 0 4px 24px rgba(27,94,32,0.13);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--sc-bg); color: var(--sc-text); min-height: 100vh; overflow-x: hidden; }
+
+/* ===== LAYOUT ===== */
+.app { display: flex; height: 100vh; overflow: hidden; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--sc-green);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+.sidebar-logo {
+  padding: 20px 18px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.sidebar-logo .brand {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sidebar-logo .sun-icon {
+  width: 32px; height: 32px;
+  background: var(--sc-yellow);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.sidebar-logo .sub { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+
+.dept-switcher {
+  margin: 12px 12px 0;
+  display: flex;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.dept-btn {
+  flex: 1; padding: 7px 4px;
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer; border: none; background: transparent;
+  transition: all 0.2s; text-align: center; letter-spacing: 0.3px;
+}
+.dept-btn.active { background: var(--sc-orange); color: #fff; border-radius: 6px; }
+
+.sidebar-section { padding: 14px 10px 4px; }
+.sidebar-section-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 1.8px;
+  color: rgba(255,255,255,0.4); text-transform: uppercase; padding: 0 8px 6px;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px; border-radius: 8px;
+  cursor: pointer; transition: all 0.15s;
+  color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500;
+  margin-bottom: 2px;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.nav-item.active { background: rgba(255,255,255,0.18); color: #fff; }
+.nav-item .nav-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+.nav-item .nav-badge {
+  margin-left: auto; font-size: 10px; background: var(--sc-orange);
+  color: #fff; border-radius: 10px; padding: 1px 6px; font-weight: 700;
+}
+
+.sidebar-footer {
+  margin-top: auto; padding: 14px 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.user-chip { display: flex; align-items: center; gap: 10px; }
+.user-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--sc-orange); display: flex; align-items: center;
+  justify-content: center; font-weight: 700; font-size: 13px; color: #fff;
+  flex-shrink: 0;
+}
+.user-name { font-size: 12px; color: #fff; font-weight: 600; }
+.user-role { font-size: 10px; color: rgba(255,255,255,0.5); }
+
+/* ===== MAIN ===== */
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ===== TOPBAR ===== */
+.topbar {
+  height: var(--header-h); background: #fff;
+  border-bottom: 1px solid var(--sc-border);
+  display: flex; align-items: center; padding: 0 24px;
+  gap: 16px; flex-shrink: 0; box-shadow: var(--shadow);
+}
+.topbar-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--sc-green); }
+.topbar-subtitle { font-size: 12px; color: var(--sc-text-light); margin-top: 1px; }
+.topbar-spacer { flex: 1; }
+.filter-chip {
+  display: flex; align-items: center; gap: 6px; padding: 6px 12px;
+  border: 1px solid var(--sc-border); border-radius: 20px;
+  font-size: 12px; color: var(--sc-text-mid); cursor: pointer;
+  background: #fff; transition: all 0.15s;
+}
+.filter-chip:hover { border-color: var(--sc-green-light); color: var(--sc-green); }
+.filter-chip.active { background: var(--sc-green-pale); border-color: var(--sc-green-light); color: var(--sc-green-mid); font-weight: 600; }
+.topbar-period {
+  display: flex; background: var(--sc-bg); border-radius: 20px;
+  border: 1px solid var(--sc-border); overflow: hidden;
+}
+.period-btn {
+  padding: 5px 12px; font-size: 11px; font-weight: 600;
+  cursor: pointer; border: none; background: transparent; color: var(--sc-text-light);
+  transition: all 0.15s;
+}
+.period-btn.active { background: var(--sc-green); color: #fff; border-radius: 18px; }
+.refresh-btn {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--sc-border);
+  background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.2s; color: var(--sc-text-mid);
+}
+.refresh-btn:hover { background: var(--sc-green-pale); border-color: var(--sc-green-light); }
+
+/* ===== CONTENT ===== */
+.content { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.page { display: none; }
+.page.active { display: block; animation: fadeUp 0.3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+/* ===== STAT CARDS ===== */
+.stat-row { display: grid; gap: 14px; margin-bottom: 18px; }
+.stat-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.stat-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.stat-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+
+.stat-card {
+  background: var(--sc-card); border-radius: var(--radius);
+  padding: 16px 18px; box-shadow: var(--shadow);
+  border: 1px solid var(--sc-border); position: relative; overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent-color, var(--sc-green-light));
+}
+.stat-card.green { --accent-color: var(--sc-green-light); }
+.stat-card.orange { --accent-color: var(--sc-orange); }
+.stat-card.red { --accent-color: var(--sc-red); }
+.stat-card.blue { --accent-color: var(--sc-blue); }
+.stat-card.yellow { --accent-color: var(--sc-yellow); }
+.stat-card.purple { --accent-color: var(--sc-purple); }
+
+.stat-label { font-size: 11px; color: var(--sc-text-light); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+.stat-value { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; margin: 6px 0 4px; color: var(--sc-text); line-height: 1; }
+.stat-value.small { font-size: 20px; }
+.stat-meta { font-size: 11px; display: flex; align-items: center; gap: 4px; }
+.stat-up { color: var(--sc-green-light); }
+.stat-down { color: var(--sc-red); }
+.stat-neutral { color: var(--sc-text-light); }
+.stat-icon { position: absolute; top: 14px; right: 16px; font-size: 22px; opacity: 0.15; }
+
+/* ===== CHART CARDS ===== */
+.chart-row { display: grid; gap: 14px; margin-bottom: 18px; }
+.chart-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.chart-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.chart-row.col-6-4 { grid-template-columns: 6fr 4fr; }
+.chart-row.col-4-6 { grid-template-columns: 4fr 6fr; }
+.chart-row.col-7-3 { grid-template-columns: 7fr 3fr; }
+
+.chart-card {
+  background: var(--sc-card); border-radius: var(--radius);
+  padding: 18px 20px; box-shadow: var(--shadow);
+  border: 1px solid var(--sc-border);
+}
+.chart-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.chart-title { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: var(--sc-text); }
+.chart-subtitle { font-size: 11px; color: var(--sc-text-light); margin-top: 2px; }
+.chart-legend { display: flex; gap: 12px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--sc-text-mid); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.chart-wrap { position: relative; }
+
+/* ===== TABLE ===== */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table th { background: var(--sc-bg); padding: 9px 12px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--sc-text-light); border-bottom: 2px solid var(--sc-border); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--sc-border); color: var(--sc-text-mid); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--sc-bg); }
+.pill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+.pill-green { background: var(--sc-green-pale); color: var(--sc-green-mid); }
+.pill-orange { background: var(--sc-orange-pale); color: var(--sc-orange); }
+.pill-red { background: var(--sc-red-pale); color: var(--sc-red); }
+.pill-blue { background: var(--sc-blue-pale); color: var(--sc-blue); }
+.pill-purple { background: var(--sc-purple-pale); color: var(--sc-purple); }
+
+/* ===== PROGRESS BAR ===== */
+.prog-bar-wrap { margin-bottom: 10px; }
+.prog-bar-label { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px; color: var(--sc-text-mid); }
+.prog-bar-track { background: var(--sc-bg); border-radius: 4px; height: 7px; overflow: hidden; }
+.prog-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+
+/* ===== ALERTS / BANNERS ===== */
+.alert-banner {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; border-radius: 8px; margin-bottom: 14px; font-size: 12px;
+}
+.alert-warn { background: var(--sc-orange-pale); border-left: 4px solid var(--sc-orange); color: #7B3F00; }
+.alert-danger { background: var(--sc-red-pale); border-left: 4px solid var(--sc-red); color: #7B0000; }
+.alert-info { background: var(--sc-blue-pale); border-left: 4px solid var(--sc-blue); color: #003087; }
+.alert-success { background: var(--sc-green-pale); border-left: 4px solid var(--sc-green-light); color: var(--sc-green); }
+
+/* ===== GAUGE ===== */
+.gauge-wrap { display: flex; flex-direction: column; align-items: center; }
+.gauge-label { font-size: 11px; color: var(--sc-text-light); font-weight: 600; margin-top: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+.gauge-value { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: var(--sc-text); }
+.gauge-sub { font-size: 10px; color: var(--sc-text-light); }
+
+/* ===== KPI RIBBON ===== */
+.kpi-ribbon { display: flex; gap: 0; background: var(--sc-green); border-radius: var(--radius); margin-bottom: 18px; overflow: hidden; }
+.kpi-ribbon-item { flex: 1; padding: 14px 16px; border-right: 1px solid rgba(255,255,255,0.12); }
+.kpi-ribbon-item:last-child { border-right: none; }
+.kpi-ribbon-label { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.kpi-ribbon-value { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin: 4px 0 2px; }
+.kpi-ribbon-meta { font-size: 10px; color: var(--sc-orange-light); }
+
+/* ===== PAGE HEADER ===== */
+.page-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
+.page-title { font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 700; color: var(--sc-text); }
+.page-desc { font-size: 12px; color: var(--sc-text-light); margin-top: 3px; }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+.btn { padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; }
+.btn-primary { background: var(--sc-green); color: #fff; }
+.btn-primary:hover { background: var(--sc-green-mid); }
+.btn-outline { background: #fff; color: var(--sc-green); border: 1px solid var(--sc-green-light); }
+.btn-outline:hover { background: var(--sc-green-pale); }
+.btn-orange { background: var(--sc-orange); color: #fff; }
+.btn-orange:hover { background: #E65100; }
+
+/* ===== MINI SPARKLINE ===== */
+.sparkline-row { display: flex; align-items: center; gap: 8px; }
+
+/* ===== WATERFALL ITEM ===== */
+.wf-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.wf-label { width: 160px; font-size: 12px; color: var(--sc-text-mid); flex-shrink: 0; text-align: right; }
+.wf-bar { flex: 1; height: 22px; border-radius: 3px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 700; color: #fff; }
+
+/* ===== DONUT CENTER ===== */
+.donut-center-wrap { position: relative; }
+.donut-center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; pointer-events: none; }
+
+/* ===== SCROLLABLE TABLE ===== */
+.table-scroll { overflow-x: auto; }
+
+/* ===== PORTFOLIO METER ===== */
+.portfolio-meter { background: linear-gradient(to right, var(--sc-green-light) 0%, var(--sc-yellow) 65%, var(--sc-orange) 82%, var(--sc-red) 100%); border-radius: 6px; height: 10px; position: relative; }
+.pm-needle { position: absolute; top: -5px; width: 4px; height: 20px; background: var(--sc-text); border-radius: 2px; transform: translateX(-50%); }
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media(max-width: 900px) {
+  .stat-row.cols-4 { grid-template-columns: repeat(2,1fr); }
+  .stat-row.cols-5 { grid-template-columns: repeat(2,1fr); }
+  .chart-row.cols-2, .chart-row.col-6-4, .chart-row.col-4-6, .chart-row.col-7-3 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="brand">
+      <div class="sun-icon">☀️</div>
+      <div>
+        <div>SunCulture</div>
+        <div class="sub">Analytics Suite</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dept-switcher">
+    <button class="dept-btn active" onclick="switchDept('credit',this)">CREDIT</button>
+    <button class="dept-btn" onclick="switchDept('finance',this)">FINANCE</button>
+  </div>
+
+  <!-- CREDIT PAGES -->
+  <div id="credit-nav">
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Overview</div>
+      <div class="nav-item active" onclick="showPage('credit-overview',this)">
+        <span class="nav-icon">📊</span> Portfolio Overview
+      </div>
+      <div class="nav-item" onclick="showPage('credit-risk',this)">
+        <span class="nav-icon">🛡️</span> Risk & PAR Analysis
+        <span class="nav-badge">3</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Operations</div>
+      <div class="nav-item" onclick="showPage('credit-loan',this)">
+        <span class="nav-icon">📋</span> Loan Origination
+      </div>
+      <div class="nav-item" onclick="showPage('credit-collections',this)">
+        <span class="nav-icon">💰</span> Collections & Recovery
+        <span class="nav-badge">5</span>
+      </div>
+      <div class="nav-item" onclick="showPage('credit-agents',this)">
+        <span class="nav-icon">👥</span> Agent Performance
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Intelligence</div>
+      <div class="nav-item" onclick="showPage('credit-scoring',this)">
+        <span class="nav-icon">🎯</span> Credit Scoring
+      </div>
+      <div class="nav-item" onclick="showPage('credit-cohort',this)">
+        <span class="nav-icon">📈</span> Cohort Analysis
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCE PAGES -->
+  <div id="finance-nav" style="display:none">
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Overview</div>
+      <div class="nav-item active" onclick="showPage('finance-overview',this)">
+        <span class="nav-icon">💹</span> Financial Overview
+      </div>
+      <div class="nav-item" onclick="showPage('finance-pnl',this)">
+        <span class="nav-icon">📑</span> P&L Statement
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Management</div>
+      <div class="nav-item" onclick="showPage('finance-cashflow',this)">
+        <span class="nav-icon">💧</span> Cash Flow
+      </div>
+      <div class="nav-item" onclick="showPage('finance-budget',this)">
+        <span class="nav-icon">🎯</span> Budget vs Actual
+        <span class="nav-badge">!</span>
+      </div>
+      <div class="nav-item" onclick="showPage('finance-opex',this)">
+        <span class="nav-icon">⚙️</span> OpEx Analysis
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Reporting</div>
+      <div class="nav-item" onclick="showPage('finance-revenue',this)">
+        <span class="nav-icon">📦</span> Revenue by Product
+      </div>
+      <div class="nav-item" onclick="showPage('finance-treasury',this)">
+        <span class="nav-icon">🏦</span> Treasury & Liquidity
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-chip">
+      <div class="user-avatar">SK</div>
+      <div>
+        <div class="user-name">Simon Mulinge</div>
+        <div class="user-role">Head of Credit</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ===== MAIN PANEL ===== -->
+<div class="main">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div>
+      <div class="topbar-title" id="topbar-title">Portfolio Overview</div>
+      <div class="topbar-subtitle" id="topbar-sub">Credit Department · Live Data</div>
+    </div>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-period">
+      <button class="period-btn" onclick="setPeriod('MTD',this)">MTD</button>
+      <button class="period-btn active" onclick="setPeriod('QTD',this)">QTD</button>
+      <button class="period-btn" onclick="setPeriod('YTD',this)">YTD</button>
+    </div>
+    <div class="filter-chip active">🇰🇪 Kenya</div>
+    <div class="filter-chip">All Products</div>
+    <div class="filter-chip">Q2 2025</div>
+    <button class="refresh-btn" onclick="this.style.transform='rotate(360deg)';setTimeout(()=>this.style.transform='',500)">↻</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- ==================== CREDIT: PORTFOLIO OVERVIEW ==================== -->
+    <div class="page active" id="page-credit-overview">
+      <div class="page-header">
+        <div>
+          <div class="page-title">📊 Portfolio Overview</div>
+          <div class="page-desc">Active loan portfolio health across all SunCulture Pay-As-You-Grow products</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline">⬇ Export</button>
+          <button class="btn btn-primary">+ New Report</button>
+        </div>
+      </div>
+
+      <div class="alert-banner alert-warn">
+        ⚠️ <strong>3 cohorts</strong> showing PAR30 above 15% threshold — immediate review recommended. <a href="#" style="color:inherit;font-weight:700">View details →</a>
+      </div>
+
+      <div class="kpi-ribbon">
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Total Portfolio</div>
+          <div class="kpi-ribbon-value">KES 847M</div>
+          <div class="kpi-ribbon-meta">↑ 12.4% vs last quarter</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Active Loans</div>
+          <div class="kpi-ribbon-value">24,381</div>
+          <div class="kpi-ribbon-meta">↑ 9.1% QoQ</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">PAR 30</div>
+          <div class="kpi-ribbon-value">11.3%</div>
+          <div class="kpi-ribbon-meta">↑ 1.2pp vs Q1</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Collection Rate</div>
+          <div class="kpi-ribbon-value">87.6%</div>
+          <div class="kpi-ribbon-meta">↓ 0.8pp vs Q1</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Write-Off Rate</div>
+          <div class="kpi-ribbon-value">2.1%</div>
+          <div class="kpi-ribbon-meta">Stable vs Q1</div>
+        </div>
+      </div>
+
+      <div class="stat-row cols-4">
+        <div class="stat-card green">
+          <div class="stat-icon">💚</div>
+          <div class="stat-label">Performing Loans</div>
+          <div class="stat-value">21,406</div>
+          <div class="stat-meta"><span class="stat-up">▲ 8.3%</span><span class="stat-neutral"> vs Q1 · KES 722M</span></div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon">⏱</div>
+          <div class="stat-label">PAR 1–30 Days</div>
+          <div class="stat-value">1,842</div>
+          <div class="stat-meta"><span class="stat-down">▲ 3.1%</span><span class="stat-neutral"> · KES 68M</span></div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">🔴</div>
+          <div class="stat-label">PAR 30+ Days</div>
+          <div class="stat-value">1,133</div>
+          <div class="stat-meta"><span class="stat-down">▲ 14.7%</span><span class="stat-neutral"> · KES 57M</span></div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon">📝</div>
+          <div class="stat-label">Written Off</div>
+          <div class="stat-value">512</div>
+          <div class="stat-meta"><span class="stat-neutral">KES 17.8M · 2.1%</span></div>
+        </div>
+      </div>
+
+      <div class="chart-row col-6-4">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title">Portfolio Balance Trend (KES M)</div>
+              <div class="chart-subtitle">Active outstanding by month — all products</div>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:#2E7D32"></div>Performing</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#F57C00"></div>PAR</div>
+            </div>
+          </div>
+          <div class="chart-wrap" style="height:200px">
+            <canvas id="portfolioTrend"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title">Portfolio by Product</div>
+              <div class="chart-subtitle">KES M outstanding</div>
+            </div>
+          </div>
+          <div class="chart-wrap donut-center-wrap" style="height:200px">
+            <canvas id="portfolioProduct"></canvas>
+            <div class="donut-center-text">
+              <div style="font-size:18px;font-weight:700;font-family:Sora">847M</div>
+              <div style="font-size:10px;color:#7A8D7A">Total KES</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <div class="legend-item"><div class="legend-dot" style="background:#1B5E20"></div>RainMaker2 (42%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#4CAF50"></div>ClimateSmart (31%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#F57C00"></div>CS Battery (18%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FFC107"></div>Direct (9%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-row cols-3">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">PAR Trend (30/60/90)</div>
+          </div>
+          <div class="chart-wrap" style="height:160px">
+            <canvas id="parTrend"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Portfolio by Region</div>
+          </div>
+          <div class="chart-wrap" style="height:160px">
+            <canvas id="portfolioRegion"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Repayment Rate by Loan Age</div>
+          </div>
+          <div class="chart-wrap" style="height:160px">
+            <canvas id="repaymentAge"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CREDIT: RISK & PAR ==================== -->
+    <div class="page" id="page-credit-risk">
+      <div class="page-header">
+        <div>
+          <div class="page-title">🛡️ Risk & PAR Analysis</div>
+          <div class="page-desc">Portfolio at risk deep-dive across dimensions</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline">⬇ Export</button>
+        </div>
+      </div>
+
+      <div class="alert-banner alert-danger">
+        🔴 <strong>Rift Valley</strong> region PAR60 has crossed 18% — escalation required. Last reviewed: 3 days ago.
+      </div>
+
+      <div class="stat-row cols-5">
+        <div class="stat-card green">
+          <div class="stat-label">PAR 0 (Current)</div>
+          <div class="stat-value small">87.7%</div>
+          <div class="stat-meta"><span class="stat-neutral">KES 741M</span></div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-label">PAR 1-30</div>
+          <div class="stat-value small">7.5%</div>
+          <div class="stat-meta"><span class="stat-down">▲ 0.9pp</span></div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-label">PAR 31-60</div>
+          <div class="stat-value small">2.8%</div>
+          <div class="stat-meta"><span class="stat-down">▲ 0.3pp</span></div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-label">PAR 61-90</div>
+          <div class="stat-value small">1.4%</div>
+          <div class="stat-meta"><span class="stat-neutral">Stable</span></div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-label">PAR 90+</div>
+          <div class="stat-value small">0.6%</div>
+          <div class="stat-meta"><span class="stat-neutral">KES 5.1M</span></div>
+        </div>
+      </div>
+
+      <div class="chart-row cols-2">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title">PAR by Region</div>
+              <div class="chart-subtitle">PAR30 % — Q2 2025</div>
+            </div>
+          </div>
+          <div class="chart-wrap" style="height:220px">
+            <canvas id="parRegion"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title">PAR Migration Matrix</div>
+              <div class="chart-subtitle">Q1 → Q2 2025 bucket movement</div>
+            </div>
+          </div>
+          <div style="overflow-x:auto;padding-top:8px">
+            <table class="data-table">
+              <thead><tr>
+                <th>From \ To</th><th>Current</th><th>PAR1-30</th><th>PAR31-60</th><th>PAR60+</th><th>W/O</th>
+              </tr></thead>
+              <tbody>
+                <tr><td><strong>Current</strong></td><td style="color:var(--sc-green-mid)"><strong>82%</strong></td><td>11%</td><td>4%</td><td>2%</td><td>1%</td></tr>
+                <tr><td><strong>PAR1-30</strong></td><td style="color:var(--sc-green-mid)">34%</td><td><strong>41%</strong></td><td>17%</td><td>6%</td><td>2%</td></tr>
+                <tr><td><strong>PAR31-60</strong></td><td>18%</td><td>27%</td><td><strong>33%</strong></td><td>19%</td><td>3%</td></tr>
+                <tr><td><strong>PAR60+</strong></td><td>8%</td><td>12%</td><td>21%</td><td><strong>48%</strong></td><td>11%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-row col-4-6">
+        <div class="chart-card">
+          <div class="chart-title" style="margin-bottom:14px">Risk Concentration</div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar-label"><span>Rift Valley</span><span>18.2%</span></div>
+            <div class="prog-bar-track"><div class="prog-bar-fill" style="width:18.2%;background:var(--sc-red)"></div></div>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar-label"><span>Eastern</span><span>15.7%</span></div>
+            <div class="prog-bar-track"><div class="prog-bar-fill" style="width:15.7%;background:var(--sc-orange)"></div></div>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar-label"><span>Western</span><span>12.3%</span></div>
+            <div class="prog-bar-track"><div class="prog-bar-fill" style="width:12.3%;background:var(--sc-orange)"></div></div>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar-label"><span>Central</span><span>9.8%</span></div>
+            <div class="prog-bar-track"><div class="prog-bar-fill" style="width:9.8%;background:var(--sc-yellow)"></div></div>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar-label"><span>Nairobi</span><span>7.1%</span></div>
+            <div class="prog-bar-track"><div class="prog-bar-fill" style="width:7.1%;background:var(--sc-green-light)"></div></div>
+          </div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar-label"><span>Coast</span><span>6.4%</span></div>
+            <div class="prog-bar-track"><div class="prog-bar-fill" style="width:6.4%;background:var(--sc-green-light)"></div></div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Loss Given Default (LGD) by Product</div>
+          </div>
+          <div class="chart-wrap" style="height:200px">
+            <canvas id="lgdProduct"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CREDIT: LOAN ORIGINATION ==================== -->
+    <div class="page" id="page-credit-loan">
+      <div class="page-header">
+        <div>
+          <div class="page-title">📋 Loan Origination</div>
+          <div class="page-desc">New loan applications, approvals, and disbursements</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-orange">+ New Application</button>
+        </div>
+      </div>
+
+      <div class="stat-row cols-4">
+        <div class="stat-card blue">
+          <div class="stat-icon">📥</div>
+          <div class="stat-label">Applications (QTD)</div>
+          <div class="stat-value">3,847</div>
+          <div class="stat-meta"><span class="stat-up">▲ 18.2%</span><span class="stat-neutral"> vs Q1</span></div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-label">Approved</div>
+          <div class="stat-value">2,913</div>
+          <div class="stat-meta"><span class="stat-neutral">Approval Rate: 75.7%</span></div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-label">Pending Review</div>
+          <div class="stat-value">312</div>
+          <div class="stat-meta"><span class="stat-neutral">Avg TAT: 2.3 days</span></div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">❌</div>
+          <div class="stat-label">Declined</div>
+          <div class="stat-value">622</div>
+          <div class="stat-meta"><span class="stat-neutral">Decline Rate: 16.2%</span></div>
+        </div>
+      </div>
+
+      <div class="chart-row cols-2">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Applications vs Approvals (Monthly)</div>
+          </div>
+          <div class="chart-wrap" style="height:200px">
+            <canvas id="loanOrigination"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Decline Reasons</div>
+          </div>
+          <div class="chart-wrap" style="height:200px">
+            <canvas id="declineReasons"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card" style="margin-bottom:14px">
+        <div class="chart-header">
+          <div class="chart-title">Recent Applications Pipeline</div>
+          <div class="chart-subtitle">Last 20 applications</div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr>
+              <th>#</th><th>Customer ID</th><th>Region</th><th>Product</th><th>Amount (KES)</th><th>Score</th><th>Submitted</th><th>Status</th>
+            </tr></thead>
+            <tbody id="loanTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CREDIT: COLLECTIONS ==================== -->
+    <div class="page" id="page-credit-collections">
+      <div class="page-header">
+        <div>
+          <div class="page-title">💰 Collections & Recovery</div>
+          <div class="page-desc">Payment collection performance and delinquency recovery tracking</div>
+        </div>
+      </div>
+
+      <div class="alert-banner alert-info">
+        📱 <strong>5 accounts</strong> ready for device lock escalation pending supervisor approval.
+      </div>
+
+      <div class="stat-row cols-4">
+        <div class="stat-card green">
+          <div class="stat-label">Collected (QTD)</div>
+          <div class="stat-value">KES 94M</div>
+          <div class="stat-meta"><span class="stat-up">▲ 6.2%</span><span class="stat-neutral"> vs target</span></div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-label">Target (QTD)</div>
+          <div class="stat-value">KES 88M</div>
+          <div class="stat-meta"><span class="stat-neutral">Monthly avg: KES 29.3M</span></div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">Recovery Rate</div>
+          <div class="stat-value">67.4%</div>
+          <div class="stat-meta"><span class="stat-up">▲ 3.1pp</span><span class="stat-neutral"> on delinquent</span></div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-label">Restructured</div>
+          <div class="stat-value">428</div>
+          <div class="stat-meta"><span class="stat-neutral">KES 14.2M outstanding</span></div>
+        </div>
+      </div>
+
+      <div class="chart-row col-6-4">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Weekly Collections vs Target (KES M)</div>
+          </div>
+          <div class="chart-wrap" style="height:210px">
+            <canvas id="collectionsWeekly"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Collection Channel Split</div>
+          </div>
+          <div class="chart-wrap" style="height:170px">
+            <canvas id="channelSplit"></canvas>
+          </div>
+          <div style="margin-top:10px">
+            <div class="legend-item" style="margin-bottom:4px"><div class="legend-dot" style="background:#1B5E20;width:10px;height:10px;border-radius:50%"></div> M-Pesa (58%)</div>
+            <div class="legend-item" style="margin-bottom:4px"><div class="legend-dot" style="background:#4CAF50;width:10px;height:10px;border-radius:50%"></div> Bank Transfer (24%)</div>
+            <div class="legend-item" style="margin-bottom:4px"><div class="legend-dot" style="background:#F57C00;width:10px;height:10px;border-radius:50%"></div> Agent (12%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FFC107;width:10px;height:10px;border-radius:50%"></div> Other (6%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card" style="margin-bottom:14px">
+        <div class="chart-header">
+          <div class="chart-title">Recovery Escalation Tracker</div>
+          <div class="chart-subtitle">Accounts by escalation stage</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-top:8px;text-align:center">
+          <div style="background:var(--sc-green-pale);border-radius:10px;padding:14px 8px">
+            <div style="font-size:22px;font-family:Sora;font-weight:700;color:var(--sc-green-mid)">1,204</div>
+            <div style="font-size:10px;color:var(--sc-text-light);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Stage 1<br>SMS Reminder</div>
+          </div>
+          <div style="background:#FFF8E1;border-radius:10px;padding:14px 8px">
+            <div style="font-size:22px;font-family:Sora;font-weight:700;color:#F9A825">638</div>
+            <div style="font-size:10px;color:var(--sc-text-light);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Stage 2<br>Call Centre</div>
+          </div>
+          <div style="background:var(--sc-orange-pale);border-radius:10px;padding:14px 8px">
+            <div style="font-size:22px;font-family:Sora;font-weight:700;color:var(--sc-orange)">312</div>
+            <div style="font-size:10px;color:var(--sc-text-light);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Stage 3<br>Field Visit</div>
+          </div>
+          <div style="background:var(--sc-red-pale);border-radius:10px;padding:14px 8px">
+            <div style="font-size:22px;font-family:Sora;font-weight:700;color:var(--sc-red)">89</div>
+            <div style="font-size:10px;color:var(--sc-text-light);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Stage 4<br>Device Lock</div>
+          </div>
+          <div style="background:#EDE7F6;border-radius:10px;padding:14px 8px">
+            <div style="font-size:22px;font-family:Sora;font-weight:700;color:var(--sc-purple)">43</div>
+            <div style="font-size:10px;color:var(--sc-text-light);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Stage 5<br>Legal Action</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CREDIT: AGENT PERFORMANCE ==================== -->
+    <div class="page" id="page-credit-agents">
+      <div class="page-header">
+        <div>
+          <div class="page-title">👥 Agent Performance</div>
+          <div class="page-desc">Credit officers and collection agent KPIs — QTD</div>
+        </div>
+      </div>
+      <div class="stat-row cols-4">
+        <div class="stat-card green"><div class="stat-label">Active Agents</div><div class="stat-value">142</div><div class="stat-meta"><span class="stat-neutral">Credit: 68 · Collections: 74</span></div></div>
+        <div class="stat-card blue"><div class="stat-label">Calls Made</div><div class="stat-value">47,830</div><div class="stat-meta"><span class="stat-up">▲ 11%</span><span class="stat-neutral"> vs Q1</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">Avg Cases/Agent</div><div class="stat-value">337</div><div class="stat-meta"><span class="stat-neutral">Target: 300</span></div></div>
+        <div class="stat-card purple"><div class="stat-label">Top Recovery Rate</div><div class="stat-value">94.1%</div><div class="stat-meta"><span class="stat-neutral">Agent: J. Kamau</span></div></div>
+      </div>
+      <div class="chart-card" style="margin-bottom:14px">
+        <div class="chart-header">
+          <div class="chart-title">Top 10 Collection Agents — Recovery Rate QTD</div>
+        </div>
+        <div class="chart-wrap" style="height:230px">
+          <canvas id="agentPerf"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header"><div class="chart-title">Agent Leaderboard</div></div>
+        <table class="data-table">
+          <thead><tr><th>Rank</th><th>Agent Name</th><th>Region</th><th>Cases</th><th>Collected (KES)</th><th>Recovery %</th><th>Calls</th><th>Grade</th></tr></thead>
+          <tbody>
+            <tr><td>🥇 1</td><td><strong>James Kamau</strong></td><td>Central</td><td>412</td><td>3,812,400</td><td><span class="pill pill-green">94.1%</span></td><td>1,847</td><td><span class="pill pill-green">A+</span></td></tr>
+            <tr><td>🥈 2</td><td>Grace Wanjiru</td><td>Nairobi</td><td>388</td><td>3,621,000</td><td><span class="pill pill-green">91.3%</span></td><td>1,703</td><td><span class="pill pill-green">A</span></td></tr>
+            <tr><td>🥉 3</td><td>David Otieno</td><td>Western</td><td>365</td><td>3,290,500</td><td><span class="pill pill-green">88.7%</span></td><td>1,614</td><td><span class="pill pill-green">A</span></td></tr>
+            <tr><td>4</td><td>Mary Achieng</td><td>Nyanza</td><td>341</td><td>2,973,200</td><td><span class="pill pill-orange">84.2%</span></td><td>1,520</td><td><span class="pill pill-orange">B+</span></td></tr>
+            <tr><td>5</td><td>Peter Mutua</td><td>Eastern</td><td>298</td><td>2,541,600</td><td><span class="pill pill-orange">79.8%</span></td><td>1,342</td><td><span class="pill pill-orange">B</span></td></tr>
+            <tr><td>6</td><td>Faith Chebet</td><td>Rift Valley</td><td>276</td><td>2,213,400</td><td><span class="pill pill-orange">75.1%</span></td><td>1,218</td><td><span class="pill pill-orange">B</span></td></tr>
+            <tr><td>7</td><td>Collins Mwangi</td><td>Eastern</td><td>251</td><td>1,882,000</td><td><span class="pill pill-red">68.4%</span></td><td>1,102</td><td><span class="pill pill-red">C+</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CREDIT: SCORING ==================== -->
+    <div class="page" id="page-credit-scoring">
+      <div class="page-header">
+        <div>
+          <div class="page-title">🎯 Credit Scoring</div>
+          <div class="page-desc">Score distribution, model performance and underwriting quality</div>
+        </div>
+      </div>
+      <div class="stat-row cols-4">
+        <div class="stat-card green"><div class="stat-label">Avg Credit Score</div><div class="stat-value">617</div><div class="stat-meta"><span class="stat-up">▲ 8pts</span><span class="stat-neutral"> vs Q1</span></div></div>
+        <div class="stat-card blue"><div class="stat-label">Model Accuracy (Gini)</div><div class="stat-value">0.72</div><div class="stat-meta"><span class="stat-neutral">KS: 0.48 · AUC: 0.86</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">High Risk (< 500)</div><div class="stat-value">14.2%</div><div class="stat-meta"><span class="stat-neutral">of active portfolio</span></div></div>
+        <div class="stat-card purple"><div class="stat-label">Auto-Approved</div><div class="stat-value">68.3%</div><div class="stat-meta"><span class="stat-neutral">Manual review: 31.7%</span></div></div>
+      </div>
+      <div class="chart-row cols-2">
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Score Distribution</div><div class="chart-subtitle">All approved customers</div></div>
+          <div class="chart-wrap" style="height:210px">
+            <canvas id="scoreDist"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Score Band vs Default Rate</div></div>
+          <div class="chart-wrap" style="height:210px">
+            <canvas id="scoreBandDefault"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header"><div class="chart-title">Score Band Approval Policy</div></div>
+        <table class="data-table">
+          <thead><tr><th>Band</th><th>Score Range</th><th>% Portfolio</th><th>Approval Action</th><th>Default Rate</th><th>Avg Loan (KES)</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-green">Prime</span></td><td>700–850</td><td>28%</td><td><span class="pill pill-green">Auto-Approve</span></td><td>2.1%</td><td>68,400</td></tr>
+            <tr><td><span class="pill pill-blue">Near-Prime</span></td><td>600–699</td><td>41%</td><td><span class="pill pill-green">Auto-Approve</span></td><td>7.4%</td><td>54,200</td></tr>
+            <tr><td><span class="pill pill-orange">Sub-Prime</span></td><td>500–599</td><td>21%</td><td><span class="pill pill-orange">Manual Review</span></td><td>14.8%</td><td>42,800</td></tr>
+            <tr><td><span class="pill pill-red">High Risk</span></td><td>400–499</td><td>8%</td><td><span class="pill pill-orange">Conditional</span></td><td>28.3%</td><td>29,000</td></tr>
+            <tr><td><span class="pill pill-red">Reject Zone</span></td><td>&lt;400</td><td>2%</td><td><span class="pill pill-red">Decline</span></td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CREDIT: COHORT ==================== -->
+    <div class="page" id="page-credit-cohort">
+      <div class="page-header">
+        <div>
+          <div class="page-title">📈 Cohort Analysis</div>
+          <div class="page-desc">Vintage performance — PAR30 by origination quarter</div>
+        </div>
+      </div>
+      <div class="chart-card" style="margin-bottom:14px">
+        <div class="chart-header">
+          <div class="chart-title">Cohort Retention — PAR30% by Month on Book</div>
+          <div class="chart-subtitle">Each line represents an origination quarter</div>
+        </div>
+        <div class="chart-wrap" style="height:260px">
+          <canvas id="cohortRetention"></canvas>
+        </div>
+      </div>
+      <div class="stat-row cols-4">
+        <div class="stat-card green"><div class="stat-label">Best Cohort</div><div class="stat-value">Q3 2024</div><div class="stat-meta"><span class="stat-neutral">PAR30 at 12M: 6.2%</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">Worst Cohort</div><div class="stat-value">Q1 2025</div><div class="stat-meta"><span class="stat-neutral">PAR30 at 6M: 13.4%</span></div></div>
+        <div class="stat-card blue"><div class="stat-label">Avg PAR30 at M6</div><div class="stat-value">9.1%</div><div class="stat-meta"><span class="stat-neutral">Across all vintages</span></div></div>
+        <div class="stat-card purple"><div class="stat-label">Avg PAR30 at M12</div><div class="stat-value">11.7%</div><div class="stat-meta"><span class="stat-neutral">Across closed vintages</span></div></div>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: OVERVIEW ==================== -->
+    <div class="page" id="page-finance-overview">
+      <div class="page-header">
+        <div>
+          <div class="page-title">💹 Financial Overview</div>
+          <div class="page-desc">Company-wide financial health snapshot — Q2 2025</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline">⬇ Export CFO Pack</button>
+        </div>
+      </div>
+
+      <div class="alert-banner alert-success">
+        ✅ Q2 Revenue target achieved at <strong>103.2%</strong> of plan. EBITDA positive for 3rd consecutive month.
+      </div>
+
+      <div class="kpi-ribbon" style="background:var(--sc-green-mid)">
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Total Revenue (QTD)</div>
+          <div class="kpi-ribbon-value">KES 312M</div>
+          <div class="kpi-ribbon-meta">↑ 21.4% YoY</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Gross Profit</div>
+          <div class="kpi-ribbon-value">KES 148M</div>
+          <div class="kpi-ribbon-meta">GP Margin: 47.4%</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">EBITDA</div>
+          <div class="kpi-ribbon-value">KES 38M</div>
+          <div class="kpi-ribbon-meta">Margin: 12.2%</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Net Loss</div>
+          <div class="kpi-ribbon-value">KES (12M)</div>
+          <div class="kpi-ribbon-meta">Improving vs (21M) Q1</div>
+        </div>
+        <div class="kpi-ribbon-item">
+          <div class="kpi-ribbon-label">Cash & Equivalents</div>
+          <div class="kpi-ribbon-value">KES 87M</div>
+          <div class="kpi-ribbon-meta">2.8 months runway</div>
+        </div>
+      </div>
+
+      <div class="chart-row cols-2">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Revenue vs COGS vs EBITDA (KES M)</div>
+          </div>
+          <div class="chart-wrap" style="height:210px">
+            <canvas id="finOverview"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Revenue Composition</div>
+          </div>
+          <div class="chart-wrap donut-center-wrap" style="height:180px">
+            <canvas id="revComposition"></canvas>
+            <div class="donut-center-text">
+              <div style="font-size:18px;font-weight:700;font-family:Sora">312M</div>
+              <div style="font-size:10px;color:#7A8D7A">KES Total</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:11px">
+            <div class="legend-item"><div class="legend-dot" style="background:#1B5E20"></div>PAYG Instalments (61%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#4CAF50"></div>Cash Sales (24%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#F57C00"></div>Carbon Credits (9%)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FFC107"></div>After-sales (6%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-row cols-3">
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Gross Margin Trend</div></div>
+          <div class="chart-wrap" style="height:160px">
+            <canvas id="grossMargin"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">OpEx Breakdown (KES M)</div></div>
+          <div class="chart-wrap" style="height:160px">
+            <canvas id="opexBreakdown"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Monthly Burn Rate (KES M)</div></div>
+          <div class="chart-wrap" style="height:160px">
+            <canvas id="burnRate"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: P&L ==================== -->
+    <div class="page" id="page-finance-pnl">
+      <div class="page-header">
+        <div>
+          <div class="page-title">📑 Profit & Loss Statement</div>
+          <div class="page-desc">Condensed P&L — Q2 2025 vs Budget vs Q1 2025</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline">⬇ Download P&L</button>
+        </div>
+      </div>
+      <div class="chart-card">
+        <table class="data-table">
+          <thead>
+            <tr><th>Line Item</th><th>Q2 2025 Actual (KES M)</th><th>Q2 Budget (KES M)</th><th>Var %</th><th>Q1 2025 (KES M)</th><th>YoY %</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:var(--sc-green-pale)"><td><strong>Revenue</strong></td><td><strong>312.4</strong></td><td><strong>302.7</strong></td><td><span class="pill pill-green">+3.2%</span></td><td>257.2</td><td><span class="pill pill-green">+21.4%</span></td></tr>
+            <tr><td style="padding-left:24px">PAYG Instalments</td><td>190.6</td><td>184.2</td><td><span class="pill pill-green">+3.5%</span></td><td>158.4</td><td></td></tr>
+            <tr><td style="padding-left:24px">Cash Sales</td><td>75.0</td><td>72.6</td><td><span class="pill pill-green">+3.3%</span></td><td>60.2</td><td></td></tr>
+            <tr><td style="padding-left:24px">Carbon Credits</td><td>28.1</td><td>27.0</td><td><span class="pill pill-green">+4.1%</span></td><td>22.8</td><td></td></tr>
+            <tr><td style="padding-left:24px">After-Sales Services</td><td>18.7</td><td>18.9</td><td><span class="pill pill-orange">-1.1%</span></td><td>15.8</td><td></td></tr>
+            <tr style="background:#f8f8f8"><td><strong>Cost of Goods Sold</strong></td><td><strong>164.4</strong></td><td><strong>158.9</strong></td><td><span class="pill pill-red">-3.5%</span></td><td>139.8</td><td></td></tr>
+            <tr style="background:var(--sc-green-pale)"><td><strong>Gross Profit</strong></td><td><strong>148.0</strong></td><td><strong>143.8</strong></td><td><span class="pill pill-green">+2.9%</span></td><td>117.4</td><td></td></tr>
+            <tr><td style="color:var(--sc-text-light)">GP Margin</td><td style="color:var(--sc-green-mid);font-weight:700">47.4%</td><td>47.5%</td><td>—</td><td>45.7%</td><td></td></tr>
+            <tr style="background:#f8f8f8"><td><strong>Operating Expenses</strong></td><td><strong>110.1</strong></td><td><strong>106.3</strong></td><td><span class="pill pill-red">-3.6%</span></td><td>102.8</td><td></td></tr>
+            <tr><td style="padding-left:24px">Salaries & Benefits</td><td>54.2</td><td>52.0</td><td><span class="pill pill-red">-4.2%</span></td><td>50.4</td><td></td></tr>
+            <tr><td style="padding-left:24px">Sales & Marketing</td><td>22.8</td><td>21.4</td><td><span class="pill pill-red">-6.5%</span></td><td>20.2</td><td></td></tr>
+            <tr><td style="padding-left:24px">G&A</td><td>18.4</td><td>18.0</td><td><span class="pill pill-orange">-2.2%</span></td><td>17.1</td><td></td></tr>
+            <tr><td style="padding-left:24px">Technology & IoT</td><td>9.8</td><td>9.4</td><td><span class="pill pill-orange">-4.3%</span></td><td>9.2</td><td></td></tr>
+            <tr><td style="padding-left:24px">Depreciation</td><td>4.9</td><td>5.5</td><td><span class="pill pill-green">+10.9%</span></td><td>5.9</td><td></td></tr>
+            <tr style="background:#E8F5E9"><td><strong>EBITDA</strong></td><td><strong>37.9</strong></td><td><strong>37.5</strong></td><td><span class="pill pill-green">+1.1%</span></td><td>14.6</td><td></td></tr>
+            <tr><td>Interest & Finance Costs</td><td>34.2</td><td>32.0</td><td><span class="pill pill-red">-6.9%</span></td><td>33.1</td><td></td></tr>
+            <tr><td>Provision for Credit Losses</td><td>15.8</td><td>14.0</td><td><span class="pill pill-red">-12.9%</span></td><td>14.2</td><td></td></tr>
+            <tr style="background:var(--sc-red-pale)"><td><strong>Net Loss</strong></td><td style="color:var(--sc-red)"><strong>(12.1)</strong></td><td style="color:var(--sc-red)"><strong>(8.5)</strong></td><td><span class="pill pill-red">-42%</span></td><td style="color:var(--sc-red)">(32.7)</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: CASH FLOW ==================== -->
+    <div class="page" id="page-finance-cashflow">
+      <div class="page-header">
+        <div>
+          <div class="page-title">💧 Cash Flow Dashboard</div>
+          <div class="page-desc">Operating, investing and financing activities — Q2 2025</div>
+        </div>
+      </div>
+      <div class="stat-row cols-4">
+        <div class="stat-card green"><div class="stat-label">Operating CF</div><div class="stat-value">KES 28M</div><div class="stat-meta"><span class="stat-up">▲ Positive</span></div></div>
+        <div class="stat-card red"><div class="stat-label">Investing CF</div><div class="stat-value">KES (31M)</div><div class="stat-meta"><span class="stat-neutral">Capex & inventory</span></div></div>
+        <div class="stat-card blue"><div class="stat-label">Financing CF</div><div class="stat-value">KES 42M</div><div class="stat-meta"><span class="stat-neutral">Debt drawdown</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">Net Cash Position</div><div class="stat-value">KES 87M</div><div class="stat-meta"><span class="stat-neutral">2.8 months runway</span></div></div>
+      </div>
+      <div class="chart-row col-7-3">
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Monthly Cash Bridge (KES M)</div></div>
+          <div class="chart-wrap" style="height:230px">
+            <canvas id="cashBridge"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Cash Runway Forecast</div></div>
+          <div style="padding-top:10px">
+            <div class="portfolio-meter" style="margin-bottom:6px">
+              <div class="pm-needle" style="left:58%"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--sc-text-light);margin-bottom:16px">
+              <span>0 mo</span><span>3 mo</span><span>6 mo</span><span>12 mo</span>
+            </div>
+            <div style="font-size:12px;color:var(--sc-text-mid)">Current position: <strong style="color:var(--sc-green-mid)">2.8 months</strong></div>
+            <div style="font-size:12px;color:var(--sc-text-mid);margin-top:8px">With Q3 credit facility: <strong style="color:var(--sc-green-mid)">5.4 months</strong></div>
+            <div style="margin-top:16px">
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>Collections Inflow</span><span>KES 94M</span></div>
+                <div class="prog-bar-track"><div class="prog-bar-fill" style="width:75%;background:var(--sc-green-light)"></div></div>
+              </div>
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>OpEx Outflow</span><span>KES 68M</span></div>
+                <div class="prog-bar-track"><div class="prog-bar-fill" style="width:55%;background:var(--sc-orange)"></div></div>
+              </div>
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>Debt Service</span><span>KES 34M</span></div>
+                <div class="prog-bar-track"><div class="prog-bar-fill" style="width:27%;background:var(--sc-red)"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: BUDGET VS ACTUAL ==================== -->
+    <div class="page" id="page-finance-budget">
+      <div class="page-header">
+        <div>
+          <div class="page-title">🎯 Budget vs Actual</div>
+          <div class="page-desc">Variance analysis against approved annual budget</div>
+        </div>
+      </div>
+      <div class="alert-banner alert-warn">
+        ⚠️ <strong>Sales & Marketing</strong> and <strong>Finance Costs</strong> are tracking 6–7% over budget. CFO action required.
+      </div>
+      <div class="stat-row cols-3">
+        <div class="stat-card green"><div class="stat-label">Revenue Attainment</div><div class="stat-value">103.2%</div><div class="stat-meta"><span class="stat-up">▲ 9.6M ahead of plan</span></div></div>
+        <div class="stat-card red"><div class="stat-label">Total OpEx Variance</div><div class="stat-value">-3.6%</div><div class="stat-meta"><span class="stat-neutral">KES 3.8M over budget</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">EBITDA vs Budget</div><div class="stat-value">+1.1%</div><div class="stat-meta"><span class="stat-neutral">KES 37.9M vs 37.5M</span></div></div>
+      </div>
+      <div class="chart-card" style="margin-bottom:14px">
+        <div class="chart-header"><div class="chart-title">Budget vs Actual — All Cost Lines (KES M)</div></div>
+        <div class="chart-wrap" style="height:240px">
+          <canvas id="budgetActual"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: OPEX ==================== -->
+    <div class="page" id="page-finance-opex">
+      <div class="page-header">
+        <div>
+          <div class="page-title">⚙️ OpEx Analysis</div>
+          <div class="page-desc">Operating expenditure trends and cost efficiency ratios</div>
+        </div>
+      </div>
+      <div class="stat-row cols-4">
+        <div class="stat-card red"><div class="stat-label">Total OpEx (QTD)</div><div class="stat-value">KES 110M</div><div class="stat-meta"><span class="stat-neutral">35.3% of Revenue</span></div></div>
+        <div class="stat-card green"><div class="stat-label">Cost per Unit Sold</div><div class="stat-value">KES 18.4K</div><div class="stat-meta"><span class="stat-up">▼ 4.1% vs Q1</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">Headcount Costs %</div><div class="stat-value">17.4%</div><div class="stat-meta"><span class="stat-neutral">of Revenue</span></div></div>
+        <div class="stat-card blue"><div class="stat-label">OpEx YoY Growth</div><div class="stat-value">7.1%</div><div class="stat-meta"><span class="stat-neutral">vs Revenue +21.4%</span></div></div>
+      </div>
+      <div class="chart-row cols-2">
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">OpEx by Department (KES M)</div></div>
+          <div class="chart-wrap" style="height:210px">
+            <canvas id="opexDept"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">OpEx Trend (% of Revenue)</div></div>
+          <div class="chart-wrap" style="height:210px">
+            <canvas id="opexRevTrend"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: REVENUE ==================== -->
+    <div class="page" id="page-finance-revenue">
+      <div class="page-header">
+        <div>
+          <div class="page-title">📦 Revenue by Product</div>
+          <div class="page-desc">Disaggregated revenue by product SKU and region</div>
+        </div>
+      </div>
+      <div class="chart-row col-6-4">
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Revenue by Product — QTD (KES M)</div></div>
+          <div class="chart-wrap" style="height:220px">
+            <canvas id="revProduct"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Units Sold vs Revenue (QTD)</div></div>
+          <table class="data-table" style="margin-top:8px">
+            <thead><tr><th>Product</th><th>Units</th><th>Revenue KES M</th><th>ASP KES</th></tr></thead>
+            <tbody>
+              <tr><td>RainMaker2</td><td>2,841</td><td>131.3</td><td>46,214</td></tr>
+              <tr><td>ClimateSmart</td><td>1,982</td><td>96.9</td><td>48,890</td></tr>
+              <tr><td>CS Battery</td><td>1,204</td><td>56.2</td><td>46,678</td></tr>
+              <tr><td>CS Direct</td><td>612</td><td>18.8</td><td>30,719</td></tr>
+              <tr><td>Accessories</td><td>—</td><td>9.2</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FINANCE: TREASURY ==================== -->
+    <div class="page" id="page-finance-treasury">
+      <div class="page-header">
+        <div>
+          <div class="page-title">🏦 Treasury & Liquidity</div>
+          <div class="page-desc">Debt structure, covenant compliance and liquidity ratios</div>
+        </div>
+      </div>
+      <div class="stat-row cols-4">
+        <div class="stat-card blue"><div class="stat-label">Total Debt</div><div class="stat-value">KES 642M</div><div class="stat-meta"><span class="stat-neutral">Blended rate: 12.4%</span></div></div>
+        <div class="stat-card orange"><div class="stat-label">Debt/Equity Ratio</div><div class="stat-value">2.8x</div><div class="stat-meta"><span class="stat-neutral">Covenant: &lt; 3.5x ✅</span></div></div>
+        <div class="stat-card green"><div class="stat-label">Current Ratio</div><div class="stat-value">1.42</div><div class="stat-meta"><span class="stat-neutral">Min required: 1.0 ✅</span></div></div>
+        <div class="stat-card red"><div class="stat-label">Next Debt Maturity</div><div class="stat-value">Sep 2025</div><div class="stat-meta"><span class="stat-neutral">KES 85M due</span></div></div>
+      </div>
+      <div class="chart-row cols-2">
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Debt Maturity Profile (KES M)</div></div>
+          <div class="chart-wrap" style="height:200px">
+            <canvas id="debtMaturity"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header"><div class="chart-title">Debt by Lender</div></div>
+          <div class="chart-wrap donut-center-wrap" style="height:200px">
+            <canvas id="debtLender"></canvas>
+            <div class="donut-center-text">
+              <div style="font-size:16px;font-weight:700;font-family:Sora">KES 642M</div>
+              <div style="font-size:9px;color:#7A8D7A">Total Debt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+// ==================== NAV LOGIC ====================
+let currentDept = 'credit';
+let currentPage = 'credit-overview';
+
+function switchDept(dept, btn) {
+  currentDept = dept;
+  document.querySelectorAll('.dept-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('credit-nav').style.display = dept === 'credit' ? 'block' : 'none';
+  document.getElementById('finance-nav').style.display = dept === 'finance' ? 'block' : 'none';
+  
+  const firstPage = dept === 'credit' ? 'credit-overview' : 'finance-overview';
+  const firstNav = dept === 'credit' 
+    ? document.querySelector('#credit-nav .nav-item')
+    : document.querySelector('#finance-nav .nav-item');
+  showPage(firstPage, firstNav);
+  
+  document.getElementById('topbar-sub').textContent = (dept === 'credit' ? 'Credit' : 'Finance') + ' Department · Live Data';
+}
+
+function showPage(pageId, navEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  
+  const page = document.getElementById('page-' + pageId);
+  if (page) page.classList.add('active');
+  if (navEl) navEl.classList.add('active');
+  
+  const titles = {
+    'credit-overview': 'Portfolio Overview',
+    'credit-risk': 'Risk & PAR Analysis',
+    'credit-loan': 'Loan Origination',
+    'credit-collections': 'Collections & Recovery',
+    'credit-agents': 'Agent Performance',
+    'credit-scoring': 'Credit Scoring',
+    'credit-cohort': 'Cohort Analysis',
+    'finance-overview': 'Financial Overview',
+    'finance-pnl': 'Profit & Loss Statement',
+    'finance-cashflow': 'Cash Flow Dashboard',
+    'finance-budget': 'Budget vs Actual',
+    'finance-opex': 'OpEx Analysis',
+    'finance-revenue': 'Revenue by Product',
+    'finance-treasury': 'Treasury & Liquidity',
+  };
+  document.getElementById('topbar-title').textContent = titles[pageId] || pageId;
+  
+  currentPage = pageId;
+  initChartsForPage(pageId);
+}
+
+function setPeriod(p, btn) {
+  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ==================== COLORS ====================
+const C = {
+  green: '#1B5E20', greenM: '#2E7D32', greenL: '#4CAF50', greenP: '#C8E6C9',
+  orange: '#F57C00', orangeL: '#FFB74D',
+  yellow: '#FFC107',
+  red: '#C62828', redL: '#EF9A9A',
+  blue: '#1565C0', blueL: '#64B5F6',
+  purple: '#6A1B9A', purpleL: '#CE93D8',
+  text: '#1A2E1A', textL: '#7A8D7A',
+};
+const chartDefaults = {
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { grid: { display: false }, ticks: { font: { family: 'DM Sans', size: 10 }, color: C.textL } },
+    y: { grid: { color: '#E0EBE0', drawBorder: false }, ticks: { font: { family: 'DM Sans', size: 10 }, color: C.textL } }
+  }
+};
+
+const months6 = ['Oct','Nov','Dec','Jan','Feb','Mar'];
+const months8 = ['Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'];
+
+const initialized = new Set();
+
+function initChartsForPage(pageId) {
+  if (initialized.has(pageId)) return;
+  initialized.add(pageId);
+  
+  const opts = (o) => ({...chartDefaults, ...o});
+  
+  // -------- CREDIT OVERVIEW --------
+  if (pageId === 'credit-overview') {
+    new Chart(document.getElementById('portfolioTrend'), {
+      type: 'bar',
+      data: {
+        labels: months8,
+        datasets: [
+          { label: 'Performing', data: [520,548,574,598,637,672,701,722], backgroundColor: C.greenL, borderRadius: 4 },
+          { label: 'PAR', data: [48,52,57,61,66,71,74,125], backgroundColor: C.orange, borderRadius: 4 }
+        ]
+      },
+      options: { ...chartDefaults, plugins: { legend: { display: false } }, scales: { ...chartDefaults.scales, x: { ...chartDefaults.scales.x, stacked: true }, y: { ...chartDefaults.scales.y, stacked: true } } }
+    });
+    new Chart(document.getElementById('portfolioProduct'), {
+      type: 'doughnut',
+      data: {
+        labels: ['RainMaker2','ClimateSmart','CS Battery','CS Direct'],
+        datasets: [{ data: [355,263,152,77], backgroundColor: [C.green, C.greenL, C.orange, C.yellow], borderWidth: 0, cutout: '72%' }]
+      },
+      options: { plugins: { legend: { display: false } }, animation: { animateRotate: true } }
+    });
+    new Chart(document.getElementById('parTrend'), {
+      type: 'line',
+      data: {
+        labels: months6,
+        datasets: [
+          { label: 'PAR30', data: [9.8,10.1,10.4,10.8,11.0,11.3], borderColor: C.orange, tension: 0.4, fill: false, pointRadius: 3 },
+          { label: 'PAR60', data: [4.1,4.2,4.4,4.5,4.6,4.8], borderColor: C.red, tension: 0.4, fill: false, pointRadius: 3 },
+          { label: 'PAR90', data: [1.8,1.9,2.0,2.0,2.1,2.2], borderColor: C.purple, tension: 0.4, fill: false, pointRadius: 3 }
+        ]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('portfolioRegion'), {
+      type: 'bar',
+      data: {
+        labels: ['Rift Valley','Eastern','Western','Central','Nyanza','Nairobi','Coast'],
+        datasets: [{ data: [214,178,142,108,87,67,51], backgroundColor: [C.orange, C.orangeL, C.yellow, C.greenL, C.greenL, C.greenM, C.greenM], borderRadius: 4 }]
+      },
+      options: { ...chartDefaults, indexAxis: 'y' }
+    });
+    new Chart(document.getElementById('repaymentAge'), {
+      type: 'line',
+      data: {
+        labels: ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'],
+        datasets: [{ data: [96,94,92,90,89,87,86,85,84,83,82,81], borderColor: C.greenM, tension: 0.4, fill: { target: 'origin', above: C.greenP } }]
+      },
+      options: chartDefaults
+    });
+  }
+
+  // -------- CREDIT RISK --------
+  if (pageId === 'credit-risk') {
+    new Chart(document.getElementById('parRegion'), {
+      type: 'bar',
+      data: {
+        labels: ['Rift Valley','Eastern','Western','Central','Nyanza','Nairobi','Coast'],
+        datasets: [{ data: [18.2,15.7,12.3,9.8,8.4,7.1,6.4], backgroundColor: [C.red,C.red,C.orange,C.yellow,C.greenL,C.greenL,C.greenM], borderRadius: 4 }]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('lgdProduct'), {
+      type: 'bar',
+      data: {
+        labels: ['RainMaker2','ClimateSmart','CS Battery','CS Direct'],
+        datasets: [
+          { label: 'PD%', data: [8.4,7.2,10.1,12.8], backgroundColor: C.orange, borderRadius: 4 },
+          { label: 'LGD%', data: [42,38,51,58], backgroundColor: C.red, borderRadius: 4 }
+        ]
+      },
+      options: { ...chartDefaults, plugins: { legend: { display: false } } }
+    });
+  }
+
+  // -------- CREDIT LOAN --------
+  if (pageId === 'credit-loan') {
+    new Chart(document.getElementById('loanOrigination'), {
+      type: 'bar',
+      data: {
+        labels: months6,
+        datasets: [
+          { label: 'Applications', data: [1141,1189,1218,1247,1284,1312], backgroundColor: C.blueL, borderRadius: 4 },
+          { label: 'Approved', data: [861,897,920,946,968,989], backgroundColor: C.greenL, borderRadius: 4 }
+        ]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('declineReasons'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Low Score','Incomplete Docs','Blacklisted','High Exposure','Other'],
+        datasets: [{ data: [38,22,18,14,8], backgroundColor: [C.red,C.orange,C.purple,C.yellow,C.textL], borderWidth: 0, cutout: '60%' }]
+      },
+      options: { plugins: { legend: { display: true, position: 'right', labels: { font: { size: 10 }, color: C.text } } } }
+    });
+    // Populate loan table
+    const regions = ['Nairobi','Central','Eastern','Rift Valley','Western','Nyanza','Coast'];
+    const products = ['RainMaker2','ClimateSmart','CS Battery','CS Direct'];
+    const statuses = ['<span class="pill pill-green">Approved</span>','<span class="pill pill-orange">Pending</span>','<span class="pill pill-red">Declined</span>','<span class="pill pill-blue">Processing</span>'];
+    const tbody = document.getElementById('loanTable');
+    for (let i = 0; i < 10; i++) {
+      const amount = (Math.random() * 60000 + 25000).toFixed(0);
+      const score = Math.floor(Math.random() * 350 + 450);
+      const scoreColor = score >= 650 ? 'green' : score >= 550 ? 'orange' : 'red';
+      const days = Math.floor(Math.random() * 14);
+      const status = statuses[i < 6 ? 0 : i < 8 ? 1 : Math.floor(Math.random()*2+2)];
+      tbody.innerHTML += `<tr>
+        <td>${1001+i}</td>
+        <td>SC-${String(Math.floor(Math.random()*90000+10000))}</td>
+        <td>${regions[i % regions.length]}</td>
+        <td>${products[i % products.length]}</td>
+        <td>${Number(amount).toLocaleString()}</td>
+        <td><span class="pill pill-${scoreColor}">${score}</span></td>
+        <td>${days === 0 ? 'Today' : days + 'd ago'}</td>
+        <td>${status}</td>
+      </tr>`;
+    }
+  }
+
+  // -------- COLLECTIONS --------
+  if (pageId === 'credit-collections') {
+    new Chart(document.getElementById('collectionsWeekly'), {
+      type: 'bar',
+      data: {
+        labels: ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
+        datasets: [
+          { label: 'Collected', data: [7.2,7.8,8.1,7.6,8.4,8.8,7.9,8.2,8.6,8.1,8.9,9.4], backgroundColor: C.greenL, borderRadius: 4 },
+          { label: 'Target', data: [7.3,7.3,7.3,7.3,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4], type: 'line', borderColor: C.orange, borderDash: [5,3], pointRadius: 0, fill: false }
+        ]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('channelSplit'), {
+      type: 'doughnut',
+      data: {
+        labels: ['M-Pesa','Bank Transfer','Agent','Other'],
+        datasets: [{ data: [58,24,12,6], backgroundColor: [C.green, C.greenL, C.orange, C.yellow], borderWidth: 0, cutout: '65%' }]
+      },
+      options: { plugins: { legend: { display: false } } }
+    });
+  }
+
+  // -------- AGENT PERFORMANCE --------
+  if (pageId === 'credit-agents') {
+    const agents = ['J. Kamau','G. Wanjiru','D. Otieno','M. Achieng','P. Mutua','F. Chebet','C. Mwangi','A. Omondi','L. Njoro','S. Kiboi'];
+    const rates = [94.1,91.3,88.7,84.2,79.8,75.1,68.4,63.2,58.7,51.2];
+    new Chart(document.getElementById('agentPerf'), {
+      type: 'bar',
+      data: {
+        labels: agents,
+        datasets: [{ data: rates, backgroundColor: rates.map(r => r >= 80 ? C.greenL : r >= 65 ? C.yellow : C.red), borderRadius: 4 }]
+      },
+      options: { ...chartDefaults, indexAxis: 'y' }
+    });
+  }
+
+  // -------- SCORING --------
+  if (pageId === 'credit-scoring') {
+    new Chart(document.getElementById('scoreDist'), {
+      type: 'bar',
+      data: {
+        labels: ['<400','400-450','450-500','500-550','550-600','600-650','650-700','700-750','750+'],
+        datasets: [{ data: [80,180,320,580,840,1120,980,720,340], backgroundColor: [C.red,C.red,C.orange,C.orange,C.yellow,C.greenL,C.greenL,C.greenM,C.green], borderRadius: 4 }]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('scoreBandDefault'), {
+      type: 'line',
+      data: {
+        labels: ['<400','400-500','500-600','600-700','700-800','800+'],
+        datasets: [{ data: [48,28.3,14.8,7.4,3.2,1.1], borderColor: C.red, backgroundColor: C.redL+'40', fill: true, tension: 0.4, pointBackgroundColor: C.red }]
+      },
+      options: { ...chartDefaults, plugins: { legend: { display: false } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { callback: v => v + '%', ...chartDefaults.scales.y.ticks } } } }
+    });
+  }
+
+  // -------- COHORT --------
+  if (pageId === 'credit-cohort') {
+    new Chart(document.getElementById('cohortRetention'), {
+      type: 'line',
+      data: {
+        labels: ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'],
+        datasets: [
+          { label: 'Q3 2023', data: [2.1,3.4,4.8,5.6,6.1,6.8,7.2,7.8,8.1,8.4,8.7,9.0], borderColor: C.greenM, tension: 0.4, pointRadius: 2 },
+          { label: 'Q4 2023', data: [2.4,3.8,5.2,6.1,7.0,7.8,8.4,8.9,9.3,9.7,null,null], borderColor: C.greenL, tension: 0.4, pointRadius: 2 },
+          { label: 'Q1 2024', data: [3.1,4.8,6.4,7.6,8.4,9.1,9.8,10.4,10.9,null,null,null], borderColor: C.yellow, tension: 0.4, pointRadius: 2 },
+          { label: 'Q2 2024', data: [2.8,4.2,5.8,6.9,7.8,8.4,9.1,9.7,null,null,null,null], borderColor: C.orange, tension: 0.4, pointRadius: 2 },
+          { label: 'Q3 2024', data: [2.0,3.1,4.2,5.0,5.7,6.2,null,null,null,null,null,null], borderColor: C.blue, tension: 0.4, pointRadius: 2 },
+          { label: 'Q1 2025', data: [3.8,6.1,9.2,11.4,13.4,null,null,null,null,null,null,null], borderColor: C.red, tension: 0.4, pointRadius: 2, borderDash: [4,2] },
+        ]
+      },
+      options: { ...chartDefaults, plugins: { legend: { display: true, position: 'top', labels: { font: { size: 10 }, color: C.text, boxWidth: 20 } } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { callback: v => v + '%', ...chartDefaults.scales.y.ticks } } } }
+    });
+  }
+
+  // -------- FINANCE OVERVIEW --------
+  if (pageId === 'finance-overview') {
+    new Chart(document.getElementById('finOverview'), {
+      type: 'bar',
+      data: {
+        labels: months8,
+        datasets: [
+          { label: 'Revenue', data: [82,87,91,88,94,98,102,107], backgroundColor: C.greenL, borderRadius: 4 },
+          { label: 'COGS', data: [44,46,48,47,50,52,54,57], backgroundColor: C.orange, borderRadius: 4 },
+          { label: 'EBITDA', data: [-4,-2,2,3,5,8,11,13], type: 'line', borderColor: C.blue, fill: false, tension: 0.4, pointRadius: 3, yAxisID: 'y' }
+        ]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('revComposition'), {
+      type: 'doughnut',
+      data: {
+        labels: ['PAYG','Cash Sales','Carbon','After-sales'],
+        datasets: [{ data: [190.6,75.0,28.1,18.7], backgroundColor: [C.green, C.greenL, C.orange, C.yellow], borderWidth: 0, cutout: '72%' }]
+      },
+      options: { plugins: { legend: { display: false } } }
+    });
+    new Chart(document.getElementById('grossMargin'), {
+      type: 'line',
+      data: {
+        labels: months6,
+        datasets: [{ data: [44.2,45.1,46.0,46.8,47.1,47.4], borderColor: C.greenM, tension: 0.4, fill: { target: 'origin', above: C.greenP }, pointRadius: 3 }]
+      },
+      options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { callback: v => v + '%', ...chartDefaults.scales.y.ticks } } } }
+    });
+    new Chart(document.getElementById('opexBreakdown'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Salaries','S&M','G&A','Tech','Other'],
+        datasets: [{ data: [54.2,22.8,18.4,9.8,4.9], backgroundColor: [C.greenM, C.orange, C.blue, C.purple, C.textL], borderWidth: 0, cutout: '50%' }]
+      },
+      options: { plugins: { legend: { display: true, position: 'right', labels: { font: { size: 9 }, boxWidth: 10 } } } }
+    });
+    new Chart(document.getElementById('burnRate'), {
+      type: 'bar',
+      data: {
+        labels: months6,
+        datasets: [{ data: [38,36,37,35,34,33], backgroundColor: months6.map((_, i) => i < 3 ? C.orange : C.greenL), borderRadius: 4 }]
+      },
+      options: chartDefaults
+    });
+  }
+
+  // -------- FINANCE CASHFLOW --------
+  if (pageId === 'finance-cashflow') {
+    new Chart(document.getElementById('cashBridge'), {
+      type: 'bar',
+      data: {
+        labels: ['Opening','Collections','+Carbon','+Sales Loans','-OpEx','-Debt Svc','-Capex','Closing'],
+        datasets: [{ data: [72,94,8,18,-68,-34,-3,87], backgroundColor: [C.blue,C.greenL,C.greenL,C.greenL,C.red,C.red,C.orange,C.blue], borderRadius: 4 }]
+      },
+      options: chartDefaults
+    });
+  }
+
+  // -------- BUDGET VS ACTUAL --------
+  if (pageId === 'finance-budget') {
+    const items = ['Salaries','Sales & Mktg','G&A','Technology','Depreciation','Interest','Provisions'];
+    const budget = [52.0,21.4,18.0,9.4,5.5,32.0,14.0];
+    const actual = [54.2,22.8,18.4,9.8,4.9,34.2,15.8];
+    new Chart(document.getElementById('budgetActual'), {
+      type: 'bar',
+      data: {
+        labels: items,
+        datasets: [
+          { label: 'Budget', data: budget, backgroundColor: C.blueL+'99', borderRadius: 4 },
+          { label: 'Actual', data: actual, backgroundColor: actual.map((a,i) => a > budget[i] ? C.red : C.greenL), borderRadius: 4 }
+        ]
+      },
+      options: { ...chartDefaults, plugins: { legend: { display: true, position: 'top', labels: { font: { size: 10 }, boxWidth: 12 } } } }
+    });
+  }
+
+  // -------- OPEX --------
+  if (pageId === 'finance-opex') {
+    new Chart(document.getElementById('opexDept'), {
+      type: 'bar',
+      data: {
+        labels: ['People','Sales','Operations','Tech','Finance','G&A','Credit'],
+        datasets: [{ data: [54.2,22.8,14.6,9.8,8.4,7.2,6.1], backgroundColor: [C.greenL, C.orange, C.yellow, C.blue, C.purple, C.blueL, C.greenM], borderRadius: 4 }]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('opexRevTrend'), {
+      type: 'line',
+      data: {
+        labels: months8,
+        datasets: [
+          { label: '% of Revenue', data: [38.2,37.8,37.4,36.9,36.4,36.1,35.6,35.3], borderColor: C.orange, tension: 0.4, fill: { target: 'origin', above: '#FFF3E040' }, pointRadius: 3 }
+        ]
+      },
+      options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { callback: v => v + '%', ...chartDefaults.scales.y.ticks } } } }
+    });
+  }
+
+  // -------- REVENUE BY PRODUCT --------
+  if (pageId === 'finance-revenue') {
+    new Chart(document.getElementById('revProduct'), {
+      type: 'bar',
+      data: {
+        labels: months6,
+        datasets: [
+          { label: 'RainMaker2', data: [38.2,40.1,42.8,41.7,43.2,44.8], backgroundColor: C.green, borderRadius: 4 },
+          { label: 'ClimateSmart', data: [28.4,29.8,31.2,30.7,31.9,33.1], backgroundColor: C.greenL, borderRadius: 4 },
+          { label: 'CS Battery', data: [16.1,17.0,17.8,17.4,18.2,18.9], backgroundColor: C.orange, borderRadius: 4 },
+          { label: 'CS Direct', data: [5.8,6.1,6.4,6.2,6.5,6.8], backgroundColor: C.yellow, borderRadius: 4 },
+        ]
+      },
+      options: { ...chartDefaults, plugins: { legend: { display: false } }, scales: { ...chartDefaults.scales, x: { ...chartDefaults.scales.x, stacked: true }, y: { ...chartDefaults.scales.y, stacked: true } } }
+    });
+  }
+
+  // -------- TREASURY --------
+  if (pageId === 'finance-treasury') {
+    new Chart(document.getElementById('debtMaturity'), {
+      type: 'bar',
+      data: {
+        labels: ['Q3 2025','Q4 2025','Q1 2026','Q2 2026','2026+'],
+        datasets: [{ data: [85,62,128,94,273], backgroundColor: [C.red, C.orange, C.yellow, C.greenL, C.greenM], borderRadius: 4 }]
+      },
+      options: chartDefaults
+    });
+    new Chart(document.getElementById('debtLender'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Stanbic Bank','Symbiotics','REPP Fund','CarbonCredit','Others'],
+        datasets: [{ data: [210,148,124,84,76], backgroundColor: [C.green, C.greenM, C.greenL, C.orange, C.yellow], borderWidth: 0, cutout: '70%' }]
+      },
+      options: { plugins: { legend: { display: true, position: 'right', labels: { font: { size: 10 }, boxWidth: 12 } } } }
+    });
+  }
+}
+
+// Initialize first page
+setTimeout(() => initChartsForPage('credit-overview'), 100);
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+ProductID,ProductName,SKU,ProductCategory,UnitPriceKES,ProductLine
+PROD-001,RainMaker2,RM2-001,Irrigation System,95000,Irrigation
+PROD-002,ClimateSmart Pro,CSP-001,Irrigation System,78000,Irrigation
+PROD-003,CS Battery,CSB-001,Irrigation System,68000,Irrigation
+PROD-004,CS Direct,CSD-001,Irrigation System,45000,Irrigation
+PROD-005,SunCulture Home Basic,SHB-001,Home Solar,15000,Home
+PROD-006,SunCulture Home Plus,SHP-001,Home Solar,28000,Home
+PROD-007,Drip Irrigation Kit,DIK-001,Accessory,8000,Accessories
+PROD-008,After-Sales Parts,ASP-001,After-Sales,3000,After-Sales

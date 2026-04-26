@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SunCulture · IoT & Device Operations</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun-green: #00A86B;
+    --sun-green-dark: #007A4D;
+    --sun-green-light: #00C47D;
+    --sun-green-pale: #E6F7F1;
+    --sun-amber: #F5A623;
+    --sun-amber-pale: #FEF3DC;
+    --sun-coral: #E8443A;
+    --sun-coral-pale: #FDECEA;
+    --sun-blue: #2D6BE4;
+    --sun-blue-pale: #EBF0FD;
+    --sun-sky: #17B8E8;
+    --dark-bg: #0D1B2A;
+    --dark-card: #132237;
+    --dark-border: #1E3550;
+    --dark-text: #E2EBF3;
+    --dark-muted: #7A9CBB;
+    --dark-surface: #0F1F32;
+    --white: #FFFFFF;
+    --font-main: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --sidebar-w: 220px;
+    --topbar-h: 60px;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-main); background: var(--dark-bg); color: var(--dark-text); min-height: 100vh; overflow-x: hidden; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: var(--topbar-h);
+    background: var(--dark-surface); border-bottom: 1px solid var(--dark-border);
+    display: flex; align-items: center; padding: 0 20px; gap: 16px; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .logo-mark {
+    width: 36px; height: 36px; background: var(--sun-green);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0;
+  }
+  .logo-text { font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: -0.3px; }
+  .logo-text span { color: var(--sun-green); }
+  .topbar-divider { width: 1px; height: 28px; background: var(--dark-border); margin: 0 4px; }
+  .topbar-dept { font-size: 12px; color: var(--dark-muted); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+  .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .last-refresh { font-size: 11px; color: var(--dark-muted); font-family: var(--font-mono); }
+  .refresh-btn {
+    background: var(--sun-green); color: #fff; border: none; padding: 7px 16px;
+    border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
+    font-family: var(--font-main); transition: background 0.2s; display: flex; align-items: center; gap: 6px;
+  }
+  .refresh-btn:hover { background: var(--sun-green-light); }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sun-green); box-shadow: 0 0 6px var(--sun-green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: var(--topbar-h); left: 0; bottom: 0;
+    width: var(--sidebar-w); background: var(--dark-surface);
+    border-right: 1px solid var(--dark-border); padding: 20px 0; z-index: 90; overflow-y: auto;
+  }
+  .sidebar-section { padding: 0 16px 8px; font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--dark-muted); margin-top: 16px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px; padding: 9px 20px;
+    font-size: 13px; font-weight: 500; color: var(--dark-muted); cursor: pointer;
+    border-left: 3px solid transparent; transition: all 0.15s;
+  }
+  .nav-item:hover { color: var(--dark-text); background: rgba(255,255,255,0.04); }
+  .nav-item.active { color: var(--sun-green); border-left-color: var(--sun-green); background: rgba(0,168,107,0.08); }
+  .nav-icon { font-size: 15px; width: 20px; text-align: center; }
+
+  /* ── MAIN CONTENT ── */
+  .main { margin-left: var(--sidebar-w); margin-top: var(--topbar-h); padding: 24px; min-height: calc(100vh - var(--topbar-h)); }
+
+  /* ── PAGE ── */
+  .page { display: none; animation: fadeIn 0.3s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── PAGE HEADER ── */
+  .page-header { margin-bottom: 20px; }
+  .page-title { font-size: 22px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; }
+  .page-subtitle { font-size: 13px; color: var(--dark-muted); margin-top: 4px; }
+  .filter-bar { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .filter-select {
+    background: var(--dark-card); border: 1px solid var(--dark-border); color: var(--dark-text);
+    font-family: var(--font-main); font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  }
+  .filter-badge { background: rgba(0,168,107,0.15); border: 1px solid rgba(0,168,107,0.3); color: var(--sun-green); font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600; }
+
+  /* ── GRID ── */
+  .grid { display: grid; gap: 16px; }
+  .g-2 { grid-template-columns: repeat(2, 1fr); }
+  .g-3 { grid-template-columns: repeat(3, 1fr); }
+  .g-4 { grid-template-columns: repeat(4, 1fr); }
+  .g-3-2 { grid-template-columns: 3fr 2fr; }
+  .g-2-1 { grid-template-columns: 2fr 1fr; }
+  .g-1-2 { grid-template-columns: 1fr 2fr; }
+  .g-5 { grid-template-columns: repeat(5, 1fr); }
+  .span-2 { grid-column: span 2; }
+  .span-3 { grid-column: span 3; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+  }
+  .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--dark-muted); }
+  .card-badge { font-size: 10px; padding: 3px 8px; border-radius: 10px; font-weight: 600; }
+  .badge-green { background: rgba(0,168,107,0.15); color: var(--sun-green); }
+  .badge-amber { background: rgba(245,166,35,0.15); color: var(--sun-amber); }
+  .badge-red { background: rgba(232,68,58,0.15); color: var(--sun-coral); }
+  .badge-blue { background: rgba(45,107,228,0.15); color: var(--sun-blue); }
+
+  /* ── KPI CARD ── */
+  .kpi-card {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow);
+    border-top: 3px solid transparent; transition: transform 0.15s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); }
+  .kpi-card.green { border-top-color: var(--sun-green); }
+  .kpi-card.amber { border-top-color: var(--sun-amber); }
+  .kpi-card.coral { border-top-color: var(--sun-coral); }
+  .kpi-card.blue { border-top-color: var(--sun-blue); }
+  .kpi-card.sky { border-top-color: var(--sun-sky); }
+  .kpi-label { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--dark-muted); margin-bottom: 8px; }
+  .kpi-value { font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: -1px; line-height: 1; }
+  .kpi-value.small { font-size: 22px; }
+  .kpi-delta { display: flex; align-items: center; gap: 5px; margin-top: 8px; font-size: 12px; font-weight: 500; }
+  .delta-up { color: var(--sun-green); }
+  .delta-down { color: var(--sun-coral); }
+  .delta-neutral { color: var(--dark-muted); }
+  .kpi-sub { font-size: 11px; color: var(--dark-muted); margin-top: 4px; }
+
+  /* ── CHART CANVAS ── */
+  .chart-wrap { position: relative; }
+  canvas { display: block; }
+
+  /* ── TABLE ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .data-table th { color: var(--dark-muted); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; padding: 8px 10px; border-bottom: 1px solid var(--dark-border); text-align: left; }
+  .data-table td { padding: 9px 10px; border-bottom: 1px solid rgba(30,53,80,0.6); color: var(--dark-text); vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .health-pill { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 10px; display: inline-block; }
+  .health-good { background: rgba(0,168,107,0.15); color: var(--sun-green); }
+  .health-warn { background: rgba(245,166,35,0.15); color: var(--sun-amber); }
+  .health-crit { background: rgba(232,68,58,0.15); color: var(--sun-coral); }
+
+  /* ── GAUGE ── */
+  .gauge-wrap { display: flex; flex-direction: column; align-items: center; }
+  .gauge-val { font-size: 24px; font-weight: 700; color: var(--white); margin-top: -8px; }
+  .gauge-label { font-size: 11px; color: var(--dark-muted); margin-top: 2px; }
+
+  /* ── PROGRESS BAR ── */
+  .prog-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .prog-label { font-size: 12px; color: var(--dark-muted); width: 130px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .prog-bar-wrap { flex: 1; background: rgba(255,255,255,0.06); border-radius: 4px; height: 7px; }
+  .prog-bar { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+  .prog-val { font-size: 12px; font-weight: 600; color: var(--dark-text); width: 42px; text-align: right; }
+
+  /* ── METRIC ROW ── */
+  .metric-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(30,53,80,0.5); }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-name { font-size: 13px; color: var(--dark-muted); }
+  .metric-val { font-size: 14px; font-weight: 700; color: var(--white); }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    background: linear-gradient(135deg, rgba(0,168,107,0.1), rgba(0,168,107,0.03));
+    border: 1px solid rgba(0,168,107,0.2); border-radius: var(--radius); padding: 16px 20px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .stat-icon { font-size: 22px; margin-bottom: 6px; }
+  .stat-num { font-size: 26px; font-weight: 700; color: var(--white); letter-spacing: -1px; }
+  .stat-desc { font-size: 11px; color: var(--dark-muted); margin-top: 2px; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--dark-border); border-radius: 3px; }
+
+  /* ── DIVIDER ── */
+  hr.section-divider { border: none; border-top: 1px solid var(--dark-border); margin: 16px 0; }
+
+  /* ── ONLINE BADGE ── */
+  .online-indicator { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; }
+  .ind-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .ind-online { background: var(--sun-green); }
+  .ind-offline { background: var(--sun-coral); }
+  .ind-degraded { background: var(--sun-amber); }
+
+  /* map-like county grid */
+  .county-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .county-tile {
+    background: var(--dark-surface); border-radius: 6px; padding: 10px 8px;
+    text-align: center; border: 1px solid var(--dark-border); transition: border-color 0.2s;
+    cursor: default;
+  }
+  .county-tile:hover { border-color: var(--sun-green); }
+  .county-name { font-size: 10px; color: var(--dark-muted); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; }
+  .county-rate { font-size: 16px; font-weight: 700; }
+  .rate-high { color: var(--sun-green); }
+  .rate-mid { color: var(--sun-amber); }
+  .rate-low { color: var(--sun-coral); }
+
+  /* sparkline wrapper */
+  .sparkline-wrap { height: 36px; }
+
+  /* firmware version bar */
+  .fw-bar-row { margin-bottom: 8px; }
+  .fw-label { font-size: 11px; color: var(--dark-muted); margin-bottom: 3px; display: flex; justify-content: space-between; }
+
+  @media (max-width: 900px) {
+    .g-4 { grid-template-columns: repeat(2,1fr); }
+    .g-5 { grid-template-columns: repeat(2,1fr); }
+    .g-3 { grid-template-columns: 1fr; }
+    .g-2 { grid-template-columns: 1fr; }
+    .g-3-2, .g-2-1, .g-1-2 { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo-mark">☀</div>
+  <div class="logo-text"><span>Sun</span>Culture</div>
+  <div class="topbar-divider"></div>
+  <div class="topbar-dept">IoT & Device Operations</div>
+  <div class="topbar-right">
+    <div class="status-dot"></div>
+    <div class="last-refresh" id="lastRefreshTime">Live · --:--:--</div>
+    <button class="refresh-btn" onclick="refreshAll()">↺ Refresh Data</button>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-section">Overview</div>
+  <div class="nav-item active" onclick="showPage('fleet-overview')"><span class="nav-icon">📡</span>Fleet Overview</div>
+  <div class="nav-item" onclick="showPage('device-health')"><span class="nav-icon">❤️</span>Device Health</div>
+  <div class="nav-item" onclick="showPage('pump-performance')"><span class="nav-icon">💧</span>Pump Performance</div>
+  <div class="sidebar-section">Diagnostics</div>
+  <div class="nav-item" onclick="showPage('fault-analysis')"><span class="nav-icon">⚠️</span>Fault Analysis</div>
+  <div class="nav-item" onclick="showPage('connectivity')"><span class="nav-icon">🌐</span>Connectivity</div>
+  <div class="sidebar-section">Telemetry</div>
+  <div class="nav-item" onclick="showPage('energy-solar')"><span class="nav-icon">🔋</span>Energy & Solar</div>
+  <div class="nav-item" onclick="showPage('firmware')"><span class="nav-icon">⚙️</span>Firmware & OTA</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ═══════════════════════════════ PAGE 1: FLEET OVERVIEW ═══════════════════════════════ -->
+<div class="page active" id="page-fleet-overview">
+  <div class="page-header">
+    <div class="page-title">Fleet Overview</div>
+    <div class="page-subtitle">Real-time status across all 60,000+ RainMaker2 devices · Kenya, Uganda & Côte d'Ivoire</div>
+    <div class="filter-bar">
+      <select class="filter-select" id="fo-country" onchange="refreshAll()">
+        <option value="all">All Countries</option>
+        <option value="kenya">Kenya</option>
+        <option value="uganda">Uganda</option>
+        <option value="civ">Côte d'Ivoire</option>
+      </select>
+      <select class="filter-select" id="fo-period" onchange="refreshAll()">
+        <option value="today">Today</option>
+        <option value="7d">Last 7 Days</option>
+        <option value="30d">Last 30 Days</option>
+        <option value="qtd">QTD</option>
+      </select>
+      <span class="filter-badge" id="fo-badge">● LIVE</span>
+    </div>
+  </div>
+
+  <!-- KPI row -->
+  <div class="grid g-5" style="margin-bottom:16px;">
+    <div class="kpi-card green">
+      <div class="kpi-label">Total Devices</div>
+      <div class="kpi-value" id="fo-total">62,418</div>
+      <div class="kpi-delta delta-up" id="fo-total-d">▲ +1,204 this month</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Online Now</div>
+      <div class="kpi-value" id="fo-online">58,731</div>
+      <div class="kpi-delta delta-up" id="fo-online-d">▲ 94.1% online rate</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Degraded</div>
+      <div class="kpi-value" id="fo-degraded">2,104</div>
+      <div class="kpi-delta delta-neutral" id="fo-degraded-d">3.4% of fleet</div>
+    </div>
+    <div class="kpi-card coral">
+      <div class="kpi-label">Offline</div>
+      <div class="kpi-value" id="fo-offline">1,583</div>
+      <div class="kpi-delta delta-down" id="fo-offline-d">▼ 2.5% offline rate</div>
+    </div>
+    <div class="kpi-card sky">
+      <div class="kpi-label">Avg Uptime (30d)</div>
+      <div class="kpi-value small" id="fo-uptime">97.3%</div>
+      <div class="kpi-delta delta-up" id="fo-uptime-d">▲ +0.4pp vs prior</div>
+    </div>
+  </div>
+
+  <!-- Charts row -->
+  <div class="grid g-3-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Device Online Rate — 30-Day Trend</div>
+        <span class="card-badge badge-green">Target: 95%</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="fo-trend-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Fleet Status Breakdown</div>
+        <span class="card-badge badge-blue">Today</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="fo-doughnut-chart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- County grid -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Online Rate by County (Kenya)</div>
+      <span class="card-badge badge-green">Hover for details</span>
+    </div>
+    <div class="county-grid" id="fo-county-grid" style="margin-top:4px;"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PAGE 2: DEVICE HEALTH ═══════════════════════════════ -->
+<div class="page" id="page-device-health">
+  <div class="page-header">
+    <div class="page-title">Device Health</div>
+    <div class="page-subtitle">Battery degradation, pump wear, motor performance and predictive maintenance signals</div>
+    <div class="filter-bar">
+      <select class="filter-select" onchange="refreshAll()"><option>All SKUs</option><option>RainMaker2 Basic</option><option>RainMaker2 Pro</option><option>RainMaker2 Pro+</option><option>RainMaker2 Premium</option></select>
+      <select class="filter-select" onchange="refreshAll()"><option>All Vintages</option><option>2022</option><option>2023</option><option>2024</option></select>
+      <span class="filter-badge">● Live</span>
+    </div>
+  </div>
+
+  <!-- Stat banners -->
+  <div class="grid g-4" style="margin-bottom:16px;">
+    <div class="stat-banner">
+      <div class="stat-icon">🔋</div>
+      <div class="stat-num" id="dh-bat">82.4%</div>
+      <div class="stat-desc">Avg Battery Health</div>
+    </div>
+    <div class="stat-banner">
+      <div class="stat-icon">⚙️</div>
+      <div class="stat-num" id="dh-motor">91.1%</div>
+      <div class="stat-desc">Motor Health Score</div>
+    </div>
+    <div class="stat-banner">
+      <div class="stat-icon">☀️</div>
+      <div class="stat-num" id="dh-solar">88.6%</div>
+      <div class="stat-desc">Solar Panel Efficiency</div>
+    </div>
+    <div class="stat-banner">
+      <div class="stat-icon">🚨</div>
+      <div class="stat-num" id="dh-pred">1,247</div>
+      <div class="stat-desc">Predictive Alerts (30d)</div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <!-- Battery Health Distribution -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Battery Health Distribution</div>
+        <span class="card-badge badge-amber">By % State-of-Health</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="dh-bat-dist"></canvas></div>
+    </div>
+    <!-- Radar -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Device Health Radar (Avg Fleet)</div>
+        <span class="card-badge badge-green">6 Dimensions</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="dh-radar"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <!-- Predictive maintenance table -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Predictive Maintenance Queue</div>
+        <span class="card-badge badge-amber">Top 8 At-Risk</span>
+      </div>
+      <table class="data-table" id="dh-pm-table"></table>
+    </div>
+    <!-- Degradation trend -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Battery Degradation by Vintage Cohort</div>
+        <span class="card-badge badge-blue">Monthly SoH %</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="dh-degrad-chart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PAGE 3: PUMP PERFORMANCE ═══════════════════════════════ -->
+<div class="page" id="page-pump-performance">
+  <div class="page-header">
+    <div class="page-title">Pump Performance</div>
+    <div class="page-subtitle">Water volume, daily runtime, flow rates and pressure across active devices</div>
+    <div class="filter-bar">
+      <select class="filter-select" onchange="refreshAll()"><option>Last 30 Days</option><option>Last 7 Days</option><option>QTD</option></select>
+      <select class="filter-select" onchange="refreshAll()"><option>All Regions</option><option>Rift Valley</option><option>Central</option><option>Eastern</option><option>Nyanza</option><option>Western</option></select>
+    </div>
+  </div>
+
+  <div class="grid g-4" style="margin-bottom:16px;">
+    <div class="kpi-card green">
+      <div class="kpi-label">Avg Daily Runtime</div>
+      <div class="kpi-value small" id="pp-runtime">5.8 hrs</div>
+      <div class="kpi-delta delta-up">▲ +0.3 hrs vs last month</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Avg Volume Pumped</div>
+      <div class="kpi-value small" id="pp-volume">3,840 L/day</div>
+      <div class="kpi-delta delta-up">▲ +5.2%</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Avg Flow Rate</div>
+      <div class="kpi-value small" id="pp-flow">11.2 m³/hr</div>
+      <div class="kpi-delta delta-neutral">→ Stable</div>
+    </div>
+    <div class="kpi-card sky">
+      <div class="kpi-label">Water Delivered (30d)</div>
+      <div class="kpi-value small" id="pp-total">225M L</div>
+      <div class="kpi-delta delta-up">▲ Fleet total</div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Daily Volume Pumped — 30-Day Trend</div>
+        <span class="card-badge badge-green">Litres / day (fleet)</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="pp-vol-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Runtime Distribution by SKU</div>
+        <span class="card-badge badge-blue">Avg hrs/day</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="pp-sku-chart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid g-3-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Volume Performance by County (Top 12)</div>
+        <span class="card-badge badge-amber">Avg L/day per device</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="pp-county-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Runtime vs Volume (Scatter)</div>
+        <span class="card-badge badge-blue">Per device sample</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="pp-scatter-chart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PAGE 4: FAULT ANALYSIS ═══════════════════════════════ -->
+<div class="page" id="page-fault-analysis">
+  <div class="page-header">
+    <div class="page-title">Fault Analysis</div>
+    <div class="page-subtitle">Device errors, fault codes, trends, resolution times and geographic hotspots</div>
+    <div class="filter-bar">
+      <select class="filter-select" onchange="refreshAll()"><option>Last 30 Days</option><option>Last 7 Days</option><option>Last 90 Days</option></select>
+      <select class="filter-select" onchange="refreshAll()"><option>All Fault Types</option><option>Battery Faults</option><option>Motor Faults</option><option>Connectivity</option><option>Sensor Errors</option></select>
+    </div>
+  </div>
+
+  <div class="grid g-4" style="margin-bottom:16px;">
+    <div class="kpi-card coral">
+      <div class="kpi-label">Total Faults (30d)</div>
+      <div class="kpi-value" id="fa-total">4,218</div>
+      <div class="kpi-delta delta-down">▼ -8.3% vs prior period</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Fault Rate</div>
+      <div class="kpi-value small" id="fa-rate">6.8%</div>
+      <div class="kpi-delta delta-down">▼ Target: &lt;7%</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Avg Resolution Time</div>
+      <div class="kpi-value small" id="fa-res">18.4 hrs</div>
+      <div class="kpi-delta delta-down">▼ -2.1 hrs improved</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Auto-Resolved</div>
+      <div class="kpi-value small" id="fa-auto">61.2%</div>
+      <div class="kpi-delta delta-up">▲ Firmware auto-heal</div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Fault Count by Type (30d)</div>
+        <span class="card-badge badge-red">Pareto View</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="fa-type-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Fault Rate Trend vs 7% Target</div>
+        <span class="card-badge badge-amber">Daily %</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="fa-trend-chart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid g-3-2">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Fault Log — Recent High-Priority Events</div>
+        <span class="card-badge badge-red">P1 / P2 only</span>
+      </div>
+      <table class="data-table" id="fa-log-table"></table>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Fault Distribution by SKU</div>
+        <span class="card-badge badge-amber">% of faults</span>
+      </div>
+      <div class="chart-wrap" style="height:240px;"><canvas id="fa-sku-doughnut"></canvas></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PAGE 5: CONNECTIVITY ═══════════════════════════════ -->
+<div class="page" id="page-connectivity">
+  <div class="page-header">
+    <div class="page-title">Connectivity</div>
+    <div class="page-subtitle">Network quality, heartbeat health, SIM performance and rural edge connectivity metrics</div>
+    <div class="filter-bar">
+      <select class="filter-select" onchange="refreshAll()"><option>All Networks</option><option>Safaricom</option><option>Airtel</option><option>Telkom</option></select>
+      <select class="filter-select" onchange="refreshAll()"><option>Last 7 Days</option><option>Last 30 Days</option></select>
+    </div>
+  </div>
+
+  <div class="grid g-4" style="margin-bottom:16px;">
+    <div class="kpi-card green">
+      <div class="kpi-label">Avg Signal Strength</div>
+      <div class="kpi-value small" id="cn-signal">-74 dBm</div>
+      <div class="kpi-delta delta-up">▲ Good (≥-80)</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Heartbeat Miss Rate</div>
+      <div class="kpi-value small" id="cn-hb">3.2%</div>
+      <div class="kpi-delta delta-down">▼ Target &lt;4%</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Avg Data Latency</div>
+      <div class="kpi-value small" id="cn-lat">840 ms</div>
+      <div class="kpi-delta delta-neutral">→ Within SLA</div>
+    </div>
+    <div class="kpi-card coral">
+      <div class="kpi-label">SIM Swap Events</div>
+      <div class="kpi-value" id="cn-sim">184</div>
+      <div class="kpi-delta delta-down">▼ -23 vs prior</div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Network Distribution (Devices by MNO)</div>
+        <span class="card-badge badge-blue">SIM carrier split</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="cn-mno-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Daily Heartbeat Miss Rate — 30d</div>
+        <span class="card-badge badge-amber">Target: &lt;4%</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="cn-hb-chart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Signal Quality Breakdown by Region</div>
+      <span class="card-badge badge-green">% of devices per band</span>
+    </div>
+    <div id="cn-signal-bars" style="margin-top:8px;"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PAGE 6: ENERGY & SOLAR ═══════════════════════════════ -->
+<div class="page" id="page-energy-solar">
+  <div class="page-header">
+    <div class="page-title">Energy & Solar</div>
+    <div class="page-subtitle">Solar generation, battery charge cycles, kWh output, and grid-equivalent displacement</div>
+    <div class="filter-bar">
+      <select class="filter-select" onchange="refreshAll()"><option>Last 30 Days</option><option>Last 7 Days</option><option>YTD</option></select>
+    </div>
+  </div>
+
+  <div class="grid g-4" style="margin-bottom:16px;">
+    <div class="kpi-card green">
+      <div class="kpi-label">Avg Solar Generation</div>
+      <div class="kpi-value small" id="es-gen">4.2 kWh/day</div>
+      <div class="kpi-delta delta-up">▲ Per device</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Avg State of Charge</div>
+      <div class="kpi-value small" id="es-soc">71.4%</div>
+      <div class="kpi-delta delta-up">▲ EOD reading</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Fleet kWh (30d)</div>
+      <div class="kpi-value small" id="es-kwh">7.8M kWh</div>
+      <div class="kpi-delta delta-up">▲ +6.1% MoM</div>
+    </div>
+    <div class="kpi-card sky">
+      <div class="kpi-label">Diesel Displaced (30d)</div>
+      <div class="kpi-value small" id="es-diesel">3.1M L</div>
+      <div class="kpi-delta delta-up">▲ Equivalent avoided</div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Daily Solar Generation Trend</div>
+        <span class="card-badge badge-green">Fleet avg kWh/device</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="es-gen-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Battery SoC Distribution (End-of-Day)</div>
+        <span class="card-badge badge-amber">% of fleet</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="es-soc-chart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid g-3-2">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Charge Cycles vs Battery Age</div>
+        <span class="card-badge badge-blue">Avg cycles per cohort month</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="es-cycles-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Energy by Source</div>
+        <span class="card-badge badge-green">kWh contribution</span>
+      </div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="es-source-chart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PAGE 7: FIRMWARE & OTA ═══════════════════════════════ -->
+<div class="page" id="page-firmware">
+  <div class="page-header">
+    <div class="page-title">Firmware & OTA Updates</div>
+    <div class="page-subtitle">Version compliance, rollout progress, failed updates, and edge device OTA health</div>
+    <div class="filter-bar">
+      <select class="filter-select" onchange="refreshAll()"><option>All Versions</option><option>v3.4.x</option><option>v3.3.x</option><option>v3.2.x</option></select>
+    </div>
+  </div>
+
+  <div class="grid g-4" style="margin-bottom:16px;">
+    <div class="kpi-card green">
+      <div class="kpi-label">Current Version (v3.4.2)</div>
+      <div class="kpi-value small" id="fw-curr">78.3%</div>
+      <div class="kpi-delta delta-up">▲ Fleet coverage</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Pending Update</div>
+      <div class="kpi-value small" id="fw-pend">11,204</div>
+      <div class="kpi-delta delta-neutral">18.0% of fleet</div>
+    </div>
+    <div class="kpi-card coral">
+      <div class="kpi-label">Failed OTA (30d)</div>
+      <div class="kpi-value" id="fw-fail">847</div>
+      <div class="kpi-delta delta-down">▼ 1.4% fail rate</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Avg OTA Duration</div>
+      <div class="kpi-value small" id="fw-dur">14.2 min</div>
+      <div class="kpi-delta delta-neutral">Per device</div>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Firmware Version Distribution</div>
+        <span class="card-badge badge-green">% of active fleet</span>
+      </div>
+      <div id="fw-version-bars" style="margin-top:4px;"></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">OTA Rollout Progress — v3.4.2</div>
+        <span class="card-badge badge-blue">Cumulative devices updated</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="fw-rollout-chart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">OTA Failure Analysis by Root Cause</div>
+      <span class="card-badge badge-red">30-day failure breakdown</span>
+    </div>
+    <div id="fw-fail-bars" style="margin-top:8px;"></div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  HELPERS
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const R = (lo, hi, dec=0) => {
+  const v = lo + Math.random()*(hi-lo);
+  return dec>0 ? parseFloat(v.toFixed(dec)) : Math.round(v);
+};
+const Rf = (lo, hi) => R(lo, hi, 1);
+const SC = { green:'#00A86B', greenL:'#00C47D', amber:'#F5A623', coral:'#E8443A', blue:'#2D6BE4', sky:'#17B8E8', muted:'#7A9CBB', border:'#1E3550', bg:'#132237' };
+const chartDefaults = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{ legend:{ labels:{ color:SC.muted, font:{size:11, family:'DM Sans'}, boxWidth:12, padding:16 }}, tooltip:{ backgroundColor:'#0D1B2A', borderColor:SC.border, borderWidth:1, titleColor:'#E2EBF3', bodyColor:SC.muted, titleFont:{size:12}, bodyFont:{size:11} } },
+  scales:{ x:{ grid:{color:'rgba(30,53,80,0.5)', drawBorder:false}, ticks:{color:SC.muted, font:{size:10}} }, y:{ grid:{color:'rgba(30,53,80,0.5)', drawBorder:false}, ticks:{color:SC.muted, font:{size:10}} } }
+};
+const days30 = ()=>{ const l=[]; for(let i=29;i>=0;i--){ const d=new Date(); d.setDate(d.getDate()-i); l.push(`${d.getDate()} ${d.toLocaleString('default',{month:'short'})}`); } return l; };
+const chartInstances = {};
+function mkChart(id, config) {
+  if(chartInstances[id]) { chartInstances[id].destroy(); }
+  const ctx = document.getElementById(id);
+  if(!ctx) return;
+  chartInstances[id] = new Chart(ctx, config);
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  NAV
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  renderPage(id);
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  REFRESH
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function refreshAll() {
+  const active = document.querySelector('.page.active');
+  if(active) renderPage(active.id.replace('page-',''));
+  const now = new Date();
+  document.getElementById('lastRefreshTime').textContent = `Live · ${now.toLocaleTimeString()}`;
+}
+
+function renderPage(id) {
+  switch(id) {
+    case 'fleet-overview': renderFleetOverview(); break;
+    case 'device-health': renderDeviceHealth(); break;
+    case 'pump-performance': renderPumpPerformance(); break;
+    case 'fault-analysis': renderFaultAnalysis(); break;
+    case 'connectivity': renderConnectivity(); break;
+    case 'energy-solar': renderEnergySolar(); break;
+    case 'firmware': renderFirmware(); break;
+  }
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 1 — FLEET OVERVIEW
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderFleetOverview() {
+  const total = R(61000,64000);
+  const online = Math.round(total * Rf(0.92,0.96));
+  const degraded = Math.round(total * Rf(0.025,0.04));
+  const offline = total - online - degraded;
+  const uptime = Rf(96.5, 98.2);
+  document.getElementById('fo-total').textContent = total.toLocaleString();
+  document.getElementById('fo-online').textContent = online.toLocaleString();
+  document.getElementById('fo-online-d').textContent = `▲ ${(online/total*100).toFixed(1)}% online rate`;
+  document.getElementById('fo-degraded').textContent = degraded.toLocaleString();
+  document.getElementById('fo-degraded-d').textContent = `${(degraded/total*100).toFixed(1)}% of fleet`;
+  document.getElementById('fo-offline').textContent = offline.toLocaleString();
+  document.getElementById('fo-offline-d').textContent = `▼ ${(offline/total*100).toFixed(1)}% offline rate`;
+  document.getElementById('fo-uptime').textContent = uptime + '%';
+
+  // Online rate trend
+  const d30 = days30();
+  const onlineRates = d30.map((_,i)=> Rf(91, 97));
+  mkChart('fo-trend-chart', {
+    type:'line',
+    data:{ labels:d30, datasets:[
+      { label:'Online Rate %', data:onlineRates, borderColor:SC.green, backgroundColor:'rgba(0,168,107,0.1)', fill:true, tension:0.4, pointRadius:0, borderWidth:2 },
+      { label:'Target 95%', data:d30.map(()=>95), borderColor:SC.amber, borderDash:[4,4], borderWidth:1.5, pointRadius:0, fill:false }
+    ]},
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{...chartDefaults.plugins.legend}}}
+  });
+
+  // Doughnut
+  mkChart('fo-doughnut-chart', {
+    type:'doughnut',
+    data:{ labels:['Online','Degraded','Offline'],
+      datasets:[{ data:[online,degraded,offline], backgroundColor:[SC.green,SC.amber,SC.coral], borderColor:SC.bg, borderWidth:3, hoverOffset:8 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:SC.muted,font:{size:11},boxWidth:12}}, tooltip:{backgroundColor:'#0D1B2A',borderColor:SC.border,borderWidth:1,titleColor:'#E2EBF3',bodyColor:SC.muted}} }
+  });
+
+  // County grid
+  const counties = ['Nakuru','Nairobi','Meru','Laikipia','Machakos','Trans Nzoia','Uasin Gishu','Bungoma','Kakamega','Siaya','Kisumu','Nyandarua','Kirinyaga','Murang\'a','Embu'];
+  const grid = document.getElementById('fo-county-grid');
+  grid.innerHTML = counties.map(c=>{
+    const r = Rf(78,99);
+    const cls = r>=90?'rate-high':r>=80?'rate-mid':'rate-low';
+    return `<div class="county-tile" title="${c}: ${r}%"><div class="county-name">${c}</div><div class="county-rate ${cls}">${r}%</div></div>`;
+  }).join('');
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 2 — DEVICE HEALTH
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderDeviceHealth() {
+  document.getElementById('dh-bat').textContent = Rf(79,88) + '%';
+  document.getElementById('dh-motor').textContent = Rf(88,94) + '%';
+  document.getElementById('dh-solar').textContent = Rf(85,92) + '%';
+  document.getElementById('dh-pred').textContent = R(1100,1400).toLocaleString();
+
+  // Battery health distribution
+  mkChart('dh-bat-dist', {
+    type:'bar',
+    data:{ labels:['<50%','50–60%','61–70%','71–80%','81–90%','>90%'],
+      datasets:[{ label:'Devices (%)', data:[R(1,4),R(4,8),R(8,14),R(18,26),R(28,36),R(18,28)], backgroundColor:[SC.coral,SC.coral,SC.amber,SC.amber,SC.green,SC.greenL], borderRadius:5, borderSkipped:false }]
+    },
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  // Radar
+  mkChart('dh-radar', {
+    type:'radar',
+    data:{ labels:['Battery SoH','Motor Health','Solar Panel','Connectivity','Firmware','Sensor Accuracy'],
+      datasets:[
+        { label:'Current Fleet', data:[Rf(78,86),Rf(88,93),Rf(84,91),Rf(88,95),Rf(76,84),Rf(90,96)], borderColor:SC.green, backgroundColor:'rgba(0,168,107,0.15)', pointBackgroundColor:SC.green, pointRadius:3, borderWidth:2 },
+        { label:'Target', data:[90,90,90,90,90,90], borderColor:SC.amber, backgroundColor:'rgba(245,166,35,0.05)', pointBackgroundColor:SC.amber, pointRadius:3, borderWidth:1.5, borderDash:[4,4] }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, scales:{ r:{ grid:{color:SC.border}, pointLabels:{color:SC.muted,font:{size:10}}, ticks:{display:false}, angleLines:{color:SC.border} } }, plugins:{legend:{labels:{color:SC.muted,font:{size:10},boxWidth:10}}} }
+  });
+
+  // PM table
+  const pmRows = Array.from({length:8},(_,i)=>{
+    const fault = ['Battery Degradation','Motor Overload','Solar Panel Fault','Sensor Dropout','Pump Cavitation','Bearing Wear','Firmware Loop','SIM Failure'][i];
+    const risk = ['Critical','High','High','Medium','Critical','High','Medium','Low'][i];
+    const cls = risk==='Critical'?'health-crit':risk==='High'?'health-warn':'health-good';
+    return `<tr><td>RM2-${R(10000,99999)}</td><td>${fault}</td><td><span class="health-pill ${cls}">${risk}</span></td><td>${R(2,21)} days</td></tr>`;
+  }).join('');
+  document.getElementById('dh-pm-table').innerHTML = `<thead><tr><th>Device ID</th><th>Issue</th><th>Risk</th><th>ETA Fail</th></tr></thead><tbody>${pmRows}</tbody>`;
+
+  // Degradation cohort chart
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  mkChart('dh-degrad-chart', {
+    type:'line',
+    data:{ labels:months,
+      datasets:[
+        { label:'2022 Cohort', data:months.map((_,i)=>Rf(75-i*0.4, 80-i*0.4)), borderColor:SC.coral, fill:false, tension:0.4, pointRadius:2, borderWidth:2 },
+        { label:'2023 Cohort', data:months.map((_,i)=>Rf(82-i*0.3, 88-i*0.3)), borderColor:SC.amber, fill:false, tension:0.4, pointRadius:2, borderWidth:2 },
+        { label:'2024 Cohort', data:months.map((_,i)=>Rf(90-i*0.2, 95-i*0.2)), borderColor:SC.green, fill:false, tension:0.4, pointRadius:2, borderWidth:2 }
+      ]
+    },
+    options:{...chartDefaults}
+  });
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 3 — PUMP PERFORMANCE
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderPumpPerformance() {
+  const runtime = Rf(5.2,6.4);
+  const volume = R(3400,4200);
+  document.getElementById('pp-runtime').textContent = runtime + ' hrs';
+  document.getElementById('pp-volume').textContent = volume.toLocaleString() + ' L/day';
+  document.getElementById('pp-flow').textContent = Rf(10.2,12.8) + ' m³/hr';
+  document.getElementById('pp-total').textContent = (volume * 58000 / 1e6).toFixed(0) + 'M L';
+
+  const d30 = days30();
+  mkChart('pp-vol-chart', {
+    type:'bar',
+    data:{ labels:d30, datasets:[
+      { label:'Fleet Volume (ML/day)', data:d30.map(()=>Rf(180,240)), backgroundColor:SC.blue+'99', borderRadius:3 }
+    ]},
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  mkChart('pp-sku-chart', {
+    type:'bar',
+    data:{ labels:['Basic','Pro','Pro+','Premium'],
+      datasets:[{ label:'Avg Runtime (hrs/day)', data:[Rf(4.2,5.2),Rf(5.4,6.4),Rf(6.2,7.2),Rf(7.0,8.2)], backgroundColor:[SC.blue,SC.green,SC.amber,SC.sky], borderRadius:5 }]
+    },
+    options:{...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  const counties = ['Nakuru','Trans Nzoia','Meru','Uasin Gishu','Laikipia','Kirinyaga','Machakos','Murang\'a','Embu','Siaya','Kisumu','Bungoma'];
+  mkChart('pp-county-chart', {
+    type:'bar',
+    data:{ labels:counties, datasets:[
+      { label:'Avg L/day', data:counties.map(()=>R(2800,4800)), backgroundColor:SC.green+'BB', borderRadius:4 }
+    ]},
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  const scatterData = Array.from({length:80},()=>({x:Rf(2,9), y:R(1500,5500)}));
+  mkChart('pp-scatter-chart', {
+    type:'scatter',
+    data:{ datasets:[{ label:'Devices', data:scatterData, backgroundColor:SC.sky+'88', pointRadius:4 }]},
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}},
+      scales:{ x:{...chartDefaults.scales.x, title:{display:true, text:'Runtime (hrs/day)', color:SC.muted, font:{size:10}}},
+        y:{...chartDefaults.scales.y, title:{display:true, text:'Volume (L/day)', color:SC.muted, font:{size:10}}} } }
+  });
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 4 — FAULT ANALYSIS
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderFaultAnalysis() {
+  document.getElementById('fa-total').textContent = R(3800,4800).toLocaleString();
+  document.getElementById('fa-rate').textContent = Rf(5.8,7.8) + '%';
+  document.getElementById('fa-res').textContent = Rf(14,22) + ' hrs';
+  document.getElementById('fa-auto').textContent = Rf(55,68) + '%';
+
+  const faultTypes = ['Low Battery Voltage','Motor Overcurrent','Connectivity Lost','Soil Sensor Error','Pump Dry Run','High Temp Cutoff','Firmware Hang','Flow Sensor Fault','SIM Registration Fail','Pressure Overload'];
+  const faultCounts = faultTypes.map(()=>R(100,900));
+  const sorted = faultTypes.map((t,i)=>({t,v:faultCounts[i]})).sort((a,b)=>b.v-a.v);
+
+  mkChart('fa-type-chart', {
+    type:'bar',
+    data:{ labels:sorted.map(f=>f.t), datasets:[
+      { label:'Fault Count', data:sorted.map(f=>f.v), backgroundColor:sorted.map((_,i)=>i<3?SC.coral:i<6?SC.amber:SC.blue), borderRadius:4 }
+    ]},
+    options:{...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  const d30 = days30();
+  mkChart('fa-trend-chart', {
+    type:'line',
+    data:{ labels:d30, datasets:[
+      { label:'Fault Rate %', data:d30.map(()=>Rf(4.5,9.0)), borderColor:SC.coral, backgroundColor:'rgba(232,68,58,0.08)', fill:true, tension:0.4, pointRadius:0, borderWidth:2 },
+      { label:'Target 7%', data:d30.map(()=>7), borderColor:SC.amber, borderDash:[4,4], borderWidth:1.5, pointRadius:0 }
+    ]},
+    options:{...chartDefaults}
+  });
+
+  // Fault log
+  const faultLog = Array.from({length:8},()=>{
+    const type = faultTypes[R(0,faultTypes.length-1)];
+    const pri = R(0,1)?'P1':'P2';
+    const priCls = pri==='P1'?'health-crit':'health-warn';
+    return `<tr><td>RM2-${R(10000,99999)}</td><td>${type}</td><td><span class="health-pill ${priCls}">${pri}</span></td><td>${R(1,48)}h ago</td><td><span class="health-pill ${Math.random()>0.5?'health-good':'health-warn'}">${Math.random()>0.5?'Resolved':'Open'}</span></td></tr>`;
+  }).join('');
+  document.getElementById('fa-log-table').innerHTML = `<thead><tr><th>Device ID</th><th>Fault Type</th><th>Priority</th><th>Detected</th><th>Status</th></tr></thead><tbody>${faultLog}</tbody>`;
+
+  mkChart('fa-sku-doughnut', {
+    type:'doughnut',
+    data:{ labels:['RM2 Basic','RM2 Pro','RM2 Pro+','RM2 Premium'],
+      datasets:[{ data:[R(25,35),R(28,36),R(18,26),R(8,15)], backgroundColor:[SC.coral,SC.amber,SC.blue,SC.sky], borderColor:SC.bg, borderWidth:3, hoverOffset:8 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:SC.muted,font:{size:10},boxWidth:10}}, tooltip:{backgroundColor:'#0D1B2A',borderColor:SC.border,borderWidth:1,titleColor:'#E2EBF3',bodyColor:SC.muted}} }
+  });
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 5 — CONNECTIVITY
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderConnectivity() {
+  document.getElementById('cn-signal').textContent = `-${R(68,82)} dBm`;
+  document.getElementById('cn-hb').textContent = Rf(2.4,4.2) + '%';
+  document.getElementById('cn-lat').textContent = R(720,1100) + ' ms';
+  document.getElementById('cn-sim').textContent = R(140,240);
+
+  mkChart('cn-mno-chart', {
+    type:'doughnut',
+    data:{ labels:['Safaricom','Airtel Kenya','Telkom Kenya'],
+      datasets:[{ data:[R(58,68),R(22,30),R(8,16)], backgroundColor:[SC.green,SC.coral,SC.amber], borderColor:SC.bg, borderWidth:3, hoverOffset:8 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:SC.muted,font:{size:11},boxWidth:12}}, tooltip:{backgroundColor:'#0D1B2A',borderColor:SC.border,borderWidth:1,titleColor:'#E2EBF3',bodyColor:SC.muted}} }
+  });
+
+  const d30 = days30();
+  mkChart('cn-hb-chart', {
+    type:'line',
+    data:{ labels:d30, datasets:[
+      { label:'Miss Rate %', data:d30.map(()=>Rf(1.8,5.5)), borderColor:SC.amber, backgroundColor:'rgba(245,166,35,0.08)', fill:true, tension:0.4, pointRadius:0, borderWidth:2 },
+      { label:'Target 4%', data:d30.map(()=>4), borderColor:SC.coral, borderDash:[4,4], borderWidth:1.5, pointRadius:0 }
+    ]},
+    options:{...chartDefaults}
+  });
+
+  const regions = [
+    {name:'Nairobi Metro',e:'Excellent (>-70dBm)',g:'Good (-70 to -80)',f:'Fair (-80 to -90)',p:'Poor (<-90)'},
+    {name:'Rift Valley',e:'Excellent',g:'Good',f:'Fair',p:'Poor'},
+    {name:'Central',e:'Excellent',g:'Good',f:'Fair',p:'Poor'},
+    {name:'Eastern',e:'Excellent',g:'Good',f:'Fair',p:'Poor'},
+    {name:'Nyanza',e:'Excellent',g:'Good',f:'Fair',p:'Poor'},
+  ];
+  const bars = document.getElementById('cn-signal-bars');
+  bars.innerHTML = regions.map(r=>{
+    const e=R(20,40), g=R(30,45), f=R(10,25), p=R(2,10);
+    const tot=e+g+f+p;
+    return `<div style="margin-bottom:14px;">
+      <div style="font-size:12px;color:var(--dark-muted);margin-bottom:6px;font-weight:600;">${r.name}</div>
+      <div style="display:flex;height:18px;border-radius:6px;overflow:hidden;gap:2px;">
+        <div title="Excellent ${(e/tot*100).toFixed(0)}%" style="background:${SC.green};flex:${e};border-radius:4px 0 0 4px;"></div>
+        <div title="Good ${(g/tot*100).toFixed(0)}%" style="background:${SC.blue};flex:${g};"></div>
+        <div title="Fair ${(f/tot*100).toFixed(0)}%" style="background:${SC.amber};flex:${f};"></div>
+        <div title="Poor ${(p/tot*100).toFixed(0)}%" style="background:${SC.coral};flex:${p};border-radius:0 4px 4px 0;"></div>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:4px;font-size:10px;color:var(--dark-muted);">
+        <span style="color:${SC.green}">■ Excellent ${(e/tot*100).toFixed(0)}%</span>
+        <span style="color:${SC.blue}">■ Good ${(g/tot*100).toFixed(0)}%</span>
+        <span style="color:${SC.amber}">■ Fair ${(f/tot*100).toFixed(0)}%</span>
+        <span style="color:${SC.coral}">■ Poor ${(p/tot*100).toFixed(0)}%</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 6 — ENERGY & SOLAR
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderEnergySolar() {
+  document.getElementById('es-gen').textContent = Rf(3.8,4.8) + ' kWh/day';
+  document.getElementById('es-soc').textContent = Rf(65,78) + '%';
+  document.getElementById('es-kwh').textContent = Rf(7.2,8.6).toFixed(1) + 'M kWh';
+  document.getElementById('es-diesel').textContent = Rf(2.8,3.4).toFixed(1) + 'M L';
+
+  const d30 = days30();
+  mkChart('es-gen-chart', {
+    type:'line',
+    data:{ labels:d30, datasets:[
+      { label:'Solar Gen (kWh/device)', data:d30.map(()=>Rf(3.0,5.5)), borderColor:SC.amber, backgroundColor:'rgba(245,166,35,0.12)', fill:true, tension:0.4, pointRadius:0, borderWidth:2 }
+    ]},
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  mkChart('es-soc-chart', {
+    type:'bar',
+    data:{ labels:['<20%','20–40%','40–60%','60–80%','>80%'],
+      datasets:[{ label:'% of fleet', data:[R(1,5),R(5,12),R(15,25),R(35,45),R(20,32)], backgroundColor:[SC.coral,SC.amber,SC.blue,SC.green,SC.greenL], borderRadius:5 }]
+    },
+    options:{...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}}
+  });
+
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  mkChart('es-cycles-chart', {
+    type:'line',
+    data:{ labels:months, datasets:[
+      { label:'2022 Cohort', data:months.map((_,i)=>R(1,1)+i*0.05+Math.random()*0.2), borderColor:SC.coral, fill:false, tension:0.4, pointRadius:2, borderWidth:2 },
+      { label:'2023 Cohort', data:months.map((_,i)=>Rf(0.9,1.2)+i*0.04), borderColor:SC.amber, fill:false, tension:0.4, pointRadius:2, borderWidth:2 },
+      { label:'2024 Cohort', data:months.map((_,i)=>Rf(0.8,1.0)+i*0.03), borderColor:SC.green, fill:false, tension:0.4, pointRadius:2, borderWidth:2 }
+    ]},
+    options:{...chartDefaults}
+  });
+
+  mkChart('es-source-chart', {
+    type:'doughnut',
+    data:{ labels:['Direct Solar','Battery (stored)','Peak Discharge'],
+      datasets:[{ data:[R(45,55),R(32,42),R(8,18)], backgroundColor:[SC.amber,SC.green,SC.blue], borderColor:SC.bg, borderWidth:3 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:SC.muted,font:{size:11},boxWidth:12}}, tooltip:{backgroundColor:'#0D1B2A',borderColor:SC.border,borderWidth:1,titleColor:'#E2EBF3',bodyColor:SC.muted}} }
+  });
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAGE 7 — FIRMWARE
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderFirmware() {
+  const v342 = R(74,82);
+  const v341 = R(10,14);
+  const v340 = R(4,8);
+  const v33 = R(2,5);
+  const old = 100-v342-v341-v340-v33;
+  document.getElementById('fw-curr').textContent = v342 + '%';
+  document.getElementById('fw-pend').textContent = Math.round(62000*(100-v342)/100).toLocaleString();
+  document.getElementById('fw-fail').textContent = R(600,1100).toLocaleString();
+  document.getElementById('fw-dur').textContent = Rf(12,18) + ' min';
+
+  const versions = [
+    {label:'v3.4.2 (Current)',pct:v342,color:SC.green},
+    {label:'v3.4.1',pct:v341,color:SC.blue},
+    {label:'v3.4.0',pct:v340,color:SC.amber},
+    {label:'v3.3.x',pct:v33,color:SC.coral},
+    {label:'v3.2.x & older',pct:old<0?1:old,color:'#4A5568'},
+  ];
+  document.getElementById('fw-version-bars').innerHTML = versions.map(v=>`
+    <div class="fw-bar-row">
+      <div class="fw-label"><span>${v.label}</span><span style="color:${v.color};font-weight:700;">${v.pct}%</span></div>
+      <div class="prog-bar-wrap"><div class="prog-bar" style="width:${v.pct}%;background:${v.color};"></div></div>
+    </div>`).join('');
+
+  // Rollout chart
+  const rolloutDays = Array.from({length:21},(_,i)=>`Day ${i+1}`);
+  let cum = 0;
+  const rolloutData = rolloutDays.map((_,i)=>{ cum += R(1500,4000); return Math.min(cum, Math.round(62000*v342/100)); });
+  mkChart('fw-rollout-chart', {
+    type:'line',
+    data:{ labels:rolloutDays, datasets:[
+      { label:'Devices Updated', data:rolloutData, borderColor:SC.green, backgroundColor:'rgba(0,168,107,0.12)', fill:true, tension:0.4, pointRadius:2, borderWidth:2 },
+      { label:'Target (100%)', data:rolloutDays.map(()=>62000), borderColor:SC.amber, borderDash:[4,4], borderWidth:1.5, pointRadius:0 }
+    ]},
+    options:{...chartDefaults}
+  });
+
+  const failReasons = [
+    {name:'Low Battery During OTA',pct:R(25,38)},
+    {name:'Connectivity Lost Mid-Update',pct:R(20,30)},
+    {name:'Insufficient Storage',pct:R(12,20)},
+    {name:'Checksum Mismatch',pct:R(8,15)},
+    {name:'Timeout (Rural Edge)',pct:R(6,12)},
+    {name:'Unknown / Other',pct:R(3,8)},
+  ];
+  document.getElementById('fw-fail-bars').innerHTML = failReasons.map(f=>`
+    <div class="prog-row">
+      <div class="prog-label">${f.name}</div>
+      <div class="prog-bar-wrap"><div class="prog-bar" style="width:${f.pct}%;background:${SC.coral};"></div></div>
+      <div class="prog-val">${f.pct}%</div>
+    </div>`).join('');
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  INIT
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+window.addEventListener('load', ()=>{
+  renderFleetOverview();
+  const now = new Date();
+  document.getElementById('lastRefreshTime').textContent = `Live · ${now.toLocaleTimeString()}`;
+  // Auto-refresh every 60s
+  setInterval(()=>{ if(document.querySelector('.page.active')) refreshAll(); }, 60000);
+});
+</script>
+</body>
+</html>

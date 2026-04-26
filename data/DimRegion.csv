@@ -1,0 +1,9 @@
+RegionID,RegionName,Country,TypicalCounties
+REG-01,Central Kenya,Kenya,"Kiambu, Murang'a, Nyeri, Nyandarua, Kirinyaga"
+REG-02,Rift Valley,Kenya,"Nakuru, Uasin Gishu, Trans-Nzoia, Nandi, Kericho"
+REG-03,Western Kenya,Kenya,"Kisumu, Bungoma, Kakamega, Vihiga, Siaya"
+REG-04,Eastern Kenya,Kenya,"Meru, Machakos, Embu, Tharaka-Nithi, Laikipia"
+REG-05,Coastal Kenya,Kenya,"Mombasa, Kilifi, Kwale, Taita-Taveta, Lamu"
+REG-06,Nairobi,Kenya,"Nairobi, Kajiado, Kiambu (metro)"
+REG-07,Uganda,Uganda,"Kampala, Wakiso, Jinja, Mbale, Gulu"
+REG-08,Côte d'Ivoire,Côte d'Ivoire,"Abidjan, Bouaké, Yamoussoukro"

@@ -1,0 +1,9 @@
+DepartmentID,DepartmentName,DepartmentShort,CostCentre,HOD,ParentDepartment
+DEPT-01,Sales & Commercial,Sales,CC-100,James Ochieng,
+DEPT-02,Field Operations,Field Ops,CC-200,Grace Wambui,
+DEPT-03,Engineering,Engineering,CC-300,Brian Kipchoge,
+DEPT-04,Customer Success,CX,CC-400,Faith Njeri,
+DEPT-05,Finance,Finance,CC-500,Peter Mutua,
+DEPT-06,HR & Admin,HR,CC-600,Caroline Achieng,
+DEPT-07,Agronomy,Agronomy,CC-700,David Kiprono,
+DEPT-08,Supply Chain,Supply Chain,CC-800,Mercy Chebet,

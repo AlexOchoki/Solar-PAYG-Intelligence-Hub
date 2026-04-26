@@ -1,0 +1,20 @@
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Node / Python artifacts (if any)
+node_modules/
+__pycache__/
+*.pyc
+
+# Power BI temp files (if applicable)
+*.pbix.lock
+*.pbix
+
+# Large raw data files (optional — only if CSVs are too big)
+# *.csv

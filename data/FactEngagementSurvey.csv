@@ -1,0 +1,750 @@
+EngID,DateKey,EmployeeID,eNPSScore,Dimension,FavorablePct
+1,20230331,EMP-118,8,Team Collaboration,67
+2,20230331,EMP-129,6,Sense of Purpose,87
+3,20230331,EMP-108,7,Team Collaboration,63
+4,20230331,EMP-003,3,Compensation Fairness,50
+5,20230331,EMP-111,7,Psychological Safety,77
+6,20230331,EMP-124,3,Compensation Fairness,62
+7,20230331,EMP-050,7,Psychological Safety,95
+8,20230331,EMP-061,2,Career Growth,46
+9,20230331,EMP-097,9,Compensation Fairness,56
+10,20230331,EMP-088,1,Psychological Safety,71
+11,20230331,EMP-080,1,Work-Life Balance,59
+12,20230331,EMP-086,5,Compensation Fairness,51
+13,20230331,EMP-148,3,Psychological Safety,58
+14,20230331,EMP-077,8,Compensation Fairness,56
+15,20230331,EMP-062,4,Compensation Fairness,39
+16,20230331,EMP-134,4,Team Collaboration,71
+17,20230331,EMP-115,2,Sense of Purpose,83
+18,20230331,EMP-005,4,Sense of Purpose,85
+19,20230331,EMP-069,7,Psychological Safety,68
+20,20230331,EMP-054,10,Career Growth,58
+21,20230331,EMP-028,9,Psychological Safety,72
+22,20230331,EMP-133,5,Manager Effectiveness,78
+23,20230331,EMP-048,2,Team Collaboration,69
+24,20230331,EMP-072,7,Work-Life Balance,65
+25,20230331,EMP-144,1,Compensation Fairness,60
+26,20230331,EMP-043,6,Sense of Purpose,86
+27,20230331,EMP-131,9,Career Growth,54
+28,20230331,EMP-126,2,Career Growth,56
+29,20230331,EMP-114,6,Career Growth,42
+30,20230331,EMP-076,10,Work-Life Balance,64
+31,20230331,EMP-089,6,Psychological Safety,92
+32,20230331,EMP-122,4,Compensation Fairness,69
+33,20230331,EMP-139,2,Sense of Purpose,88
+34,20230331,EMP-032,4,Sense of Purpose,61
+35,20230331,EMP-051,7,Work-Life Balance,58
+36,20230331,EMP-070,10,Compensation Fairness,51
+37,20230331,EMP-066,7,Sense of Purpose,78
+38,20230331,EMP-084,5,Work-Life Balance,72
+39,20230331,EMP-052,6,Work-Life Balance,72
+40,20230630,EMP-089,2,Sense of Purpose,71
+41,20230630,EMP-001,5,Work-Life Balance,72
+42,20230630,EMP-134,4,Team Collaboration,81
+43,20230630,EMP-108,2,Work-Life Balance,70
+44,20230630,EMP-061,5,Team Collaboration,73
+45,20230630,EMP-050,2,Psychological Safety,79
+46,20230630,EMP-005,6,Psychological Safety,48
+47,20230630,EMP-054,5,Team Collaboration,62
+48,20230630,EMP-144,4,Compensation Fairness,64
+49,20230630,EMP-077,6,Psychological Safety,81
+50,20230630,EMP-043,4,Manager Effectiveness,68
+51,20230630,EMP-009,1,Manager Effectiveness,59
+52,20230630,EMP-086,3,Compensation Fairness,44
+53,20230630,EMP-080,8,Compensation Fairness,40
+54,20230630,EMP-094,3,Manager Effectiveness,63
+55,20230630,EMP-049,4,Manager Effectiveness,49
+56,20230630,EMP-131,5,Work-Life Balance,68
+57,20230630,EMP-084,7,Sense of Purpose,68
+58,20230630,EMP-070,5,Work-Life Balance,73
+59,20230630,EMP-065,3,Sense of Purpose,78
+60,20230630,EMP-112,3,Manager Effectiveness,52
+61,20230630,EMP-083,5,Manager Effectiveness,53
+62,20230630,EMP-002,8,Career Growth,69
+63,20230630,EMP-042,5,Work-Life Balance,64
+64,20230630,EMP-008,3,Team Collaboration,60
+65,20230630,EMP-139,5,Compensation Fairness,48
+66,20230630,EMP-075,7,Work-Life Balance,68
+67,20230630,EMP-003,3,Psychological Safety,65
+68,20230630,EMP-092,6,Work-Life Balance,71
+69,20230630,EMP-072,6,Sense of Purpose,61
+70,20230630,EMP-028,5,Team Collaboration,65
+71,20230630,EMP-058,1,Career Growth,56
+72,20230630,EMP-052,7,Manager Effectiveness,59
+73,20230630,EMP-105,0,Manager Effectiveness,56
+74,20230630,EMP-088,5,Compensation Fairness,50
+75,20230630,EMP-143,7,Work-Life Balance,62
+76,20230630,EMP-044,3,Work-Life Balance,64
+77,20230630,EMP-146,7,Psychological Safety,71
+78,20230630,EMP-031,8,Compensation Fairness,44
+79,20230630,EMP-095,2,Psychological Safety,73
+80,20230630,EMP-129,4,Psychological Safety,56
+81,20230630,EMP-150,6,Team Collaboration,70
+82,20230630,EMP-073,7,Psychological Safety,78
+83,20230930,EMP-030,5,Sense of Purpose,84
+84,20230930,EMP-092,10,Psychological Safety,79
+85,20230930,EMP-050,9,Team Collaboration,86
+86,20230930,EMP-089,3,Psychological Safety,67
+87,20230930,EMP-112,1,Manager Effectiveness,61
+88,20230930,EMP-073,3,Psychological Safety,85
+89,20230930,EMP-129,6,Compensation Fairness,54
+90,20230930,EMP-070,1,Psychological Safety,68
+91,20230930,EMP-065,3,Psychological Safety,80
+92,20230930,EMP-003,7,Work-Life Balance,73
+93,20230930,EMP-048,7,Team Collaboration,65
+94,20230930,EMP-028,8,Compensation Fairness,51
+95,20230930,EMP-097,10,Team Collaboration,72
+96,20230930,EMP-086,9,Manager Effectiveness,70
+97,20230930,EMP-115,6,Career Growth,54
+98,20230930,EMP-131,5,Work-Life Balance,74
+99,20230930,EMP-143,3,Manager Effectiveness,85
+100,20230930,EMP-138,3,Compensation Fairness,51
+101,20230930,EMP-142,8,Team Collaboration,75
+102,20230930,EMP-068,6,Manager Effectiveness,76
+103,20230930,EMP-105,0,Psychological Safety,82
+104,20230930,EMP-002,5,Career Growth,66
+105,20230930,EMP-008,7,Work-Life Balance,74
+106,20230930,EMP-094,6,Career Growth,58
+107,20230930,EMP-061,8,Compensation Fairness,53
+108,20230930,EMP-063,6,Manager Effectiveness,60
+109,20230930,EMP-098,6,Psychological Safety,70
+110,20230930,EMP-043,5,Sense of Purpose,80
+111,20230930,EMP-114,9,Sense of Purpose,75
+112,20230930,EMP-095,7,Compensation Fairness,60
+113,20230930,EMP-027,2,Work-Life Balance,65
+114,20230930,EMP-122,3,Manager Effectiveness,67
+115,20230930,EMP-133,5,Compensation Fairness,68
+116,20230930,EMP-135,7,Career Growth,68
+117,20230930,EMP-084,8,Work-Life Balance,69
+118,20230930,EMP-062,4,Team Collaboration,73
+119,20230930,EMP-010,2,Work-Life Balance,66
+120,20230930,EMP-088,3,Manager Effectiveness,68
+121,20230930,EMP-066,5,Team Collaboration,76
+122,20230930,EMP-118,2,Work-Life Balance,68
+123,20230930,EMP-054,4,Team Collaboration,82
+124,20230930,EMP-102,3,Work-Life Balance,76
+125,20230930,EMP-148,6,Manager Effectiveness,66
+126,20230930,EMP-077,7,Sense of Purpose,75
+127,20231231,EMP-085,4,Sense of Purpose,82
+128,20231231,EMP-008,6,Sense of Purpose,86
+129,20231231,EMP-144,2,Work-Life Balance,53
+130,20231231,EMP-026,2,Team Collaboration,74
+131,20231231,EMP-009,5,Career Growth,56
+132,20231231,EMP-129,4,Team Collaboration,68
+133,20231231,EMP-075,6,Psychological Safety,72
+134,20231231,EMP-049,6,Manager Effectiveness,61
+135,20231231,EMP-065,6,Compensation Fairness,54
+136,20231231,EMP-114,6,Work-Life Balance,87
+137,20231231,EMP-112,10,Sense of Purpose,84
+138,20231231,EMP-077,10,Work-Life Balance,67
+139,20231231,EMP-121,7,Psychological Safety,72
+140,20231231,EMP-120,6,Manager Effectiveness,75
+141,20231231,EMP-015,5,Work-Life Balance,92
+142,20231231,EMP-002,10,Work-Life Balance,81
+143,20231231,EMP-083,9,Manager Effectiveness,62
+144,20231231,EMP-054,5,Career Growth,45
+145,20231231,EMP-108,2,Work-Life Balance,71
+146,20231231,EMP-115,3,Sense of Purpose,69
+147,20231231,EMP-003,9,Compensation Fairness,56
+148,20231231,EMP-042,8,Team Collaboration,76
+149,20231231,EMP-001,9,Team Collaboration,50
+150,20231231,EMP-135,5,Team Collaboration,74
+151,20231231,EMP-150,2,Manager Effectiveness,67
+152,20231231,EMP-032,7,Compensation Fairness,52
+153,20231231,EMP-050,5,Psychological Safety,61
+154,20231231,EMP-080,6,Compensation Fairness,57
+155,20231231,EMP-010,4,Compensation Fairness,52
+156,20231231,EMP-078,7,Team Collaboration,66
+157,20231231,EMP-097,5,Psychological Safety,71
+158,20231231,EMP-086,1,Psychological Safety,57
+159,20231231,EMP-101,8,Team Collaboration,61
+160,20231231,EMP-134,4,Compensation Fairness,58
+161,20231231,EMP-066,5,Work-Life Balance,63
+162,20231231,EMP-004,6,Sense of Purpose,71
+163,20231231,EMP-027,8,Team Collaboration,71
+164,20231231,EMP-048,7,Sense of Purpose,91
+165,20231231,EMP-053,4,Manager Effectiveness,61
+166,20231231,EMP-131,6,Compensation Fairness,49
+167,20231231,EMP-068,6,Manager Effectiveness,70
+168,20231231,EMP-079,8,Psychological Safety,72
+169,20231231,EMP-118,8,Sense of Purpose,80
+170,20231231,EMP-037,9,Sense of Purpose,82
+171,20231231,EMP-052,9,Manager Effectiveness,79
+172,20231231,EMP-030,6,Compensation Fairness,64
+173,20231231,EMP-098,6,Work-Life Balance,54
+174,20231231,EMP-148,8,Psychological Safety,73
+175,20231231,EMP-063,2,Psychological Safety,68
+176,20240331,EMP-066,7,Sense of Purpose,76
+177,20240331,EMP-010,2,Work-Life Balance,60
+178,20240331,EMP-086,8,Work-Life Balance,70
+179,20240331,EMP-135,3,Manager Effectiveness,80
+180,20240331,EMP-068,6,Manager Effectiveness,59
+181,20240331,EMP-094,10,Compensation Fairness,44
+182,20240331,EMP-097,6,Compensation Fairness,61
+183,20240331,EMP-061,10,Manager Effectiveness,58
+184,20240331,EMP-065,4,Psychological Safety,78
+185,20240331,EMP-085,9,Work-Life Balance,60
+186,20240331,EMP-003,0,Team Collaboration,69
+187,20240331,EMP-092,10,Psychological Safety,82
+188,20240331,EMP-070,7,Team Collaboration,73
+189,20240331,EMP-104,3,Team Collaboration,70
+190,20240331,EMP-050,9,Psychological Safety,78
+191,20240331,EMP-054,6,Compensation Fairness,55
+192,20240331,EMP-101,4,Manager Effectiveness,66
+193,20240331,EMP-025,6,Team Collaboration,75
+194,20240331,EMP-080,6,Work-Life Balance,70
+195,20240331,EMP-005,6,Psychological Safety,82
+196,20240331,EMP-077,4,Work-Life Balance,82
+197,20240331,EMP-042,10,Career Growth,63
+198,20240331,EMP-063,6,Sense of Purpose,77
+199,20240331,EMP-105,4,Psychological Safety,80
+200,20240331,EMP-089,3,Team Collaboration,70
+201,20240331,EMP-102,7,Team Collaboration,67
+202,20240331,EMP-098,6,Manager Effectiveness,63
+203,20240331,EMP-074,6,Team Collaboration,75
+204,20240331,EMP-134,5,Career Growth,58
+205,20240331,EMP-121,4,Career Growth,68
+206,20240331,EMP-084,7,Team Collaboration,73
+207,20240331,EMP-058,0,Manager Effectiveness,55
+208,20240331,EMP-142,5,Manager Effectiveness,65
+209,20240331,EMP-073,6,Manager Effectiveness,68
+210,20240331,EMP-028,8,Psychological Safety,70
+211,20240331,EMP-095,5,Career Growth,64
+212,20240331,EMP-111,0,Career Growth,56
+213,20240331,EMP-015,8,Compensation Fairness,57
+214,20240331,EMP-044,4,Psychological Safety,68
+215,20240331,EMP-139,6,Psychological Safety,82
+216,20240331,EMP-076,3,Career Growth,35
+217,20240331,EMP-037,2,Work-Life Balance,74
+218,20240331,EMP-053,1,Team Collaboration,72
+219,20240331,EMP-144,10,Psychological Safety,64
+220,20240331,EMP-004,7,Sense of Purpose,86
+221,20240331,EMP-009,8,Compensation Fairness,62
+222,20240331,EMP-027,1,Compensation Fairness,51
+223,20240331,EMP-114,5,Psychological Safety,57
+224,20240331,EMP-001,9,Team Collaboration,81
+225,20240331,EMP-032,9,Team Collaboration,68
+226,20240630,EMP-089,8,Psychological Safety,64
+227,20240630,EMP-005,2,Team Collaboration,84
+228,20240630,EMP-048,4,Compensation Fairness,54
+229,20240630,EMP-051,10,Manager Effectiveness,72
+230,20240630,EMP-074,6,Team Collaboration,81
+231,20240630,EMP-027,7,Compensation Fairness,40
+232,20240630,EMP-058,7,Team Collaboration,68
+233,20240630,EMP-083,6,Team Collaboration,68
+234,20240630,EMP-077,7,Work-Life Balance,67
+235,20240630,EMP-072,5,Career Growth,61
+236,20240630,EMP-044,7,Work-Life Balance,72
+237,20240630,EMP-030,8,Work-Life Balance,76
+238,20240630,EMP-076,5,Career Growth,64
+239,20240630,EMP-014,6,Sense of Purpose,74
+240,20240630,EMP-084,9,Manager Effectiveness,78
+241,20240630,EMP-134,5,Work-Life Balance,78
+242,20240630,EMP-031,5,Psychological Safety,66
+243,20240630,EMP-112,1,Psychological Safety,80
+244,20240630,EMP-053,2,Psychological Safety,73
+245,20240630,EMP-114,8,Compensation Fairness,55
+246,20240630,EMP-078,3,Work-Life Balance,84
+247,20240630,EMP-004,6,Career Growth,56
+248,20240630,EMP-131,10,Psychological Safety,79
+249,20240630,EMP-054,4,Sense of Purpose,84
+250,20240630,EMP-026,7,Compensation Fairness,55
+251,20240630,EMP-118,7,Career Growth,35
+252,20240630,EMP-066,4,Sense of Purpose,83
+253,20240630,EMP-094,0,Work-Life Balance,71
+254,20240630,EMP-073,7,Career Growth,63
+255,20240630,EMP-097,8,Team Collaboration,69
+256,20240630,EMP-069,4,Compensation Fairness,58
+257,20240630,EMP-009,5,Sense of Purpose,78
+258,20240630,EMP-101,9,Career Growth,57
+259,20240630,EMP-065,5,Compensation Fairness,58
+260,20240630,EMP-107,8,Work-Life Balance,64
+261,20240630,EMP-008,4,Sense of Purpose,89
+262,20240630,EMP-062,6,Career Growth,66
+263,20240630,EMP-068,8,Sense of Purpose,73
+264,20240630,EMP-063,6,Psychological Safety,72
+265,20240630,EMP-133,7,Team Collaboration,67
+266,20240630,EMP-150,8,Career Growth,54
+267,20240630,EMP-120,8,Sense of Purpose,75
+268,20240630,EMP-104,7,Sense of Purpose,75
+269,20240630,EMP-075,7,Psychological Safety,83
+270,20240630,EMP-043,8,Manager Effectiveness,70
+271,20240630,EMP-086,6,Sense of Purpose,89
+272,20240630,EMP-146,1,Team Collaboration,77
+273,20240630,EMP-079,1,Career Growth,56
+274,20240630,EMP-135,7,Work-Life Balance,83
+275,20240630,EMP-144,1,Team Collaboration,72
+276,20240630,EMP-121,6,Work-Life Balance,65
+277,20240630,EMP-067,7,Manager Effectiveness,66
+278,20240630,EMP-034,9,Compensation Fairness,51
+279,20240630,EMP-049,7,Compensation Fairness,52
+280,20240630,EMP-001,7,Career Growth,56
+281,20240630,EMP-028,6,Career Growth,58
+282,20240930,EMP-002,6,Team Collaboration,76
+283,20240930,EMP-134,9,Career Growth,51
+284,20240930,EMP-030,3,Psychological Safety,70
+285,20240930,EMP-135,6,Team Collaboration,70
+286,20240930,EMP-005,6,Work-Life Balance,61
+287,20240930,EMP-070,10,Career Growth,67
+288,20240930,EMP-046,7,Work-Life Balance,61
+289,20240930,EMP-095,6,Manager Effectiveness,63
+290,20240930,EMP-101,4,Work-Life Balance,60
+291,20240930,EMP-092,5,Sense of Purpose,65
+292,20240930,EMP-072,5,Work-Life Balance,64
+293,20240930,EMP-146,8,Career Growth,67
+294,20240930,EMP-115,5,Sense of Purpose,82
+295,20240930,EMP-037,5,Career Growth,63
+296,20240930,EMP-051,6,Sense of Purpose,82
+297,20240930,EMP-120,5,Career Growth,50
+298,20240930,EMP-066,9,Manager Effectiveness,71
+299,20240930,EMP-130,6,Team Collaboration,76
+300,20240930,EMP-138,10,Team Collaboration,75
+301,20240930,EMP-121,1,Team Collaboration,65
+302,20240930,EMP-076,4,Work-Life Balance,79
+303,20240930,EMP-102,7,Psychological Safety,73
+304,20240930,EMP-122,0,Sense of Purpose,90
+305,20240930,EMP-150,5,Compensation Fairness,50
+306,20240930,EMP-147,6,Manager Effectiveness,63
+307,20240930,EMP-116,6,Sense of Purpose,81
+308,20240930,EMP-080,3,Manager Effectiveness,59
+309,20240930,EMP-144,7,Team Collaboration,78
+310,20240930,EMP-149,6,Career Growth,60
+311,20240930,EMP-062,7,Manager Effectiveness,72
+312,20240930,EMP-028,4,Compensation Fairness,66
+313,20240930,EMP-026,9,Sense of Purpose,92
+314,20240930,EMP-142,5,Manager Effectiveness,74
+315,20240930,EMP-052,2,Career Growth,63
+316,20240930,EMP-015,5,Team Collaboration,83
+317,20240930,EMP-107,5,Psychological Safety,76
+318,20240930,EMP-079,2,Sense of Purpose,85
+319,20240930,EMP-054,8,Work-Life Balance,83
+320,20240930,EMP-074,0,Team Collaboration,75
+321,20240930,EMP-108,6,Psychological Safety,76
+322,20240930,EMP-014,5,Team Collaboration,81
+323,20240930,EMP-084,4,Work-Life Balance,86
+324,20240930,EMP-044,8,Team Collaboration,64
+325,20240930,EMP-032,3,Career Growth,51
+326,20240930,EMP-105,7,Work-Life Balance,81
+327,20240930,EMP-089,8,Work-Life Balance,74
+328,20240930,EMP-112,1,Work-Life Balance,75
+329,20240930,EMP-018,10,Sense of Purpose,85
+330,20240930,EMP-001,4,Psychological Safety,65
+331,20240930,EMP-075,8,Career Growth,52
+332,20240930,EMP-098,4,Team Collaboration,86
+333,20240930,EMP-061,5,Work-Life Balance,79
+334,20240930,EMP-114,4,Psychological Safety,77
+335,20240930,EMP-025,10,Career Growth,58
+336,20240930,EMP-097,1,Career Growth,51
+337,20240930,EMP-099,6,Work-Life Balance,77
+338,20240930,EMP-048,4,Team Collaboration,70
+339,20240930,EMP-125,9,Work-Life Balance,76
+340,20241231,EMP-068,6,Sense of Purpose,78
+341,20241231,EMP-055,6,Work-Life Balance,73
+342,20241231,EMP-028,8,Team Collaboration,74
+343,20241231,EMP-105,6,Career Growth,61
+344,20241231,EMP-084,6,Manager Effectiveness,72
+345,20241231,EMP-104,1,Team Collaboration,75
+346,20241231,EMP-061,8,Psychological Safety,70
+347,20241231,EMP-054,7,Team Collaboration,78
+348,20241231,EMP-067,3,Sense of Purpose,69
+349,20241231,EMP-099,2,Sense of Purpose,92
+350,20241231,EMP-121,4,Team Collaboration,80
+351,20241231,EMP-036,3,Compensation Fairness,62
+352,20241231,EMP-133,4,Psychological Safety,70
+353,20241231,EMP-008,5,Sense of Purpose,76
+354,20241231,EMP-026,4,Career Growth,62
+355,20241231,EMP-034,5,Manager Effectiveness,70
+356,20241231,EMP-050,6,Team Collaboration,74
+357,20241231,EMP-143,5,Compensation Fairness,53
+358,20241231,EMP-130,2,Manager Effectiveness,72
+359,20241231,EMP-112,6,Sense of Purpose,91
+360,20241231,EMP-129,7,Compensation Fairness,43
+361,20241231,EMP-122,5,Compensation Fairness,72
+362,20241231,EMP-070,7,Team Collaboration,64
+363,20241231,EMP-077,9,Team Collaboration,83
+364,20241231,EMP-108,7,Career Growth,49
+365,20241231,EMP-030,8,Work-Life Balance,70
+366,20241231,EMP-149,5,Work-Life Balance,66
+367,20241231,EMP-117,4,Work-Life Balance,82
+368,20241231,EMP-062,6,Compensation Fairness,65
+369,20241231,EMP-097,7,Manager Effectiveness,56
+370,20241231,EMP-095,4,Manager Effectiveness,64
+371,20241231,EMP-083,4,Manager Effectiveness,66
+372,20241231,EMP-085,10,Psychological Safety,73
+373,20241231,EMP-144,8,Manager Effectiveness,68
+374,20241231,EMP-014,9,Career Growth,60
+375,20241231,EMP-051,4,Career Growth,68
+376,20241231,EMP-066,6,Team Collaboration,66
+377,20241231,EMP-042,7,Work-Life Balance,65
+378,20241231,EMP-046,10,Sense of Purpose,77
+379,20241231,EMP-031,7,Manager Effectiveness,72
+380,20241231,EMP-150,9,Work-Life Balance,93
+381,20241231,EMP-138,8,Manager Effectiveness,67
+382,20241231,EMP-048,7,Compensation Fairness,54
+383,20241231,EMP-094,2,Compensation Fairness,48
+384,20241231,EMP-115,3,Work-Life Balance,73
+385,20241231,EMP-107,7,Psychological Safety,78
+386,20241231,EMP-037,2,Psychological Safety,77
+387,20241231,EMP-127,7,Work-Life Balance,76
+388,20241231,EMP-025,9,Team Collaboration,75
+389,20241231,EMP-043,10,Career Growth,57
+390,20241231,EMP-073,5,Team Collaboration,72
+391,20241231,EMP-086,6,Team Collaboration,88
+392,20241231,EMP-032,4,Compensation Fairness,64
+393,20241231,EMP-044,5,Career Growth,60
+394,20241231,EMP-142,4,Manager Effectiveness,62
+395,20241231,EMP-075,9,Psychological Safety,56
+396,20241231,EMP-114,7,Sense of Purpose,90
+397,20241231,EMP-131,5,Team Collaboration,82
+398,20241231,EMP-092,8,Sense of Purpose,83
+399,20241231,EMP-065,6,Compensation Fairness,63
+400,20241231,EMP-146,9,Compensation Fairness,66
+401,20250331,EMP-004,6,Compensation Fairness,69
+402,20250331,EMP-028,4,Sense of Purpose,83
+403,20250331,EMP-023,5,Compensation Fairness,54
+404,20250331,EMP-067,6,Team Collaboration,73
+405,20250331,EMP-058,5,Manager Effectiveness,67
+406,20250331,EMP-063,8,Sense of Purpose,71
+407,20250331,EMP-139,6,Compensation Fairness,63
+408,20250331,EMP-125,1,Compensation Fairness,65
+409,20250331,EMP-008,7,Manager Effectiveness,91
+410,20250331,EMP-122,10,Career Growth,59
+411,20250331,EMP-115,6,Team Collaboration,74
+412,20250331,EMP-031,7,Manager Effectiveness,66
+413,20250331,EMP-036,3,Psychological Safety,84
+414,20250331,EMP-025,4,Psychological Safety,63
+415,20250331,EMP-032,5,Sense of Purpose,87
+416,20250331,EMP-059,7,Team Collaboration,77
+417,20250331,EMP-143,8,Career Growth,67
+418,20250331,EMP-120,9,Manager Effectiveness,65
+419,20250331,EMP-079,3,Work-Life Balance,54
+420,20250331,EMP-078,5,Compensation Fairness,43
+421,20250331,EMP-102,8,Career Growth,57
+422,20250331,EMP-117,8,Psychological Safety,78
+423,20250331,EMP-071,6,Team Collaboration,86
+424,20250331,EMP-076,4,Psychological Safety,68
+425,20250331,EMP-054,5,Psychological Safety,59
+426,20250331,EMP-026,4,Career Growth,47
+427,20250331,EMP-133,5,Compensation Fairness,64
+428,20250331,EMP-095,8,Sense of Purpose,80
+429,20250331,EMP-056,10,Career Growth,53
+430,20250331,EMP-146,9,Psychological Safety,61
+431,20250331,EMP-042,9,Work-Life Balance,70
+432,20250331,EMP-084,10,Team Collaboration,78
+433,20250331,EMP-089,5,Team Collaboration,71
+434,20250331,EMP-099,5,Career Growth,54
+435,20250331,EMP-068,7,Career Growth,75
+436,20250331,EMP-086,6,Team Collaboration,83
+437,20250331,EMP-073,6,Psychological Safety,92
+438,20250331,EMP-116,8,Psychological Safety,62
+439,20250331,EMP-104,7,Psychological Safety,78
+440,20250331,EMP-131,6,Sense of Purpose,84
+441,20250331,EMP-134,8,Psychological Safety,80
+442,20250331,EMP-027,9,Team Collaboration,69
+443,20250331,EMP-130,7,Compensation Fairness,54
+444,20250331,EMP-018,6,Sense of Purpose,70
+445,20250331,EMP-039,6,Psychological Safety,73
+446,20250331,EMP-105,9,Sense of Purpose,74
+447,20250331,EMP-093,9,Sense of Purpose,85
+448,20250331,EMP-132,0,Career Growth,59
+449,20250331,EMP-065,5,Team Collaboration,73
+450,20250331,EMP-052,6,Compensation Fairness,52
+451,20250331,EMP-129,8,Manager Effectiveness,73
+452,20250331,EMP-098,6,Manager Effectiveness,65
+453,20250331,EMP-121,10,Manager Effectiveness,84
+454,20250331,EMP-055,3,Team Collaboration,74
+455,20250331,EMP-005,2,Career Growth,50
+456,20250331,EMP-066,9,Team Collaboration,63
+457,20250331,EMP-070,5,Career Growth,60
+458,20250331,EMP-075,7,Psychological Safety,81
+459,20250331,EMP-072,7,Compensation Fairness,35
+460,20250331,EMP-046,5,Psychological Safety,78
+461,20250331,EMP-030,9,Sense of Purpose,84
+462,20250331,EMP-094,3,Sense of Purpose,93
+463,20250331,EMP-074,10,Manager Effectiveness,66
+464,20250331,EMP-062,8,Psychological Safety,90
+465,20250630,EMP-108,7,Work-Life Balance,69
+466,20250630,EMP-023,9,Sense of Purpose,89
+467,20250630,EMP-077,8,Career Growth,64
+468,20250630,EMP-041,10,Work-Life Balance,71
+469,20250630,EMP-147,5,Compensation Fairness,58
+470,20250630,EMP-003,7,Career Growth,64
+471,20250630,EMP-095,4,Manager Effectiveness,68
+472,20250630,EMP-061,6,Compensation Fairness,61
+473,20250630,EMP-145,5,Work-Life Balance,73
+474,20250630,EMP-051,7,Career Growth,60
+475,20250630,EMP-042,4,Work-Life Balance,73
+476,20250630,EMP-025,7,Sense of Purpose,77
+477,20250630,EMP-101,5,Career Growth,40
+478,20250630,EMP-071,10,Team Collaboration,79
+479,20250630,EMP-092,10,Psychological Safety,81
+480,20250630,EMP-037,4,Psychological Safety,78
+481,20250630,EMP-112,6,Sense of Purpose,95
+482,20250630,EMP-005,3,Team Collaboration,76
+483,20250630,EMP-043,4,Team Collaboration,64
+484,20250630,EMP-116,5,Work-Life Balance,67
+485,20250630,EMP-067,6,Compensation Fairness,61
+486,20250630,EMP-150,8,Manager Effectiveness,73
+487,20250630,EMP-097,10,Work-Life Balance,95
+488,20250630,EMP-001,10,Compensation Fairness,41
+489,20250630,EMP-030,10,Sense of Purpose,75
+490,20250630,EMP-063,4,Career Growth,60
+491,20250630,EMP-122,6,Career Growth,58
+492,20250630,EMP-139,7,Psychological Safety,60
+493,20250630,EMP-109,8,Sense of Purpose,74
+494,20250630,EMP-019,9,Manager Effectiveness,60
+495,20250630,EMP-014,7,Work-Life Balance,73
+496,20250630,EMP-068,3,Sense of Purpose,81
+497,20250630,EMP-143,4,Compensation Fairness,55
+498,20250630,EMP-031,7,Psychological Safety,73
+499,20250630,EMP-142,8,Compensation Fairness,66
+500,20250630,EMP-098,6,Work-Life Balance,81
+501,20250630,EMP-085,5,Work-Life Balance,75
+502,20250630,EMP-084,6,Psychological Safety,70
+503,20250630,EMP-129,10,Work-Life Balance,74
+504,20250630,EMP-028,2,Manager Effectiveness,75
+505,20250630,EMP-004,5,Manager Effectiveness,69
+506,20250630,EMP-072,5,Compensation Fairness,36
+507,20250630,EMP-144,3,Career Growth,52
+508,20250630,EMP-036,10,Psychological Safety,73
+509,20250630,EMP-102,9,Manager Effectiveness,60
+510,20250630,EMP-134,6,Career Growth,47
+511,20250630,EMP-093,9,Career Growth,56
+512,20250630,EMP-117,9,Team Collaboration,71
+513,20250630,EMP-065,6,Work-Life Balance,76
+514,20250630,EMP-089,8,Work-Life Balance,83
+515,20250630,EMP-062,7,Psychological Safety,78
+516,20250630,EMP-086,5,Compensation Fairness,61
+517,20250630,EMP-066,7,Sense of Purpose,84
+518,20250630,EMP-076,5,Psychological Safety,68
+519,20250630,EMP-149,3,Team Collaboration,61
+520,20250630,EMP-137,7,Manager Effectiveness,67
+521,20250630,EMP-021,8,Psychological Safety,86
+522,20250630,EMP-100,7,Compensation Fairness,73
+523,20250630,EMP-007,7,Psychological Safety,83
+524,20250630,EMP-048,8,Work-Life Balance,69
+525,20250630,EMP-125,7,Sense of Purpose,85
+526,20250630,EMP-078,5,Work-Life Balance,69
+527,20250630,EMP-026,2,Work-Life Balance,72
+528,20250630,EMP-115,10,Sense of Purpose,62
+529,20250630,EMP-050,5,Sense of Purpose,92
+530,20250630,EMP-039,8,Career Growth,57
+531,20250630,EMP-118,10,Psychological Safety,73
+532,20250930,EMP-080,5,Manager Effectiveness,73
+533,20250930,EMP-116,10,Psychological Safety,85
+534,20250930,EMP-078,6,Compensation Fairness,69
+535,20250930,EMP-036,10,Psychological Safety,82
+536,20250930,EMP-064,6,Compensation Fairness,59
+537,20250930,EMP-122,6,Sense of Purpose,63
+538,20250930,EMP-139,10,Psychological Safety,73
+539,20250930,EMP-114,10,Work-Life Balance,84
+540,20250930,EMP-095,8,Sense of Purpose,79
+541,20250930,EMP-129,10,Sense of Purpose,88
+542,20250930,EMP-079,6,Team Collaboration,79
+543,20250930,EMP-118,7,Compensation Fairness,47
+544,20250930,EMP-100,10,Psychological Safety,69
+545,20250930,EMP-019,9,Manager Effectiveness,67
+546,20250930,EMP-072,6,Team Collaboration,78
+547,20250930,EMP-121,10,Compensation Fairness,46
+548,20250930,EMP-150,7,Psychological Safety,78
+549,20250930,EMP-125,8,Manager Effectiveness,58
+550,20250930,EMP-007,7,Career Growth,60
+551,20250930,EMP-023,6,Compensation Fairness,62
+552,20250930,EMP-055,10,Team Collaboration,75
+553,20250930,EMP-048,10,Manager Effectiveness,65
+554,20250930,EMP-068,3,Team Collaboration,74
+555,20250930,EMP-145,8,Team Collaboration,81
+556,20250930,EMP-087,10,Team Collaboration,74
+557,20250930,EMP-032,7,Sense of Purpose,78
+558,20250930,EMP-149,2,Psychological Safety,81
+559,20250930,EMP-137,10,Work-Life Balance,71
+560,20250930,EMP-090,6,Sense of Purpose,83
+561,20250930,EMP-005,7,Career Growth,55
+562,20250930,EMP-099,5,Work-Life Balance,77
+563,20250930,EMP-147,8,Compensation Fairness,44
+564,20250930,EMP-128,5,Work-Life Balance,70
+565,20250930,EMP-027,4,Team Collaboration,70
+566,20250930,EMP-102,6,Compensation Fairness,52
+567,20250930,EMP-136,2,Psychological Safety,89
+568,20250930,EMP-138,8,Work-Life Balance,56
+569,20250930,EMP-059,9,Work-Life Balance,67
+570,20250930,EMP-028,9,Work-Life Balance,58
+571,20250930,EMP-067,7,Team Collaboration,71
+572,20250930,EMP-092,1,Psychological Safety,70
+573,20250930,EMP-053,7,Team Collaboration,67
+574,20250930,EMP-042,5,Psychological Safety,72
+575,20250930,EMP-093,10,Sense of Purpose,69
+576,20250930,EMP-002,3,Sense of Purpose,89
+577,20250930,EMP-031,10,Team Collaboration,84
+578,20250930,EMP-076,7,Psychological Safety,73
+579,20250930,EMP-094,10,Manager Effectiveness,67
+580,20250930,EMP-135,9,Work-Life Balance,55
+581,20250930,EMP-077,1,Manager Effectiveness,77
+582,20250930,EMP-061,10,Manager Effectiveness,64
+583,20250930,EMP-083,6,Psychological Safety,65
+584,20250930,EMP-026,6,Sense of Purpose,84
+585,20250930,EMP-098,2,Sense of Purpose,94
+586,20250930,EMP-073,4,Manager Effectiveness,63
+587,20250930,EMP-041,10,Psychological Safety,61
+588,20250930,EMP-037,4,Compensation Fairness,73
+589,20250930,EMP-142,6,Career Growth,67
+590,20250930,EMP-018,5,Work-Life Balance,85
+591,20250930,EMP-089,10,Manager Effectiveness,75
+592,20250930,EMP-056,10,Career Growth,66
+593,20250930,EMP-014,9,Psychological Safety,80
+594,20250930,EMP-063,7,Psychological Safety,75
+595,20250930,EMP-097,7,Team Collaboration,82
+596,20250930,EMP-120,3,Team Collaboration,85
+597,20250930,EMP-017,3,Psychological Safety,77
+598,20250930,EMP-071,10,Psychological Safety,67
+599,20250930,EMP-044,10,Work-Life Balance,66
+600,20250930,EMP-013,10,Career Growth,61
+601,20250930,EMP-046,3,Manager Effectiveness,66
+602,20250930,EMP-110,8,Career Growth,50
+603,20251231,EMP-013,10,Compensation Fairness,71
+604,20251231,EMP-063,9,Manager Effectiveness,61
+605,20251231,EMP-108,6,Compensation Fairness,72
+606,20251231,EMP-149,9,Team Collaboration,80
+607,20251231,EMP-018,4,Compensation Fairness,50
+608,20251231,EMP-023,8,Career Growth,64
+609,20251231,EMP-144,6,Sense of Purpose,78
+610,20251231,EMP-084,6,Psychological Safety,82
+611,20251231,EMP-140,9,Psychological Safety,69
+612,20251231,EMP-035,6,Manager Effectiveness,64
+613,20251231,EMP-071,0,Psychological Safety,73
+614,20251231,EMP-007,7,Work-Life Balance,65
+615,20251231,EMP-103,9,Career Growth,46
+616,20251231,EMP-117,8,Work-Life Balance,68
+617,20251231,EMP-135,9,Psychological Safety,68
+618,20251231,EMP-015,4,Psychological Safety,65
+619,20251231,EMP-041,10,Team Collaboration,82
+620,20251231,EMP-006,7,Psychological Safety,64
+621,20251231,EMP-072,7,Career Growth,65
+622,20251231,EMP-136,7,Team Collaboration,81
+623,20251231,EMP-080,7,Psychological Safety,75
+624,20251231,EMP-106,10,Compensation Fairness,62
+625,20251231,EMP-101,7,Sense of Purpose,89
+626,20251231,EMP-058,3,Work-Life Balance,83
+627,20251231,EMP-021,10,Team Collaboration,60
+628,20251231,EMP-110,3,Team Collaboration,78
+629,20251231,EMP-074,8,Career Growth,49
+630,20251231,EMP-073,4,Work-Life Balance,83
+631,20251231,EMP-055,5,Compensation Fairness,66
+632,20251231,EMP-014,7,Sense of Purpose,81
+633,20251231,EMP-032,9,Team Collaboration,87
+634,20251231,EMP-132,5,Manager Effectiveness,69
+635,20251231,EMP-131,9,Psychological Safety,77
+636,20251231,EMP-093,4,Compensation Fairness,41
+637,20251231,EMP-067,5,Psychological Safety,80
+638,20251231,EMP-146,6,Team Collaboration,71
+639,20251231,EMP-001,4,Compensation Fairness,55
+640,20251231,EMP-010,10,Work-Life Balance,69
+641,20251231,EMP-044,7,Compensation Fairness,59
+642,20251231,EMP-100,7,Compensation Fairness,59
+643,20251231,EMP-137,4,Compensation Fairness,58
+644,20251231,EMP-141,8,Psychological Safety,70
+645,20251231,EMP-025,9,Sense of Purpose,77
+646,20251231,EMP-039,8,Psychological Safety,87
+647,20251231,EMP-143,8,Psychological Safety,68
+648,20251231,EMP-086,10,Compensation Fairness,64
+649,20251231,EMP-114,6,Sense of Purpose,85
+650,20251231,EMP-112,8,Work-Life Balance,60
+651,20251231,EMP-061,10,Compensation Fairness,61
+652,20251231,EMP-142,8,Sense of Purpose,79
+653,20251231,EMP-008,8,Manager Effectiveness,78
+654,20251231,EMP-030,6,Psychological Safety,84
+655,20251231,EMP-046,8,Team Collaboration,84
+656,20251231,EMP-068,8,Manager Effectiveness,77
+657,20251231,EMP-089,3,Career Growth,53
+658,20251231,EMP-099,10,Compensation Fairness,60
+659,20251231,EMP-031,4,Psychological Safety,67
+660,20251231,EMP-085,7,Psychological Safety,76
+661,20251231,EMP-121,4,Career Growth,53
+662,20251231,EMP-062,4,Manager Effectiveness,75
+663,20251231,EMP-087,8,Compensation Fairness,67
+664,20251231,EMP-111,8,Career Growth,48
+665,20251231,EMP-077,10,Work-Life Balance,78
+666,20251231,EMP-122,6,Team Collaboration,76
+667,20251231,EMP-129,7,Team Collaboration,84
+668,20251231,EMP-138,10,Psychological Safety,79
+669,20251231,EMP-150,4,Work-Life Balance,71
+670,20251231,EMP-004,4,Team Collaboration,87
+671,20251231,EMP-052,10,Sense of Purpose,85
+672,20251231,EMP-065,7,Sense of Purpose,75
+673,20251231,EMP-120,4,Manager Effectiveness,81
+674,20251231,EMP-017,4,Work-Life Balance,59
+675,20251231,EMP-078,10,Career Growth,64
+676,20251231,EMP-048,5,Manager Effectiveness,66
+677,20260331,EMP-150,8,Sense of Purpose,90
+678,20260331,EMP-106,5,Sense of Purpose,95
+679,20260331,EMP-028,10,Compensation Fairness,61
+680,20260331,EMP-067,10,Work-Life Balance,82
+681,20260331,EMP-146,6,Team Collaboration,71
+682,20260331,EMP-069,5,Psychological Safety,76
+683,20260331,EMP-041,7,Work-Life Balance,81
+684,20260331,EMP-061,10,Manager Effectiveness,70
+685,20260331,EMP-078,10,Sense of Purpose,88
+686,20260331,EMP-085,4,Career Growth,67
+687,20260331,EMP-116,5,Compensation Fairness,44
+688,20260331,EMP-017,9,Sense of Purpose,85
+689,20260331,EMP-048,7,Work-Life Balance,69
+690,20260331,EMP-098,10,Psychological Safety,68
+691,20260331,EMP-086,10,Compensation Fairness,63
+692,20260331,EMP-082,5,Psychological Safety,69
+693,20260331,EMP-045,6,Compensation Fairness,49
+694,20260331,EMP-021,6,Work-Life Balance,89
+695,20260331,EMP-122,4,Sense of Purpose,82
+696,20260331,EMP-141,9,Team Collaboration,70
+697,20260331,EMP-004,9,Work-Life Balance,70
+698,20260331,EMP-035,8,Career Growth,58
+699,20260331,EMP-030,6,Career Growth,54
+700,20260331,EMP-033,7,Compensation Fairness,59
+701,20260331,EMP-006,7,Compensation Fairness,48
+702,20260331,EMP-024,6,Sense of Purpose,85
+703,20260331,EMP-029,6,Manager Effectiveness,74
+704,20260331,EMP-089,7,Manager Effectiveness,67
+705,20260331,EMP-117,9,Manager Effectiveness,65
+706,20260331,EMP-142,7,Career Growth,60
+707,20260331,EMP-071,7,Work-Life Balance,54
+708,20260331,EMP-107,6,Compensation Fairness,64
+709,20260331,EMP-091,7,Sense of Purpose,80
+710,20260331,EMP-073,6,Work-Life Balance,95
+711,20260331,EMP-138,7,Team Collaboration,81
+712,20260331,EMP-109,5,Sense of Purpose,67
+713,20260331,EMP-074,9,Career Growth,54
+714,20260331,EMP-039,4,Manager Effectiveness,86
+715,20260331,EMP-011,8,Career Growth,56
+716,20260331,EMP-092,3,Work-Life Balance,66
+717,20260331,EMP-018,10,Work-Life Balance,66
+718,20260331,EMP-055,7,Manager Effectiveness,76
+719,20260331,EMP-149,3,Manager Effectiveness,82
+720,20260331,EMP-016,9,Manager Effectiveness,71
+721,20260331,EMP-059,6,Manager Effectiveness,68
+722,20260331,EMP-102,5,Sense of Purpose,81
+723,20260331,EMP-031,6,Work-Life Balance,78
+724,20260331,EMP-144,9,Sense of Purpose,92
+725,20260331,EMP-103,6,Compensation Fairness,48
+726,20260331,EMP-063,10,Work-Life Balance,67
+727,20260331,EMP-137,8,Compensation Fairness,54
+728,20260331,EMP-051,10,Career Growth,55
+729,20260331,EMP-123,8,Sense of Purpose,81
+730,20260331,EMP-007,4,Manager Effectiveness,75
+731,20260331,EMP-114,6,Compensation Fairness,57
+732,20260331,EMP-084,4,Manager Effectiveness,73
+733,20260331,EMP-095,2,Psychological Safety,73
+734,20260331,EMP-012,4,Work-Life Balance,64
+735,20260331,EMP-026,10,Psychological Safety,59
+736,20260331,EMP-100,6,Psychological Safety,63
+737,20260331,EMP-072,1,Compensation Fairness,53
+738,20260331,EMP-099,8,Work-Life Balance,77
+739,20260331,EMP-101,1,Compensation Fairness,61
+740,20260331,EMP-130,3,Work-Life Balance,61
+741,20260331,EMP-131,5,Work-Life Balance,69
+742,20260331,EMP-132,6,Career Growth,67
+743,20260331,EMP-052,6,Team Collaboration,93
+744,20260331,EMP-133,7,Compensation Fairness,55
+745,20260331,EMP-010,10,Team Collaboration,89
+746,20260331,EMP-112,8,Team Collaboration,76
+747,20260331,EMP-046,3,Psychological Safety,73
+748,20260331,EMP-042,7,Psychological Safety,85
+749,20260331,EMP-050,4,Sense of Purpose,87

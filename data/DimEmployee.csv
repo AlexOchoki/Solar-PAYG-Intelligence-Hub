@@ -1,0 +1,151 @@
+EmployeeID,FullName,Gender,DateOfBirth,HireDate,TerminationDate,IsActive,DepartmentID,JobTitle,JobLevel,EmploymentType,Country,County,Nationality,ManagerID,SalaryGrade,CompaRatio
+EMP-001,Koffi Ouattara,Male,2001-02-04,2020-05-21,,1,DEPT-01,Director of Sales,Director,Permanent,Côte d'Ivoire,Yamoussoukro,Ivorian,EMP-006,G7,0.91
+EMP-002,Timothy Ochieng,Male,1993-11-16,2019-12-01,,1,DEPT-03,Senior Engineer,Senior,Contract,Kenya,Trans-Nzoia,Kenyan,EMP-004,G5,0.89
+EMP-003,Brian Nyambura,Male,1999-03-12,2018-04-02,,1,DEPT-01,Senior Sales Rep,Mid,Permanent,Kenya,Uasin Gishu,Kenyan,EMP-001,G3,1.0
+EMP-004,Peter Waithaka,Male,1991-10-27,2023-06-11,,1,DEPT-07,Lead Agronomist,Senior,Permanent,Kenya,Machakos,Kenyan,EMP-008,G5,0.81
+EMP-005,Daniel Akinyi,Male,1977-10-04,2019-01-15,,1,DEPT-02,Field Technician,Entry,Field Agent,Kenya,Kiambu,Kenyan,EMP-001,G2,1.01
+EMP-006,Richard Mugisha,Male,1990-09-17,2025-11-17,,1,DEPT-04,Support Agent,Entry,Permanent,Uganda,Jinja,Ugandan,EMP-008,G2,1.02
+EMP-007,Esther Rotich,Female,2003-12-23,2024-05-17,,1,DEPT-03,Software Engineer,Mid,Field Agent,Kenya,Laikipia,Kenyan,EMP-003,G3,1.01
+EMP-008,Victor Kipchoge,Male,1997-11-14,2019-06-09,2026-01-14,0,DEPT-07,Crop Advisor,Mid,Contract,Kenya,Mombasa,Kenyan,EMP-005,G3,0.8
+EMP-009,Wanjiku Kiprono,Female,1993-05-22,2018-07-09,2024-09-24,0,DEPT-06,HR Manager,Manager,Field Agent,Kenya,Kisumu,Kenyan,EMP-008,G6,1.0
+EMP-010,Brian Ochieng,Male,2000-06-22,2022-06-20,,1,DEPT-02,Field Ops Intern,Intern,Intern,Kenya,Nakuru,Kenyan,EMP-004,G1,0.85
+EMP-011,Peter Mwangi,Male,1997-09-22,2026-02-27,,1,DEPT-03,Software Engineer,Mid,Contract,Kenya,Nairobi,Kenyan,EMP-007,G3,0.91
+EMP-012,Hope Maina,Female,1984-09-09,2026-02-21,,1,DEPT-05,Finance Manager,Manager,Contract,Kenya,Mombasa,Kenyan,EMP-004,G6,1.03
+EMP-013,Moses Odhiambo,Male,1990-12-29,2025-05-21,2026-03-26,0,DEPT-05,Accounts Assistant,Entry,Intern,Kenya,Uasin Gishu,Kenyan,EMP-003,G2,0.85
+EMP-014,Elijah Kiptoo,Male,2003-07-03,2024-03-28,,1,DEPT-04,Customer Success Associate,Entry,Permanent,Kenya,Meru,Kenyan,EMP-003,G2,0.93
+EMP-015,Lucy Ochieng,Female,1989-08-25,2019-05-25,,1,DEPT-08,Warehouse Clerk,Entry,Field Agent,Kenya,Kajiado,Kenyan,EMP-002,G2,1.01
+EMP-016,Harriet Ssempijja,Female,1994-07-05,2026-03-04,,1,DEPT-02,Senior Field Tech,Mid,Field Agent,Uganda,Kampala,Ugandan,EMP-006,G3,0.89
+EMP-017,Jane Kimani,Female,2004-01-26,2025-08-17,,1,DEPT-01,Account Manager,Mid,Permanent,Kenya,Laikipia,Kenyan,EMP-001,G3,0.85
+EMP-018,Nathan Waithaka,Male,1992-03-29,2024-05-11,,1,DEPT-04,Chief Customer Officer,C-Suite,Contract,Kenya,Mombasa,Kenyan,,G8,0.96
+EMP-019,Andrew Ochieng,Male,1992-09-24,2024-11-16,2025-11-28,0,DEPT-04,Customer Success Associate,Entry,Permanent,Kenya,Nakuru,Kenyan,EMP-002,G2,0.82
+EMP-020,Joseph Wekesa,Male,2003-08-29,2025-07-09,,1,DEPT-01,Sales Intern,Intern,Intern,Kenya,Machakos,Kenyan,EMP-004,G1,0.84
+EMP-021,Atieno Kiprono,Female,2002-06-15,2025-05-03,,1,DEPT-01,Chief Revenue Officer,C-Suite,Permanent,Kenya,Nakuru,Kenyan,,G8,0.8
+EMP-022,Robert Ssempijja,Male,1998-01-23,2025-12-12,,1,DEPT-08,Supply Planner,Mid,Intern,Uganda,Wakiso,Ugandan,EMP-004,G3,1.01
+EMP-023,Brou Yao,Male,1994-08-03,2025-01-10,2026-02-21,0,DEPT-06,Senior HR Officer,Senior,Permanent,Côte d'Ivoire,Abidjan,Ivorian,EMP-001,G5,0.88
+EMP-024,Aké Koffi,Male,1991-08-01,2026-01-04,,1,DEPT-01,Sales Representative,Entry,Field Agent,Côte d'Ivoire,Abidjan,Ivorian,EMP-005,G2,1.05
+EMP-025,Kouamé Ouattara,Male,1990-01-26,2022-10-24,,1,DEPT-01,Director of Sales,Director,Intern,Côte d'Ivoire,Bouaké,Ivorian,EMP-002,G7,0.97
+EMP-026,Elijah Nyambura,Male,1972-05-06,2023-12-02,,1,DEPT-01,Senior Sales Rep,Mid,Field Agent,Kenya,Nyeri,Kenyan,EMP-008,G3,0.93
+EMP-027,Dorothy Ochieng,Female,1990-08-11,2021-12-11,,1,DEPT-01,Business Development Associate,Entry,Intern,Kenya,Nairobi,Kenyan,EMP-002,G2,0.96
+EMP-028,Andrew Ndungu,Male,1988-02-06,2018-04-25,,1,DEPT-01,Regional Sales Manager,Senior,Field Agent,Kenya,Nyeri,Kenyan,EMP-008,G5,0.88
+EMP-029,Beatrice Karanja,Female,1990-10-26,2026-01-27,,1,DEPT-02,Regional Field Manager,Senior,Permanent,Kenya,Kisumu,Kenyan,EMP-007,G5,0.86
+EMP-030,Wanjiku Ndungu,Female,1988-05-10,2018-03-03,,1,DEPT-02,Field Technician,Entry,Field Agent,Kenya,Uasin Gishu,Kenyan,EMP-009,G2,0.99
+EMP-031,Charity Njenga,Female,1981-02-28,2020-11-14,,1,DEPT-01,Director of Sales,Director,Permanent,Kenya,Kisumu,Kenyan,EMP-009,G7,1.01
+EMP-032,Charles Ngugi,Male,1991-06-09,2019-08-11,,1,DEPT-06,HR Manager,Manager,Permanent,Kenya,Uasin Gishu,Kenyan,EMP-008,G6,1.05
+EMP-033,Caleb Ngugi,Male,1985-06-14,2026-03-01,,1,DEPT-05,Financial Analyst,Mid,Contract,Kenya,Kiambu,Kenyan,EMP-007,G3,0.88
+EMP-034,Konan Bamba,Male,1996-09-26,2024-04-20,,1,DEPT-06,Senior HR Officer,Senior,Permanent,Côte d'Ivoire,Bouaké,Ivorian,EMP-009,G5,0.92
+EMP-035,Emmanuel Ochieng,Male,1984-11-15,2025-03-25,,1,DEPT-03,CTO,C-Suite,Permanent,Kenya,Machakos,Kenyan,,G8,0.9
+EMP-036,Francis Githinji,Male,1999-05-03,2024-10-17,,1,DEPT-07,Director of Agronomy,Director,Permanent,Kenya,Meru,Kenyan,EMP-008,G7,0.84
+EMP-037,Nathan Akinyi,Male,1990-12-21,2021-04-16,,1,DEPT-02,Field Technician,Entry,Contract,Kenya,Kajiado,Kenyan,EMP-001,G2,0.84
+EMP-038,Richard Namutebi,Male,1983-04-28,2025-05-26,2025-09-25,0,DEPT-05,Accountant,Mid,Permanent,Uganda,Wakiso,Ugandan,EMP-005,G3,0.78
+EMP-039,Affoué Koné,Female,1992-10-20,2025-02-09,,1,DEPT-05,Director of Finance,Director,Field Agent,Côte d'Ivoire,Abidjan,Ivorian,EMP-003,G7,0.88
+EMP-040,Henry Mugisha,Male,2000-07-19,2018-04-05,2023-06-03,0,DEPT-03,Software Engineer,Mid,Permanent,Uganda,Jinja,Ugandan,EMP-001,G3,0.87
+EMP-041,Dennis Waithaka,Male,2001-07-04,2025-05-02,,1,DEPT-06,HR Manager,Manager,Contract,Kenya,Laikipia,Kenyan,EMP-002,G6,0.9
+EMP-042,Kouadio Touré,Male,1991-06-05,2020-01-29,,1,DEPT-05,Senior Accountant,Senior,Permanent,Côte d'Ivoire,Yamoussoukro,Ivorian,EMP-008,G5,1.06
+EMP-043,Dorothy Odhiambo,Female,1993-10-12,2018-02-12,,1,DEPT-01,Sales Representative,Entry,Field Agent,Kenya,Kajiado,Kenyan,EMP-006,G2,0.88
+EMP-044,Esther Kipchoge,Female,1987-12-03,2023-03-02,2026-03-24,0,DEPT-02,Installation Specialist,Entry,Permanent,Kenya,Kajiado,Kenyan,EMP-005,G2,0.9
+EMP-045,Kouadio Koné,Male,2002-07-25,2026-02-18,,1,DEPT-03,Junior Hardware Engineer,Entry,Contract,Côte d'Ivoire,Bouaké,Ivorian,EMP-001,G2,0.83
+EMP-046,Daniel Ndungu,Male,1997-12-28,2024-06-09,,1,DEPT-02,Senior Field Tech,Mid,Field Agent,Kenya,Nakuru,Kenyan,EMP-008,G3,0.87
+EMP-047,Martin Sang,Male,2000-07-13,2025-11-04,2026-03-01,0,DEPT-01,Sales Representative,Entry,Field Agent,Kenya,Laikipia,Kenyan,EMP-009,G2,0.93
+EMP-048,Harriet Ssempijja,Female,1995-01-14,2023-02-03,,1,DEPT-04,CX Analyst,Mid,Permanent,Uganda,Wakiso,Ugandan,EMP-005,G3,1.04
+EMP-049,Peter Mbugua,Male,2003-07-18,2018-10-04,2024-09-15,0,DEPT-01,Business Development Associate,Entry,Intern,Kenya,Kajiado,Kenyan,EMP-008,G2,0.92
+EMP-050,Muthoni Kimani,Female,1992-05-01,2018-04-28,,1,DEPT-01,Regional Sales Manager,Senior,Contract,Kenya,Mombasa,Kenyan,EMP-002,G5,0.91
+EMP-051,Elijah Nyambura,Male,2001-04-13,2019-07-13,,1,DEPT-05,Junior Analyst,Entry,Permanent,Kenya,Trans-Nzoia,Kenyan,EMP-004,G2,0.97
+EMP-052,James Mutua,Male,1979-12-22,2023-01-13,,1,DEPT-01,Sales Representative,Entry,Permanent,Kenya,Kiambu,Kenyan,EMP-009,G2,0.78
+EMP-053,Kevin Sang,Male,1989-06-22,2023-11-30,,1,DEPT-08,Logistics Coordinator,Entry,Permanent,Kenya,Nakuru,Kenyan,EMP-001,G2,0.9
+EMP-054,Dorothy Thuku,Female,1990-06-24,2019-12-26,2025-04-30,0,DEPT-04,CX Analyst,Mid,Field Agent,Kenya,Kajiado,Kenyan,EMP-009,G3,0.98
+EMP-055,Ritah Byaruhanga,Female,1990-03-04,2024-10-26,,1,DEPT-02,Senior Field Tech,Mid,Contract,Uganda,Jinja,Ugandan,EMP-006,G3,1.1
+EMP-056,Muthoni Kimani,Female,1991-11-30,2024-04-22,,1,DEPT-06,HR Assistant,Entry,Permanent,Kenya,Nyeri,Kenyan,EMP-007,G2,0.89
+EMP-057,Mark Kamau,Male,1983-01-10,2026-03-28,,1,DEPT-03,Software Engineer,Mid,Permanent,Kenya,Nyeri,Kenyan,EMP-008,G3,0.92
+EMP-058,David Kiprono,Male,1993-07-17,2023-03-10,,1,DEPT-08,Warehouse Clerk,Entry,Field Agent,Kenya,Kiambu,Kenyan,EMP-007,G2,0.91
+EMP-059,Michael Kiprono,Male,1993-01-14,2024-11-13,,1,DEPT-04,Senior CX Manager,Senior,Permanent,Kenya,Nyeri,Kenyan,EMP-008,G5,1.13
+EMP-060,Marie Koffi,Female,1996-05-23,2026-04-20,,1,DEPT-02,Field Technician,Entry,Permanent,Côte d'Ivoire,Bouaké,Ivorian,EMP-009,G2,0.88
+EMP-061,Doreen Nsubuga,Female,2000-09-01,2023-03-16,,1,DEPT-03,Software Engineer,Mid,Permanent,Uganda,Gulu,Ugandan,EMP-003,G3,0.94
+EMP-062,Samuel Odhiambo,Male,1999-12-01,2022-02-01,,1,DEPT-08,Supply Planner,Mid,Field Agent,Kenya,Machakos,Kenyan,EMP-008,G3,0.99
+EMP-063,Patrick Waithaka,Male,1984-06-23,2018-10-12,,1,DEPT-02,Field Operations Manager,Manager,Permanent,Kenya,Uasin Gishu,Kenyan,EMP-002,G6,0.89
+EMP-064,Anthony Kamau,Male,2003-11-18,2025-07-13,2026-02-18,0,DEPT-02,Installation Specialist,Entry,Field Agent,Kenya,Machakos,Kenyan,EMP-007,G2,0.82
+EMP-065,Nyambura Njoroge,Female,1988-06-12,2021-06-16,,1,DEPT-07,Crop Advisor,Mid,Permanent,Kenya,Kajiado,Kenyan,EMP-003,G3,0.83
+EMP-066,Rogers Ssempijja,Male,2001-09-22,2018-01-07,,1,DEPT-05,Finance Manager,Manager,Permanent,Uganda,Mbale,Ugandan,EMP-004,G6,0.97
+EMP-067,Irene Mugisha,Female,2002-10-20,2024-01-31,,1,DEPT-02,Regional Field Manager,Senior,Permanent,Uganda,Gulu,Ugandan,EMP-002,G5,0.85
+EMP-068,Aya Diabaté,Female,1996-11-27,2023-05-08,2026-01-03,0,DEPT-01,Business Development Associate,Entry,Contract,Côte d'Ivoire,Bouaké,Ivorian,EMP-009,G2,0.94
+EMP-069,Michael Korir,Male,1986-06-15,2023-02-11,,1,DEPT-02,Senior Field Tech,Mid,Field Agent,Kenya,Kisumu,Kenyan,EMP-006,G3,1.01
+EMP-070,Kevin Mbugua,Male,1989-07-01,2022-09-05,,1,DEPT-02,Regional Field Manager,Senior,Permanent,Kenya,Kajiado,Kenyan,EMP-002,G5,0.81
+EMP-071,Moses Akinyi,Male,1995-11-22,2025-03-17,,1,DEPT-08,Supply Planner,Mid,Permanent,Kenya,Kisumu,Kenyan,EMP-005,G3,1.02
+EMP-072,Martin Odhiambo,Male,1998-05-04,2018-07-20,,1,DEPT-01,Sales Representative,Entry,Permanent,Kenya,Nakuru,Kenyan,EMP-009,G2,0.93
+EMP-073,Priscilla Njoroge,Female,1990-11-15,2023-04-12,,1,DEPT-02,Field Technician,Entry,Field Agent,Kenya,Nakuru,Kenyan,EMP-009,G2,0.96
+EMP-074,Stephen Waithaka,Male,1990-02-14,2024-01-09,,1,DEPT-08,Supply Chain Manager,Manager,Permanent,Kenya,Kajiado,Kenyan,EMP-009,G6,1.02
+EMP-075,Hannah Kiptoo,Female,2003-06-02,2023-05-17,2025-12-01,0,DEPT-08,Director of Supply Chain,Director,Field Agent,Kenya,Uasin Gishu,Kenyan,EMP-004,G7,0.9
+EMP-076,Agnes Otieno,Female,1994-01-17,2021-01-26,,1,DEPT-03,Software Engineer,Mid,Permanent,Kenya,Uasin Gishu,Kenyan,EMP-008,G3,0.88
+EMP-077,Aké Koffi,Male,1988-01-19,2018-11-07,,1,DEPT-08,Supply Chain Intern,Intern,Intern,Côte d'Ivoire,Abidjan,Ivorian,EMP-002,G1,0.94
+EMP-078,Lou Diallo,Female,1997-09-01,2023-09-29,,1,DEPT-08,Senior Supply Chain Analyst,Senior,Permanent,Côte d'Ivoire,Abidjan,Ivorian,EMP-007,G5,1.03
+EMP-079,Dennis Ndungu,Male,2003-06-13,2023-10-20,2025-12-22,0,DEPT-07,Agronomy Intern,Intern,Intern,Kenya,Nakuru,Kenyan,EMP-001,G1,0.9
+EMP-080,Stephen Mbugua,Male,1998-10-18,2023-01-11,,1,DEPT-08,Senior Supply Chain Analyst,Senior,Permanent,Kenya,Nyeri,Kenyan,EMP-008,G5,0.98
+EMP-081,Jane Akinyi,Female,2003-09-19,2020-07-25,2023-09-16,0,DEPT-06,Senior HR Officer,Senior,Contract,Kenya,Nakuru,Kenyan,EMP-007,G5,0.93
+EMP-082,Aya Diabaté,Female,1996-11-07,2026-03-14,,1,DEPT-06,Admin Officer,Entry,Field Agent,Côte d'Ivoire,Abidjan,Ivorian,EMP-009,G2,0.83
+EMP-083,Kouadio Yao,Female,1995-10-22,2023-06-19,,1,DEPT-04,Senior Support Specialist,Mid,Intern,Côte d'Ivoire,Yamoussoukro,Ivorian,EMP-008,G3,0.78
+EMP-084,Daniel Mbugua,Male,1994-03-29,2020-08-30,,1,DEPT-08,Supply Chain Intern,Intern,Intern,Kenya,Mombasa,Kenyan,EMP-003,G1,0.87
+EMP-085,Esther Kamau,Female,2003-08-14,2023-12-02,,1,DEPT-07,Agronomy Manager,Manager,Permanent,Kenya,Kajiado,Kenyan,EMP-009,G6,0.96
+EMP-086,Affoué Bamba,Female,1996-11-27,2023-03-23,,1,DEPT-06,HR Officer,Mid,Contract,Côte d'Ivoire,Abidjan,Ivorian,EMP-001,G3,0.85
+EMP-087,Kouadio Yao,Male,1997-02-19,2025-09-20,,1,DEPT-04,Director of CX,Director,Field Agent,Côte d'Ivoire,Abidjan,Ivorian,EMP-006,G7,0.94
+EMP-088,Aya Coulibaly,Female,1990-10-25,2021-02-17,2023-11-02,0,DEPT-08,Senior Supply Chain Analyst,Senior,Field Agent,Côte d'Ivoire,Yamoussoukro,Ivorian,EMP-004,G5,0.87
+EMP-089,Beatrice Kiprono,Female,1987-03-10,2022-02-14,,1,DEPT-08,Procurement Officer,Mid,Permanent,Kenya,Uasin Gishu,Kenyan,EMP-007,G3,0.88
+EMP-090,Doreen Tumwesigye,Female,2002-05-31,2025-09-15,,1,DEPT-02,Field Supervisor,Mid,Field Agent,Uganda,Mbale,Ugandan,EMP-003,G3,0.99
+EMP-091,Nathan Mutua,Male,2002-08-05,2025-12-19,2026-04-04,0,DEPT-01,Sales Representative,Entry,Permanent,Kenya,Kiambu,Kenyan,EMP-002,G2,1.04
+EMP-092,Beatrice Kiprono,Female,1995-09-25,2021-07-20,,1,DEPT-01,Account Manager,Mid,Contract,Kenya,Mombasa,Kenyan,EMP-006,G3,0.81
+EMP-093,Emmanuel Kimani,Male,1980-06-04,2024-08-29,,1,DEPT-04,Senior CX Manager,Senior,Permanent,Kenya,Laikipia,Kenyan,EMP-008,G5,0.89
+EMP-094,Lucy Kariuki,Female,1993-02-14,2023-04-02,,1,DEPT-04,CX Intern,Intern,Intern,Kenya,Nairobi,Kenyan,EMP-002,G1,0.85
+EMP-095,Robert Ssempijja,Male,2001-05-09,2018-05-02,,1,DEPT-01,Sales Representative,Entry,Field Agent,Uganda,Wakiso,Ugandan,EMP-003,G2,0.9
+EMP-096,Hope Kariuki,Female,2003-10-11,2026-01-12,,1,DEPT-06,Admin Officer,Entry,Field Agent,Kenya,Uasin Gishu,Kenyan,EMP-004,G2,0.99
+EMP-097,Elijah Mwangi,Male,1996-04-22,2020-06-27,,1,DEPT-04,Support Agent,Entry,Intern,Kenya,Meru,Kenyan,EMP-008,G2,0.82
+EMP-098,Anne Nyambura,Female,1981-12-09,2018-11-08,,1,DEPT-04,Customer Success Associate,Entry,Contract,Kenya,Trans-Nzoia,Kenyan,EMP-006,G2,0.95
+EMP-099,Brou Koné,Male,1995-04-11,2024-05-30,,1,DEPT-05,Financial Analyst,Mid,Permanent,Côte d'Ivoire,Bouaké,Ivorian,EMP-003,G3,0.96
+EMP-100,Elijah Akinyi,Male,1986-08-18,2025-01-24,,1,DEPT-07,Agronomist,Entry,Permanent,Kenya,Kiambu,Kenyan,EMP-008,G2,0.92
+EMP-101,Amenan Diabaté,Female,1997-06-04,2023-10-20,,1,DEPT-03,Junior Hardware Engineer,Entry,Permanent,Côte d'Ivoire,Bouaké,Ivorian,EMP-008,G2,0.87
+EMP-102,Ronald Kabugo,Male,1992-02-29,2023-09-18,,1,DEPT-05,Accounts Assistant,Entry,Permanent,Uganda,Kampala,Ugandan,EMP-003,G2,0.91
+EMP-103,Gerald Atuhaire,Male,1995-08-02,2025-08-29,,1,DEPT-01,Sales Representative,Entry,Permanent,Uganda,Mbale,Ugandan,EMP-005,G2,1.02
+EMP-104,Simon Maina,Male,1987-01-19,2023-11-30,2025-07-22,0,DEPT-01,Sales Intern,Intern,Intern,Kenya,Trans-Nzoia,Kenyan,EMP-007,G1,0.91
+EMP-105,Brian Ochieng,Male,1981-08-05,2023-05-06,,1,DEPT-04,Customer Success Manager,Manager,Intern,Kenya,Nairobi,Kenyan,EMP-008,G6,0.98
+EMP-106,Andrew Kiprono,Male,1986-09-15,2025-10-28,,1,DEPT-01,Regional Sales Manager,Senior,Intern,Kenya,Machakos,Kenyan,EMP-006,G5,0.84
+EMP-107,Irene Mugisha,Female,1994-12-11,2023-10-30,,1,DEPT-01,Director of Sales,Director,Permanent,Uganda,Wakiso,Ugandan,EMP-004,G7,0.92
+EMP-108,Wambui Korir,Female,1988-09-28,2019-12-05,2026-03-30,0,DEPT-02,Field Operations Manager,Manager,Field Agent,Kenya,Mombasa,Kenyan,EMP-005,G6,1.07
+EMP-109,Herbert Tumwesigye,Male,1987-08-01,2025-04-01,,1,DEPT-02,Field Supervisor,Mid,Field Agent,Uganda,Gulu,Ugandan,EMP-003,G3,0.91
+EMP-110,Yao Koné,Male,1996-08-10,2025-08-31,,1,DEPT-03,IoT Engineer,Mid,Field Agent,Côte d'Ivoire,Abidjan,Ivorian,EMP-002,G3,0.92
+EMP-111,Sékou Koffi,Male,1983-07-12,2023-02-12,,1,DEPT-06,Senior HR Officer,Senior,Permanent,Côte d'Ivoire,Abidjan,Ivorian,EMP-005,G5,0.78
+EMP-112,Allan Nsubuga,Male,1995-07-19,2020-08-21,,1,DEPT-02,Field Technician,Entry,Permanent,Uganda,Mbale,Ugandan,EMP-004,G2,0.96
+EMP-113,Chebet Chebet,Female,1993-08-15,2025-11-28,,1,DEPT-05,Junior Analyst,Entry,Contract,Kenya,Kisumu,Kenyan,EMP-008,G2,1.03
+EMP-114,Jane Njoroge,Female,1998-05-07,2018-05-21,,1,DEPT-06,HR Manager,Manager,Permanent,Kenya,Machakos,Kenyan,EMP-009,G6,0.93
+EMP-115,Josephine Nsubuga,Female,1993-03-17,2021-08-09,,1,DEPT-05,Finance Manager,Manager,Permanent,Uganda,Gulu,Ugandan,EMP-009,G6,0.94
+EMP-116,Charles Ochieng,Male,2003-01-15,2024-09-22,,1,DEPT-01,Sales Representative,Entry,Field Agent,Kenya,Uasin Gishu,Kenyan,EMP-007,G2,0.94
+EMP-117,Joseph Korir,Male,1991-07-19,2024-09-28,,1,DEPT-05,CFO,C-Suite,Contract,Kenya,Meru,Kenyan,,G8,0.92
+EMP-118,Catherine Mutua,Female,1993-03-30,2018-12-19,,1,DEPT-02,Installation Specialist,Entry,Permanent,Kenya,Nyeri,Kenyan,EMP-001,G2,0.94
+EMP-119,Joy Kiprono,Female,2003-10-15,2025-10-10,,1,DEPT-03,Junior Hardware Engineer,Entry,Field Agent,Kenya,Laikipia,Kenyan,EMP-002,G2,0.99
+EMP-120,Peter Sang,Male,1994-03-30,2023-10-14,,1,DEPT-01,Account Manager,Mid,Contract,Kenya,Kisumu,Kenyan,EMP-001,G3,0.87
+EMP-121,Isaac Mwangi,Male,2002-04-28,2023-12-30,,1,DEPT-04,Support Agent,Entry,Field Agent,Kenya,Uasin Gishu,Kenyan,EMP-008,G2,0.89
+EMP-122,Caroline Kiptoo,Female,1989-12-15,2022-08-14,,1,DEPT-02,Field Technician,Entry,Field Agent,Kenya,Trans-Nzoia,Kenyan,EMP-003,G2,1.0
+EMP-123,Elijah Kipchoge,Male,1988-12-14,2026-01-29,,1,DEPT-03,IoT Engineer,Mid,Field Agent,Kenya,Kiambu,Kenyan,EMP-003,G3,0.92
+EMP-124,Atieno Mutua,Female,1999-02-20,2022-08-26,2023-05-10,0,DEPT-01,Director of Sales,Director,Field Agent,Kenya,Nakuru,Kenyan,EMP-009,G7,1.0
+EMP-125,James Kipchoge,Male,1985-04-12,2024-04-26,2026-01-12,0,DEPT-01,Business Development Associate,Entry,Permanent,Kenya,Nairobi,Kenyan,EMP-004,G2,0.96
+EMP-126,Kevin Thuku,Male,1983-07-25,2022-01-30,2023-12-11,0,DEPT-01,Chief Revenue Officer,C-Suite,Permanent,Kenya,Laikipia,Kenyan,,G8,1.02
+EMP-127,Ritah Namugga,Female,1999-02-13,2024-08-31,,1,DEPT-08,Senior Supply Chain Analyst,Senior,Contract,Uganda,Kampala,Ugandan,EMP-004,G5,0.9
+EMP-128,Charity Githinji,Female,1995-04-28,2025-09-08,,1,DEPT-05,Senior Accountant,Senior,Contract,Kenya,Mombasa,Kenyan,EMP-002,G5,1.0
+EMP-129,Mark Mutua,Male,1998-02-28,2018-08-30,,1,DEPT-01,Sales Intern,Intern,Intern,Kenya,Mombasa,Kenyan,EMP-004,G1,0.95
+EMP-130,Michael Akinyi,Male,1998-10-20,2024-09-15,,1,DEPT-03,IoT Engineer,Mid,Permanent,Kenya,Kisumu,Kenyan,EMP-006,G3,0.88
+EMP-131,Patrick Ndungu,Male,1991-12-28,2023-01-29,,1,DEPT-08,Warehouse Clerk,Entry,Permanent,Kenya,Meru,Kenyan,EMP-007,G2,0.86
+EMP-132,Jane Kimani,Female,1998-05-25,2024-08-03,,1,DEPT-03,Senior Engineer,Senior,Field Agent,Kenya,Nairobi,Kenyan,EMP-009,G5,0.93
+EMP-133,Njeri Nyambura,Female,2003-09-17,2019-02-03,,1,DEPT-06,Admin Officer,Entry,Permanent,Kenya,Kajiado,Kenyan,EMP-005,G2,0.93
+EMP-134,Amoin Diabaté,Female,1993-06-02,2022-11-27,,1,DEPT-08,Senior Supply Chain Analyst,Senior,Contract,Côte d'Ivoire,Bouaké,Ivorian,EMP-001,G5,0.85
+EMP-135,George Kariuki,Male,1994-08-23,2023-05-29,2026-01-01,0,DEPT-08,Procurement Officer,Mid,Permanent,Kenya,Meru,Kenyan,EMP-002,G3,0.97
+EMP-136,Simon Kimani,Male,1998-06-23,2025-09-11,2026-01-10,0,DEPT-03,Engineering Intern,Intern,Intern,Kenya,Kiambu,Kenyan,EMP-003,G1,0.82
+EMP-137,Lou Bamba,Female,1991-12-08,2024-10-22,,1,DEPT-05,Accountant,Mid,Intern,Côte d'Ivoire,Abidjan,Ivorian,EMP-006,G3,0.79
+EMP-138,Affoué Coulibaly,Female,1991-07-27,2023-03-29,,1,DEPT-02,Regional Field Manager,Senior,Intern,Côte d'Ivoire,Bouaké,Ivorian,EMP-008,G5,0.87
+EMP-139,Anne Thuku,Female,1986-09-20,2018-12-28,,1,DEPT-06,Senior HR Officer,Senior,Permanent,Kenya,Uasin Gishu,Kenyan,EMP-001,G5,0.94
+EMP-140,Sékou Coulibaly,Male,1986-07-09,2025-07-11,,1,DEPT-02,Field Supervisor,Mid,Field Agent,Côte d'Ivoire,Yamoussoukro,Ivorian,EMP-006,G3,0.85
+EMP-141,Harriet Tumwesigye,Female,2003-09-02,2025-12-29,,1,DEPT-08,Logistics Coordinator,Entry,Permanent,Uganda,Gulu,Ugandan,EMP-004,G2,0.83
+EMP-142,Marie Ouattara,Female,1982-10-18,2023-07-07,,1,DEPT-01,Account Manager,Mid,Field Agent,Côte d'Ivoire,Bouaké,Ivorian,EMP-003,G3,0.86
+EMP-143,Gerald Kabugo,Male,1979-11-28,2023-06-08,2026-03-08,0,DEPT-03,Junior Hardware Engineer,Entry,Permanent,Uganda,Mbale,Ugandan,EMP-006,G2,1.02
+EMP-144,Konan Diallo,Male,1999-12-09,2021-02-10,,1,DEPT-05,CFO,C-Suite,Permanent,Côte d'Ivoire,Bouaké,Ivorian,,G8,0.78
+EMP-145,Herbert Ssempijja,Male,1989-02-05,2024-05-14,,1,DEPT-02,Field Ops Intern,Intern,Intern,Uganda,Jinja,Ugandan,EMP-006,G1,0.99
+EMP-146,Richard Okello,Male,1998-02-24,2023-02-18,,1,DEPT-08,Senior Supply Chain Analyst,Senior,Field Agent,Uganda,Jinja,Ugandan,EMP-004,G5,0.79
+EMP-147,Anthony Mwangi,Male,1996-02-10,2024-07-01,2025-11-10,0,DEPT-01,Business Development Associate,Entry,Permanent,Kenya,Nairobi,Kenyan,EMP-003,G2,0.84
+EMP-148,Emmanuel Otieno,Male,1986-02-26,2021-06-05,2024-08-18,0,DEPT-04,Senior Support Specialist,Mid,Contract,Kenya,Machakos,Kenyan,EMP-002,G3,0.9
+EMP-149,Kevin Langat,Male,1991-12-14,2024-05-06,,1,DEPT-04,Senior Support Specialist,Mid,Field Agent,Kenya,Kiambu,Kenyan,EMP-005,G3,1.06
+EMP-150,Akissi Yao,Female,1990-11-26,2022-09-28,,1,DEPT-01,Regional Sales Manager,Senior,Permanent,Côte d'Ivoire,Abidjan,Ivorian,EMP-001,G5,0.92

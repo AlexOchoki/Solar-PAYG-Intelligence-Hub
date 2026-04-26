@@ -1,0 +1,540 @@
+ReviewID,DateKey,EmployeeID,ReviewCycle,PerformanceScore,Rating,GoalCompletionPct,PIPFlag,NineBoxCategory
+1,20231215,EMP-001,H2-2023,3.9,Exceeds,32,0,Eff. Contributor
+2,20231215,EMP-002,H2-2023,3.0,Meets Expectations,77,0,Backbone
+3,20231215,EMP-003,H2-2023,3.6,Meets Expectations,85,0,Eff. Contributor
+4,20231215,EMP-004,H2-2023,3.0,Meets Expectations,98,0,Promotable
+5,20231215,EMP-005,H2-2023,4.1,Exceeds,55,0,Enigma
+6,20231215,EMP-008,H2-2023,2.6,Needs Improvement,85,0,Enigma
+7,20231215,EMP-009,H2-2023,4.0,Exceeds,90,0,Enigma
+8,20231215,EMP-010,H2-2023,4.7,Outstanding,78,0,Promotable
+9,20231215,EMP-015,H2-2023,2.5,Needs Improvement,87,0,Core Asset
+10,20231215,EMP-025,H2-2023,3.9,Exceeds,72,0,Core Asset
+11,20231215,EMP-026,H2-2023,4.2,Exceeds,89,0,Core Asset
+12,20231215,EMP-027,H2-2023,3.6,Meets Expectations,71,0,Growth
+13,20231215,EMP-028,H2-2023,3.6,Meets Expectations,36,0,Risk
+14,20231215,EMP-030,H2-2023,3.8,Exceeds,68,0,Backbone
+15,20231215,EMP-031,H2-2023,4.9,Outstanding,46,0,Eff. Contributor
+16,20231215,EMP-032,H2-2023,3.0,Meets Expectations,74,0,Star
+17,20231215,EMP-037,H2-2023,4.8,Outstanding,62,0,Eff. Contributor
+18,20231215,EMP-042,H2-2023,4.6,Outstanding,50,0,Growth
+19,20231215,EMP-043,H2-2023,5.0,Outstanding,77,0,Eff. Contributor
+20,20231215,EMP-044,H2-2023,3.3,Meets Expectations,70,0,Enigma
+21,20231215,EMP-048,H2-2023,3.5,Meets Expectations,56,0,Backbone
+22,20231215,EMP-049,H2-2023,3.7,Meets Expectations,62,0,Star
+23,20231215,EMP-050,H2-2023,4.3,Exceeds,61,0,Eff. Contributor
+24,20231215,EMP-051,H2-2023,3.6,Meets Expectations,83,0,Eff. Contributor
+25,20231215,EMP-052,H2-2023,3.7,Meets Expectations,80,0,Eff. Contributor
+26,20231215,EMP-053,H2-2023,3.8,Exceeds,68,0,Backbone
+27,20231215,EMP-054,H2-2023,3.0,Meets Expectations,85,0,Risk
+28,20231215,EMP-058,H2-2023,2.8,Meets Expectations,86,0,Enigma
+29,20231215,EMP-061,H2-2023,4.6,Outstanding,62,0,Core Asset
+30,20231215,EMP-062,H2-2023,3.4,Meets Expectations,64,0,Star
+31,20231215,EMP-063,H2-2023,4.3,Exceeds,78,0,Risk
+32,20231215,EMP-065,H2-2023,4.0,Exceeds,41,0,Growth
+33,20231215,EMP-066,H2-2023,3.4,Meets Expectations,96,0,Eff. Contributor
+34,20231215,EMP-068,H2-2023,4.4,Exceeds,89,0,Core Asset
+35,20231215,EMP-069,H2-2023,2.9,Meets Expectations,59,0,Core Asset
+36,20231215,EMP-070,H2-2023,4.7,Outstanding,52,0,Growth
+37,20231215,EMP-072,H2-2023,2.3,Needs Improvement,71,0,Eff. Contributor
+38,20231215,EMP-073,H2-2023,4.0,Exceeds,60,0,Promotable
+39,20231215,EMP-075,H2-2023,4.4,Exceeds,85,0,Core Asset
+40,20231215,EMP-076,H2-2023,3.4,Meets Expectations,63,0,Star
+41,20231215,EMP-077,H2-2023,2.6,Needs Improvement,63,0,Promotable
+42,20231215,EMP-078,H2-2023,3.6,Meets Expectations,71,0,Promotable
+43,20231215,EMP-079,H2-2023,3.6,Meets Expectations,65,0,Eff. Contributor
+44,20231215,EMP-080,H2-2023,3.7,Meets Expectations,83,0,Eff. Contributor
+45,20231215,EMP-083,H2-2023,4.0,Exceeds,31,0,Backbone
+46,20231215,EMP-084,H2-2023,3.6,Meets Expectations,100,0,Eff. Contributor
+47,20231215,EMP-085,H2-2023,2.4,Needs Improvement,82,0,Under-performer
+48,20231215,EMP-086,H2-2023,2.9,Meets Expectations,82,0,Core Asset
+49,20231215,EMP-089,H2-2023,1.8,Below Expectations,58,0,Eff. Contributor
+50,20231215,EMP-092,H2-2023,3.4,Meets Expectations,61,0,Eff. Contributor
+51,20231215,EMP-094,H2-2023,3.3,Meets Expectations,85,0,Star
+52,20231215,EMP-095,H2-2023,3.9,Exceeds,92,0,Growth
+53,20231215,EMP-097,H2-2023,3.7,Meets Expectations,72,0,Backbone
+54,20231215,EMP-098,H2-2023,3.4,Meets Expectations,74,0,Growth
+55,20231215,EMP-101,H2-2023,3.2,Meets Expectations,57,0,Eff. Contributor
+56,20231215,EMP-102,H2-2023,4.2,Exceeds,61,0,Eff. Contributor
+57,20231215,EMP-104,H2-2023,2.7,Needs Improvement,88,0,Backbone
+58,20231215,EMP-105,H2-2023,4.1,Exceeds,99,0,Risk
+59,20231215,EMP-107,H2-2023,3.3,Meets Expectations,60,0,Core Asset
+60,20231215,EMP-108,H2-2023,3.6,Meets Expectations,99,0,Enigma
+61,20231215,EMP-111,H2-2023,4.2,Exceeds,42,0,Enigma
+62,20231215,EMP-112,H2-2023,2.7,Needs Improvement,80,0,Risk
+63,20231215,EMP-114,H2-2023,3.1,Meets Expectations,56,0,Backbone
+64,20231215,EMP-115,H2-2023,2.0,Needs Improvement,77,0,Growth
+65,20231215,EMP-118,H2-2023,3.5,Meets Expectations,63,0,Risk
+66,20231215,EMP-120,H2-2023,2.3,Needs Improvement,43,0,Core Asset
+67,20231215,EMP-122,H2-2023,4.1,Exceeds,73,0,Core Asset
+68,20231215,EMP-129,H2-2023,4.3,Exceeds,75,0,Promotable
+69,20231215,EMP-131,H2-2023,3.4,Meets Expectations,94,0,Star
+70,20231215,EMP-133,H2-2023,1.6,Below Expectations,88,1,Enigma
+71,20231215,EMP-134,H2-2023,3.0,Meets Expectations,47,0,Backbone
+72,20231215,EMP-135,H2-2023,3.5,Meets Expectations,71,0,Under-performer
+73,20231215,EMP-138,H2-2023,4.0,Exceeds,56,0,Star
+74,20231215,EMP-139,H2-2023,2.1,Needs Improvement,79,1,Enigma
+75,20231215,EMP-142,H2-2023,3.8,Exceeds,66,0,Eff. Contributor
+76,20231215,EMP-143,H2-2023,3.7,Meets Expectations,62,0,Under-performer
+77,20231215,EMP-144,H2-2023,3.5,Meets Expectations,76,0,Core Asset
+78,20231215,EMP-146,H2-2023,5.0,Outstanding,75,0,Core Asset
+79,20231215,EMP-148,H2-2023,3.4,Meets Expectations,71,0,Core Asset
+80,20231215,EMP-150,H2-2023,2.9,Meets Expectations,83,0,Backbone
+81,20241215,EMP-001,Annual-2024,3.9,Exceeds,56,0,Growth
+82,20241215,EMP-002,Annual-2024,2.6,Needs Improvement,79,0,Promotable
+83,20241215,EMP-003,Annual-2024,3.5,Meets Expectations,82,0,Core Asset
+84,20241215,EMP-004,Annual-2024,2.4,Needs Improvement,77,0,Backbone
+85,20241215,EMP-005,Annual-2024,3.9,Exceeds,87,0,Risk
+86,20241215,EMP-007,Annual-2024,3.3,Meets Expectations,63,0,Core Asset
+87,20241215,EMP-008,Annual-2024,4.7,Outstanding,68,0,Enigma
+88,20241215,EMP-010,Annual-2024,4.2,Exceeds,76,0,Core Asset
+89,20241215,EMP-014,Annual-2024,4.1,Exceeds,69,0,Promotable
+90,20241215,EMP-015,Annual-2024,3.3,Meets Expectations,77,0,Core Asset
+91,20241215,EMP-018,Annual-2024,4.6,Outstanding,81,0,Core Asset
+92,20241215,EMP-019,Annual-2024,2.1,Needs Improvement,48,1,Risk
+93,20241215,EMP-025,Annual-2024,2.8,Meets Expectations,94,0,Core Asset
+94,20241215,EMP-026,Annual-2024,4.5,Outstanding,61,0,Core Asset
+95,20241215,EMP-027,Annual-2024,3.1,Meets Expectations,58,0,Eff. Contributor
+96,20241215,EMP-028,Annual-2024,3.1,Meets Expectations,76,0,Growth
+97,20241215,EMP-030,Annual-2024,3.6,Meets Expectations,59,0,Core Asset
+98,20241215,EMP-031,Annual-2024,4.0,Exceeds,65,0,Risk
+99,20241215,EMP-032,Annual-2024,3.0,Meets Expectations,71,0,Core Asset
+100,20241215,EMP-034,Annual-2024,3.3,Meets Expectations,77,0,Promotable
+101,20241215,EMP-036,Annual-2024,2.6,Needs Improvement,88,0,Backbone
+102,20241215,EMP-037,Annual-2024,4.3,Exceeds,81,0,Promotable
+103,20241215,EMP-042,Annual-2024,3.0,Meets Expectations,97,0,Core Asset
+104,20241215,EMP-043,Annual-2024,3.6,Meets Expectations,100,0,Core Asset
+105,20241215,EMP-044,Annual-2024,3.9,Exceeds,61,0,Promotable
+106,20241215,EMP-046,Annual-2024,2.9,Meets Expectations,91,0,Backbone
+107,20241215,EMP-048,Annual-2024,3.4,Meets Expectations,100,0,Growth
+108,20241215,EMP-050,Annual-2024,3.4,Meets Expectations,63,0,Star
+109,20241215,EMP-051,Annual-2024,3.1,Meets Expectations,79,0,Star
+110,20241215,EMP-052,Annual-2024,1.7,Below Expectations,70,1,Promotable
+111,20241215,EMP-053,Annual-2024,2.4,Needs Improvement,88,0,Enigma
+112,20241215,EMP-054,Annual-2024,3.0,Meets Expectations,85,0,Eff. Contributor
+113,20241215,EMP-055,Annual-2024,4.2,Exceeds,57,0,Promotable
+114,20241215,EMP-056,Annual-2024,4.0,Exceeds,62,0,Promotable
+115,20241215,EMP-058,Annual-2024,3.5,Meets Expectations,81,0,Backbone
+116,20241215,EMP-059,Annual-2024,3.3,Meets Expectations,74,0,Star
+117,20241215,EMP-061,Annual-2024,3.3,Meets Expectations,99,0,Promotable
+118,20241215,EMP-062,Annual-2024,4.2,Exceeds,58,0,Under-performer
+119,20241215,EMP-063,Annual-2024,3.8,Exceeds,92,0,Enigma
+120,20241215,EMP-065,Annual-2024,3.6,Meets Expectations,34,0,Backbone
+121,20241215,EMP-066,Annual-2024,3.6,Meets Expectations,100,0,Eff. Contributor
+122,20241215,EMP-067,Annual-2024,3.7,Meets Expectations,64,0,Backbone
+123,20241215,EMP-068,Annual-2024,2.9,Meets Expectations,56,0,Backbone
+124,20241215,EMP-069,Annual-2024,5.0,Outstanding,70,0,Backbone
+125,20241215,EMP-070,Annual-2024,4.8,Outstanding,88,0,Eff. Contributor
+126,20241215,EMP-072,Annual-2024,3.8,Exceeds,82,0,Growth
+127,20241215,EMP-073,Annual-2024,3.6,Meets Expectations,48,0,Eff. Contributor
+128,20241215,EMP-074,Annual-2024,3.4,Meets Expectations,86,0,Core Asset
+129,20241215,EMP-075,Annual-2024,3.6,Meets Expectations,69,0,Core Asset
+130,20241215,EMP-076,Annual-2024,2.4,Needs Improvement,86,0,Eff. Contributor
+131,20241215,EMP-077,Annual-2024,2.9,Meets Expectations,64,0,Risk
+132,20241215,EMP-078,Annual-2024,3.2,Meets Expectations,79,0,Backbone
+133,20241215,EMP-079,Annual-2024,3.3,Meets Expectations,70,0,Star
+134,20241215,EMP-080,Annual-2024,3.1,Meets Expectations,66,0,Growth
+135,20241215,EMP-083,Annual-2024,5.0,Outstanding,100,0,Enigma
+136,20241215,EMP-084,Annual-2024,3.9,Exceeds,42,0,Core Asset
+137,20241215,EMP-085,Annual-2024,3.2,Meets Expectations,98,0,Enigma
+138,20241215,EMP-086,Annual-2024,3.4,Meets Expectations,67,0,Core Asset
+139,20241215,EMP-089,Annual-2024,4.7,Outstanding,72,0,Core Asset
+140,20241215,EMP-092,Annual-2024,3.9,Exceeds,74,0,Core Asset
+141,20241215,EMP-093,Annual-2024,3.3,Meets Expectations,95,0,Star
+142,20241215,EMP-094,Annual-2024,2.9,Meets Expectations,49,0,Eff. Contributor
+143,20241215,EMP-095,Annual-2024,3.6,Meets Expectations,87,0,Growth
+144,20241215,EMP-097,Annual-2024,3.6,Meets Expectations,74,0,Growth
+145,20241215,EMP-098,Annual-2024,3.2,Meets Expectations,61,0,Growth
+146,20241215,EMP-099,Annual-2024,3.3,Meets Expectations,69,0,Star
+147,20241215,EMP-101,Annual-2024,3.2,Meets Expectations,65,0,Under-performer
+148,20241215,EMP-102,Annual-2024,4.5,Outstanding,47,0,Growth
+149,20241215,EMP-104,Annual-2024,3.5,Meets Expectations,78,0,Star
+150,20241215,EMP-105,Annual-2024,1.7,Below Expectations,95,0,Core Asset
+151,20241215,EMP-107,Annual-2024,3.4,Meets Expectations,74,0,Backbone
+152,20241215,EMP-108,Annual-2024,3.1,Meets Expectations,83,0,Promotable
+153,20241215,EMP-111,Annual-2024,3.8,Exceeds,78,0,Core Asset
+154,20241215,EMP-112,Annual-2024,4.1,Exceeds,91,0,Star
+155,20241215,EMP-114,Annual-2024,3.4,Meets Expectations,85,0,Core Asset
+156,20241215,EMP-115,Annual-2024,4.7,Outstanding,94,0,Backbone
+157,20241215,EMP-116,Annual-2024,3.2,Meets Expectations,75,0,Backbone
+158,20241215,EMP-117,Annual-2024,4.4,Exceeds,64,0,Eff. Contributor
+159,20241215,EMP-118,Annual-2024,2.7,Needs Improvement,87,0,Star
+160,20241215,EMP-120,Annual-2024,4.9,Outstanding,67,0,Risk
+161,20241215,EMP-121,Annual-2024,2.2,Needs Improvement,60,0,Backbone
+162,20241215,EMP-122,Annual-2024,3.2,Meets Expectations,68,0,Backbone
+163,20241215,EMP-125,Annual-2024,3.6,Meets Expectations,74,0,Eff. Contributor
+164,20241215,EMP-127,Annual-2024,3.9,Exceeds,90,0,Backbone
+165,20241215,EMP-129,Annual-2024,3.7,Meets Expectations,70,0,Promotable
+166,20241215,EMP-130,Annual-2024,4.5,Outstanding,76,0,Growth
+167,20241215,EMP-131,Annual-2024,3.7,Meets Expectations,57,0,Eff. Contributor
+168,20241215,EMP-132,Annual-2024,2.1,Needs Improvement,51,0,Eff. Contributor
+169,20241215,EMP-133,Annual-2024,3.7,Meets Expectations,60,0,Backbone
+170,20241215,EMP-134,Annual-2024,2.2,Needs Improvement,47,0,Backbone
+171,20241215,EMP-135,Annual-2024,3.8,Exceeds,96,0,Core Asset
+172,20241215,EMP-137,Annual-2024,4.8,Outstanding,83,0,Core Asset
+173,20241215,EMP-138,Annual-2024,4.1,Exceeds,46,0,Core Asset
+174,20241215,EMP-139,Annual-2024,2.8,Meets Expectations,100,0,Star
+175,20241215,EMP-142,Annual-2024,4.1,Exceeds,59,0,Enigma
+176,20241215,EMP-143,Annual-2024,3.4,Meets Expectations,74,0,Enigma
+177,20241215,EMP-144,Annual-2024,2.8,Meets Expectations,79,0,Growth
+178,20241215,EMP-145,Annual-2024,3.0,Meets Expectations,61,0,Growth
+179,20241215,EMP-146,Annual-2024,5.0,Outstanding,69,0,Backbone
+180,20241215,EMP-147,Annual-2024,3.9,Exceeds,83,0,Risk
+181,20241215,EMP-149,Annual-2024,3.9,Exceeds,83,0,Eff. Contributor
+182,20241215,EMP-150,Annual-2024,4.8,Outstanding,50,0,Promotable
+183,20250615,EMP-001,H1-2025,3.4,Meets Expectations,73,0,Backbone
+184,20250615,EMP-002,H1-2025,4.5,Outstanding,77,0,Backbone
+185,20250615,EMP-003,H1-2025,3.5,Meets Expectations,42,0,Star
+186,20250615,EMP-004,H1-2025,2.8,Meets Expectations,79,0,Core Asset
+187,20250615,EMP-005,H1-2025,3.0,Meets Expectations,85,0,Core Asset
+188,20250615,EMP-007,H1-2025,3.2,Meets Expectations,58,0,Star
+189,20250615,EMP-008,H1-2025,2.8,Meets Expectations,68,0,Enigma
+190,20250615,EMP-010,H1-2025,4.3,Exceeds,66,0,Eff. Contributor
+191,20250615,EMP-013,H1-2025,3.0,Meets Expectations,40,0,Backbone
+192,20250615,EMP-014,H1-2025,4.4,Exceeds,100,0,Backbone
+193,20250615,EMP-015,H1-2025,3.7,Meets Expectations,62,0,Risk
+194,20250615,EMP-018,H1-2025,2.4,Needs Improvement,51,0,Growth
+195,20250615,EMP-019,H1-2025,4.2,Exceeds,72,0,Promotable
+196,20250615,EMP-021,H1-2025,2.1,Needs Improvement,80,1,Core Asset
+197,20250615,EMP-023,H1-2025,3.3,Meets Expectations,47,0,Backbone
+198,20250615,EMP-025,H1-2025,3.8,Exceeds,86,0,Growth
+199,20250615,EMP-026,H1-2025,3.4,Meets Expectations,92,0,Star
+200,20250615,EMP-027,H1-2025,3.3,Meets Expectations,96,0,Core Asset
+201,20250615,EMP-028,H1-2025,3.2,Meets Expectations,49,0,Backbone
+202,20250615,EMP-030,H1-2025,4.8,Outstanding,74,0,Growth
+203,20250615,EMP-031,H1-2025,3.8,Exceeds,81,0,Eff. Contributor
+204,20250615,EMP-032,H1-2025,4.0,Exceeds,73,0,Enigma
+205,20250615,EMP-034,H1-2025,4.0,Exceeds,71,0,Star
+206,20250615,EMP-035,H1-2025,4.3,Exceeds,47,0,Core Asset
+207,20250615,EMP-036,H1-2025,4.0,Exceeds,44,0,Risk
+208,20250615,EMP-037,H1-2025,3.9,Exceeds,75,0,Growth
+209,20250615,EMP-038,H1-2025,4.2,Exceeds,34,0,Backbone
+210,20250615,EMP-039,H1-2025,4.4,Exceeds,76,0,Eff. Contributor
+211,20250615,EMP-041,H1-2025,3.5,Meets Expectations,67,0,Eff. Contributor
+212,20250615,EMP-042,H1-2025,3.6,Meets Expectations,100,0,Core Asset
+213,20250615,EMP-043,H1-2025,3.6,Meets Expectations,73,0,Core Asset
+214,20250615,EMP-044,H1-2025,2.8,Meets Expectations,54,0,Under-performer
+215,20250615,EMP-046,H1-2025,4.0,Exceeds,74,0,Star
+216,20250615,EMP-048,H1-2025,4.1,Exceeds,68,0,Under-performer
+217,20250615,EMP-050,H1-2025,4.1,Exceeds,45,0,Enigma
+218,20250615,EMP-051,H1-2025,3.7,Meets Expectations,72,0,Backbone
+219,20250615,EMP-052,H1-2025,4.2,Exceeds,62,0,Eff. Contributor
+220,20250615,EMP-053,H1-2025,3.8,Exceeds,51,0,Growth
+221,20250615,EMP-055,H1-2025,2.9,Meets Expectations,80,0,Backbone
+222,20250615,EMP-056,H1-2025,3.4,Meets Expectations,84,0,Backbone
+223,20250615,EMP-058,H1-2025,3.3,Meets Expectations,95,0,Backbone
+224,20250615,EMP-059,H1-2025,3.9,Exceeds,56,0,Under-performer
+225,20250615,EMP-061,H1-2025,3.8,Exceeds,54,0,Promotable
+226,20250615,EMP-062,H1-2025,2.8,Meets Expectations,74,0,Eff. Contributor
+227,20250615,EMP-063,H1-2025,3.7,Meets Expectations,75,0,Core Asset
+228,20250615,EMP-065,H1-2025,3.6,Meets Expectations,50,0,Under-performer
+229,20250615,EMP-066,H1-2025,3.9,Exceeds,71,0,Enigma
+230,20250615,EMP-067,H1-2025,2.8,Meets Expectations,79,0,Star
+231,20250615,EMP-068,H1-2025,4.0,Exceeds,64,0,Backbone
+232,20250615,EMP-069,H1-2025,4.5,Outstanding,78,0,Risk
+233,20250615,EMP-070,H1-2025,5.0,Outstanding,84,0,Enigma
+234,20250615,EMP-071,H1-2025,3.9,Exceeds,76,0,Eff. Contributor
+235,20250615,EMP-072,H1-2025,3.6,Meets Expectations,86,0,Backbone
+236,20250615,EMP-073,H1-2025,3.7,Meets Expectations,50,0,Core Asset
+237,20250615,EMP-074,H1-2025,3.6,Meets Expectations,86,0,Backbone
+238,20250615,EMP-075,H1-2025,3.0,Meets Expectations,67,0,Core Asset
+239,20250615,EMP-076,H1-2025,4.0,Exceeds,67,0,Core Asset
+240,20250615,EMP-077,H1-2025,4.2,Exceeds,89,0,Growth
+241,20250615,EMP-078,H1-2025,4.2,Exceeds,69,0,Risk
+242,20250615,EMP-079,H1-2025,4.5,Outstanding,87,0,Growth
+243,20250615,EMP-080,H1-2025,4.0,Exceeds,76,0,Backbone
+244,20250615,EMP-083,H1-2025,2.7,Needs Improvement,62,0,Core Asset
+245,20250615,EMP-084,H1-2025,3.3,Meets Expectations,54,0,Under-performer
+246,20250615,EMP-085,H1-2025,3.8,Exceeds,65,0,Enigma
+247,20250615,EMP-086,H1-2025,3.4,Meets Expectations,91,0,Backbone
+248,20250615,EMP-089,H1-2025,3.6,Meets Expectations,60,0,Core Asset
+249,20250615,EMP-092,H1-2025,3.0,Meets Expectations,75,0,Growth
+250,20250615,EMP-093,H1-2025,3.4,Meets Expectations,73,0,Eff. Contributor
+251,20250615,EMP-094,H1-2025,3.7,Meets Expectations,52,0,Star
+252,20250615,EMP-095,H1-2025,3.4,Meets Expectations,92,0,Promotable
+253,20250615,EMP-097,H1-2025,3.8,Exceeds,37,0,Growth
+254,20250615,EMP-098,H1-2025,4.0,Exceeds,84,0,Backbone
+255,20250615,EMP-099,H1-2025,3.6,Meets Expectations,72,0,Backbone
+256,20250615,EMP-100,H1-2025,4.9,Outstanding,100,0,Eff. Contributor
+257,20250615,EMP-101,H1-2025,4.0,Exceeds,74,0,Growth
+258,20250615,EMP-102,H1-2025,3.5,Meets Expectations,85,0,Risk
+259,20250615,EMP-104,H1-2025,2.4,Needs Improvement,59,0,Backbone
+260,20250615,EMP-105,H1-2025,3.0,Meets Expectations,87,0,Promotable
+261,20250615,EMP-107,H1-2025,3.9,Exceeds,76,0,Backbone
+262,20250615,EMP-108,H1-2025,2.9,Meets Expectations,96,0,Core Asset
+263,20250615,EMP-109,H1-2025,4.5,Outstanding,47,0,Promotable
+264,20250615,EMP-111,H1-2025,4.0,Exceeds,63,0,Promotable
+265,20250615,EMP-112,H1-2025,3.5,Meets Expectations,60,0,Backbone
+266,20250615,EMP-114,H1-2025,4.6,Outstanding,69,0,Promotable
+267,20250615,EMP-115,H1-2025,3.6,Meets Expectations,70,0,Risk
+268,20250615,EMP-116,H1-2025,3.0,Meets Expectations,71,0,Star
+269,20250615,EMP-117,H1-2025,3.1,Meets Expectations,77,0,Eff. Contributor
+270,20250615,EMP-118,H1-2025,4.6,Outstanding,90,0,Core Asset
+271,20250615,EMP-120,H1-2025,4.3,Exceeds,70,0,Risk
+272,20250615,EMP-121,H1-2025,3.7,Meets Expectations,44,0,Growth
+273,20250615,EMP-122,H1-2025,2.9,Meets Expectations,83,0,Backbone
+274,20250615,EMP-125,H1-2025,3.4,Meets Expectations,63,0,Core Asset
+275,20250615,EMP-127,H1-2025,3.7,Meets Expectations,57,0,Growth
+276,20250615,EMP-129,H1-2025,3.8,Exceeds,77,0,Risk
+277,20250615,EMP-130,H1-2025,2.9,Meets Expectations,68,0,Core Asset
+278,20250615,EMP-131,H1-2025,2.8,Meets Expectations,66,0,Core Asset
+279,20250615,EMP-132,H1-2025,3.0,Meets Expectations,77,0,Core Asset
+280,20250615,EMP-133,H1-2025,4.4,Exceeds,48,0,Enigma
+281,20250615,EMP-134,H1-2025,3.7,Meets Expectations,40,0,Star
+282,20250615,EMP-135,H1-2025,3.4,Meets Expectations,49,0,Backbone
+283,20250615,EMP-137,H1-2025,3.6,Meets Expectations,50,0,Backbone
+284,20250615,EMP-138,H1-2025,2.1,Needs Improvement,81,1,Risk
+285,20250615,EMP-139,H1-2025,3.3,Meets Expectations,64,0,Under-performer
+286,20250615,EMP-142,H1-2025,2.1,Needs Improvement,68,0,Backbone
+287,20250615,EMP-143,H1-2025,4.1,Exceeds,62,0,Backbone
+288,20250615,EMP-144,H1-2025,3.9,Exceeds,58,0,Core Asset
+289,20250615,EMP-145,H1-2025,2.9,Meets Expectations,70,0,Backbone
+290,20250615,EMP-146,H1-2025,2.6,Needs Improvement,44,0,Under-performer
+291,20250615,EMP-147,H1-2025,2.0,Needs Improvement,68,1,Eff. Contributor
+292,20250615,EMP-149,H1-2025,3.4,Meets Expectations,46,0,Eff. Contributor
+293,20250615,EMP-150,H1-2025,3.0,Meets Expectations,62,0,Core Asset
+294,20251215,EMP-001,Annual-2025,4.0,Exceeds,91,0,Backbone
+295,20251215,EMP-002,Annual-2025,3.2,Meets Expectations,73,0,Backbone
+296,20251215,EMP-003,Annual-2025,3.9,Exceeds,100,0,Eff. Contributor
+297,20251215,EMP-004,Annual-2025,4.8,Outstanding,64,0,Under-performer
+298,20251215,EMP-005,Annual-2025,3.8,Exceeds,91,0,Backbone
+299,20251215,EMP-006,Annual-2025,3.1,Meets Expectations,87,0,Enigma
+300,20251215,EMP-007,Annual-2025,2.3,Needs Improvement,74,0,Promotable
+301,20251215,EMP-008,Annual-2025,3.7,Meets Expectations,48,0,Core Asset
+302,20251215,EMP-010,Annual-2025,2.8,Meets Expectations,52,0,Eff. Contributor
+303,20251215,EMP-013,Annual-2025,4.6,Outstanding,100,0,Growth
+304,20251215,EMP-014,Annual-2025,5.0,Outstanding,90,0,Eff. Contributor
+305,20251215,EMP-015,Annual-2025,2.4,Needs Improvement,57,0,Growth
+306,20251215,EMP-017,Annual-2025,5.0,Outstanding,61,0,Under-performer
+307,20251215,EMP-018,Annual-2025,3.8,Exceeds,62,0,Risk
+308,20251215,EMP-020,Annual-2025,4.0,Exceeds,93,0,Core Asset
+309,20251215,EMP-021,Annual-2025,4.2,Exceeds,68,0,Enigma
+310,20251215,EMP-022,Annual-2025,2.4,Needs Improvement,78,0,Promotable
+311,20251215,EMP-023,Annual-2025,3.7,Meets Expectations,78,0,Growth
+312,20251215,EMP-025,Annual-2025,3.7,Meets Expectations,69,0,Backbone
+313,20251215,EMP-026,Annual-2025,3.6,Meets Expectations,58,0,Enigma
+314,20251215,EMP-027,Annual-2025,3.7,Meets Expectations,79,0,Core Asset
+315,20251215,EMP-028,Annual-2025,3.0,Meets Expectations,72,0,Core Asset
+316,20251215,EMP-030,Annual-2025,2.5,Needs Improvement,86,0,Risk
+317,20251215,EMP-031,Annual-2025,4.4,Exceeds,73,0,Enigma
+318,20251215,EMP-032,Annual-2025,3.9,Exceeds,53,0,Eff. Contributor
+319,20251215,EMP-034,Annual-2025,4.3,Exceeds,95,0,Core Asset
+320,20251215,EMP-035,Annual-2025,3.4,Meets Expectations,71,0,Backbone
+321,20251215,EMP-036,Annual-2025,4.5,Outstanding,70,0,Backbone
+322,20251215,EMP-037,Annual-2025,3.3,Meets Expectations,70,0,Eff. Contributor
+323,20251215,EMP-039,Annual-2025,4.3,Exceeds,66,0,Core Asset
+324,20251215,EMP-041,Annual-2025,4.4,Exceeds,48,0,Star
+325,20251215,EMP-042,Annual-2025,4.2,Exceeds,69,0,Core Asset
+326,20251215,EMP-043,Annual-2025,2.5,Needs Improvement,76,0,Backbone
+327,20251215,EMP-044,Annual-2025,4.0,Exceeds,65,0,Core Asset
+328,20251215,EMP-046,Annual-2025,3.3,Meets Expectations,59,0,Under-performer
+329,20251215,EMP-047,Annual-2025,4.6,Outstanding,50,0,Backbone
+330,20251215,EMP-048,Annual-2025,2.8,Meets Expectations,70,0,Enigma
+331,20251215,EMP-050,Annual-2025,4.2,Exceeds,67,0,Star
+332,20251215,EMP-051,Annual-2025,5.0,Outstanding,70,0,Core Asset
+333,20251215,EMP-052,Annual-2025,3.7,Meets Expectations,63,0,Eff. Contributor
+334,20251215,EMP-053,Annual-2025,4.1,Exceeds,67,0,Growth
+335,20251215,EMP-055,Annual-2025,3.9,Exceeds,93,0,Promotable
+336,20251215,EMP-056,Annual-2025,4.9,Outstanding,40,0,Growth
+337,20251215,EMP-058,Annual-2025,3.7,Meets Expectations,58,0,Star
+338,20251215,EMP-059,Annual-2025,3.3,Meets Expectations,89,0,Growth
+339,20251215,EMP-061,Annual-2025,3.6,Meets Expectations,91,0,Core Asset
+340,20251215,EMP-062,Annual-2025,2.2,Needs Improvement,93,0,Core Asset
+341,20251215,EMP-063,Annual-2025,3.9,Exceeds,57,0,Eff. Contributor
+342,20251215,EMP-064,Annual-2025,3.1,Meets Expectations,71,0,Under-performer
+343,20251215,EMP-065,Annual-2025,3.5,Meets Expectations,92,0,Core Asset
+344,20251215,EMP-066,Annual-2025,2.7,Needs Improvement,61,0,Backbone
+345,20251215,EMP-067,Annual-2025,4.0,Exceeds,82,0,Under-performer
+346,20251215,EMP-068,Annual-2025,2.9,Meets Expectations,61,0,Backbone
+347,20251215,EMP-069,Annual-2025,2.3,Needs Improvement,84,0,Eff. Contributor
+348,20251215,EMP-070,Annual-2025,2.7,Needs Improvement,78,0,Promotable
+349,20251215,EMP-071,Annual-2025,2.5,Needs Improvement,71,0,Risk
+350,20251215,EMP-072,Annual-2025,3.2,Meets Expectations,75,0,Growth
+351,20251215,EMP-073,Annual-2025,4.1,Exceeds,70,0,Backbone
+352,20251215,EMP-074,Annual-2025,3.2,Meets Expectations,58,0,Backbone
+353,20251215,EMP-076,Annual-2025,4.0,Exceeds,83,0,Backbone
+354,20251215,EMP-077,Annual-2025,2.2,Needs Improvement,75,1,Star
+355,20251215,EMP-078,Annual-2025,4.0,Exceeds,67,0,Promotable
+356,20251215,EMP-079,Annual-2025,4.6,Outstanding,70,0,Star
+357,20251215,EMP-080,Annual-2025,3.6,Meets Expectations,66,0,Growth
+358,20251215,EMP-083,Annual-2025,3.8,Exceeds,70,0,Enigma
+359,20251215,EMP-084,Annual-2025,3.2,Meets Expectations,71,0,Backbone
+360,20251215,EMP-085,Annual-2025,3.5,Meets Expectations,82,0,Backbone
+361,20251215,EMP-086,Annual-2025,3.6,Meets Expectations,68,0,Eff. Contributor
+362,20251215,EMP-087,Annual-2025,4.1,Exceeds,62,0,Backbone
+363,20251215,EMP-089,Annual-2025,3.8,Exceeds,57,0,Star
+364,20251215,EMP-090,Annual-2025,3.3,Meets Expectations,75,0,Enigma
+365,20251215,EMP-092,Annual-2025,1.7,Below Expectations,59,0,Core Asset
+366,20251215,EMP-093,Annual-2025,2.7,Needs Improvement,59,0,Backbone
+367,20251215,EMP-094,Annual-2025,2.8,Meets Expectations,89,0,Backbone
+368,20251215,EMP-095,Annual-2025,3.7,Meets Expectations,74,0,Core Asset
+369,20251215,EMP-097,Annual-2025,3.2,Meets Expectations,81,0,Enigma
+370,20251215,EMP-098,Annual-2025,2.8,Meets Expectations,66,0,Growth
+371,20251215,EMP-099,Annual-2025,4.1,Exceeds,33,0,Backbone
+372,20251215,EMP-100,Annual-2025,4.4,Exceeds,67,0,Backbone
+373,20251215,EMP-101,Annual-2025,3.2,Meets Expectations,65,0,Core Asset
+374,20251215,EMP-102,Annual-2025,2.7,Needs Improvement,74,0,Eff. Contributor
+375,20251215,EMP-103,Annual-2025,4.7,Outstanding,84,0,Under-performer
+376,20251215,EMP-105,Annual-2025,3.9,Exceeds,78,0,Backbone
+377,20251215,EMP-106,Annual-2025,3.5,Meets Expectations,74,0,Promotable
+378,20251215,EMP-107,Annual-2025,3.8,Exceeds,77,0,Under-performer
+379,20251215,EMP-108,Annual-2025,4.2,Exceeds,81,0,Under-performer
+380,20251215,EMP-109,Annual-2025,3.1,Meets Expectations,42,0,Growth
+381,20251215,EMP-110,Annual-2025,4.3,Exceeds,42,0,Eff. Contributor
+382,20251215,EMP-111,Annual-2025,3.8,Exceeds,83,0,Growth
+383,20251215,EMP-112,Annual-2025,3.9,Exceeds,55,0,Growth
+384,20251215,EMP-113,Annual-2025,3.7,Meets Expectations,86,0,Growth
+385,20251215,EMP-114,Annual-2025,3.4,Meets Expectations,62,0,Core Asset
+386,20251215,EMP-115,Annual-2025,4.9,Outstanding,64,0,Risk
+387,20251215,EMP-116,Annual-2025,3.1,Meets Expectations,100,0,Star
+388,20251215,EMP-117,Annual-2025,2.6,Needs Improvement,79,0,Core Asset
+389,20251215,EMP-118,Annual-2025,2.7,Needs Improvement,57,0,Backbone
+390,20251215,EMP-119,Annual-2025,4.4,Exceeds,60,0,Growth
+391,20251215,EMP-120,Annual-2025,3.2,Meets Expectations,78,0,Core Asset
+392,20251215,EMP-121,Annual-2025,5.0,Outstanding,85,0,Backbone
+393,20251215,EMP-122,Annual-2025,4.0,Exceeds,70,0,Growth
+394,20251215,EMP-125,Annual-2025,3.4,Meets Expectations,75,0,Core Asset
+395,20251215,EMP-127,Annual-2025,4.4,Exceeds,82,0,Promotable
+396,20251215,EMP-128,Annual-2025,4.4,Exceeds,77,0,Star
+397,20251215,EMP-129,Annual-2025,3.5,Meets Expectations,63,0,Backbone
+398,20251215,EMP-130,Annual-2025,4.5,Outstanding,92,0,Core Asset
+399,20251215,EMP-131,Annual-2025,3.7,Meets Expectations,79,0,Growth
+400,20251215,EMP-132,Annual-2025,3.2,Meets Expectations,80,0,Under-performer
+401,20251215,EMP-133,Annual-2025,4.0,Exceeds,66,0,Backbone
+402,20251215,EMP-134,Annual-2025,4.2,Exceeds,94,0,Under-performer
+403,20251215,EMP-135,Annual-2025,3.8,Exceeds,91,0,Eff. Contributor
+404,20251215,EMP-136,Annual-2025,3.9,Exceeds,58,0,Eff. Contributor
+405,20251215,EMP-137,Annual-2025,2.9,Meets Expectations,74,0,Risk
+406,20251215,EMP-138,Annual-2025,3.6,Meets Expectations,71,0,Promotable
+407,20251215,EMP-139,Annual-2025,4.9,Outstanding,58,0,Star
+408,20251215,EMP-140,Annual-2025,4.2,Exceeds,64,0,Star
+409,20251215,EMP-142,Annual-2025,3.8,Exceeds,57,0,Core Asset
+410,20251215,EMP-143,Annual-2025,4.4,Exceeds,74,0,Risk
+411,20251215,EMP-144,Annual-2025,5.0,Outstanding,79,0,Under-performer
+412,20251215,EMP-145,Annual-2025,4.5,Outstanding,95,0,Backbone
+413,20251215,EMP-146,Annual-2025,4.0,Exceeds,52,0,Promotable
+414,20251215,EMP-149,Annual-2025,4.1,Exceeds,56,0,Star
+415,20251215,EMP-150,Annual-2025,3.2,Meets Expectations,45,0,Core Asset
+416,20260315,EMP-001,H1-2026,2.9,Meets Expectations,81,0,Backbone
+417,20260315,EMP-002,H1-2026,3.1,Meets Expectations,36,0,Risk
+418,20260315,EMP-003,H1-2026,3.3,Meets Expectations,82,0,Core Asset
+419,20260315,EMP-004,H1-2026,3.7,Meets Expectations,71,0,Growth
+420,20260315,EMP-005,H1-2026,3.7,Meets Expectations,68,0,Backbone
+421,20260315,EMP-006,H1-2026,3.3,Meets Expectations,63,0,Backbone
+422,20260315,EMP-007,H1-2026,4.1,Exceeds,77,0,Promotable
+423,20260315,EMP-010,H1-2026,4.7,Outstanding,77,0,Star
+424,20260315,EMP-011,H1-2026,3.7,Meets Expectations,68,0,Core Asset
+425,20260315,EMP-012,H1-2026,2.8,Meets Expectations,63,0,Enigma
+426,20260315,EMP-013,H1-2026,2.4,Needs Improvement,75,0,Core Asset
+427,20260315,EMP-014,H1-2026,3.8,Exceeds,66,0,Promotable
+428,20260315,EMP-015,H1-2026,3.4,Meets Expectations,87,0,Eff. Contributor
+429,20260315,EMP-016,H1-2026,5.0,Outstanding,79,0,Growth
+430,20260315,EMP-017,H1-2026,3.9,Exceeds,100,0,Star
+431,20260315,EMP-018,H1-2026,3.6,Meets Expectations,72,0,Promotable
+432,20260315,EMP-020,H1-2026,4.6,Outstanding,91,0,Backbone
+433,20260315,EMP-021,H1-2026,3.9,Exceeds,51,0,Growth
+434,20260315,EMP-022,H1-2026,5.0,Outstanding,76,0,Backbone
+435,20260315,EMP-024,H1-2026,2.6,Needs Improvement,66,0,Backbone
+436,20260315,EMP-025,H1-2026,3.6,Meets Expectations,69,0,Enigma
+437,20260315,EMP-026,H1-2026,2.6,Needs Improvement,100,0,Enigma
+438,20260315,EMP-027,H1-2026,4.1,Exceeds,30,0,Growth
+439,20260315,EMP-028,H1-2026,3.8,Exceeds,50,0,Growth
+440,20260315,EMP-029,H1-2026,3.1,Meets Expectations,64,0,Promotable
+441,20260315,EMP-030,H1-2026,3.8,Exceeds,55,0,Under-performer
+442,20260315,EMP-031,H1-2026,3.9,Exceeds,86,0,Core Asset
+443,20260315,EMP-032,H1-2026,4.6,Outstanding,96,0,Core Asset
+444,20260315,EMP-033,H1-2026,4.2,Exceeds,88,0,Under-performer
+445,20260315,EMP-034,H1-2026,2.8,Meets Expectations,90,0,Backbone
+446,20260315,EMP-035,H1-2026,5.0,Outstanding,58,0,Core Asset
+447,20260315,EMP-036,H1-2026,3.7,Meets Expectations,94,0,Core Asset
+448,20260315,EMP-037,H1-2026,3.9,Exceeds,66,0,Risk
+449,20260315,EMP-039,H1-2026,4.2,Exceeds,84,0,Backbone
+450,20260315,EMP-041,H1-2026,4.2,Exceeds,74,0,Eff. Contributor
+451,20260315,EMP-042,H1-2026,4.3,Exceeds,64,0,Under-performer
+452,20260315,EMP-043,H1-2026,4.5,Outstanding,88,0,Backbone
+453,20260315,EMP-044,H1-2026,2.3,Needs Improvement,76,0,Growth
+454,20260315,EMP-045,H1-2026,4.3,Exceeds,80,0,Backbone
+455,20260315,EMP-046,H1-2026,2.7,Needs Improvement,48,0,Backbone
+456,20260315,EMP-048,H1-2026,3.7,Meets Expectations,79,0,Core Asset
+457,20260315,EMP-050,H1-2026,4.1,Exceeds,95,0,Eff. Contributor
+458,20260315,EMP-051,H1-2026,3.9,Exceeds,81,0,Backbone
+459,20260315,EMP-052,H1-2026,4.7,Outstanding,73,0,Backbone
+460,20260315,EMP-053,H1-2026,3.6,Meets Expectations,82,0,Star
+461,20260315,EMP-055,H1-2026,3.1,Meets Expectations,83,0,Core Asset
+462,20260315,EMP-056,H1-2026,3.8,Exceeds,57,0,Core Asset
+463,20260315,EMP-058,H1-2026,3.3,Meets Expectations,49,0,Promotable
+464,20260315,EMP-059,H1-2026,4.2,Exceeds,73,0,Promotable
+465,20260315,EMP-061,H1-2026,4.0,Exceeds,80,0,Growth
+466,20260315,EMP-062,H1-2026,4.5,Outstanding,56,0,Enigma
+467,20260315,EMP-063,H1-2026,3.3,Meets Expectations,94,0,Star
+468,20260315,EMP-065,H1-2026,3.5,Meets Expectations,56,0,Backbone
+469,20260315,EMP-066,H1-2026,3.3,Meets Expectations,58,0,Promotable
+470,20260315,EMP-067,H1-2026,3.8,Exceeds,53,0,Promotable
+471,20260315,EMP-069,H1-2026,3.7,Meets Expectations,61,0,Growth
+472,20260315,EMP-070,H1-2026,3.8,Exceeds,61,0,Backbone
+473,20260315,EMP-071,H1-2026,3.7,Meets Expectations,82,0,Growth
+474,20260315,EMP-072,H1-2026,3.2,Meets Expectations,76,0,Growth
+475,20260315,EMP-073,H1-2026,3.6,Meets Expectations,61,0,Under-performer
+476,20260315,EMP-074,H1-2026,4.5,Outstanding,30,0,Core Asset
+477,20260315,EMP-076,H1-2026,4.8,Outstanding,78,0,Enigma
+478,20260315,EMP-077,H1-2026,4.0,Exceeds,73,0,Promotable
+479,20260315,EMP-078,H1-2026,3.1,Meets Expectations,80,0,Backbone
+480,20260315,EMP-080,H1-2026,3.7,Meets Expectations,57,0,Under-performer
+481,20260315,EMP-082,H1-2026,2.9,Meets Expectations,98,0,Under-performer
+482,20260315,EMP-083,H1-2026,2.9,Meets Expectations,98,0,Enigma
+483,20260315,EMP-084,H1-2026,4.5,Outstanding,64,0,Eff. Contributor
+484,20260315,EMP-085,H1-2026,3.7,Meets Expectations,83,0,Eff. Contributor
+485,20260315,EMP-086,H1-2026,3.9,Exceeds,54,0,Core Asset
+486,20260315,EMP-087,H1-2026,2.7,Needs Improvement,78,0,Eff. Contributor
+487,20260315,EMP-089,H1-2026,4.2,Exceeds,68,0,Growth
+488,20260315,EMP-090,H1-2026,4.8,Outstanding,53,0,Core Asset
+489,20260315,EMP-091,H1-2026,3.3,Meets Expectations,67,0,Risk
+490,20260315,EMP-092,H1-2026,3.5,Meets Expectations,68,0,Backbone
+491,20260315,EMP-093,H1-2026,4.2,Exceeds,60,0,Core Asset
+492,20260315,EMP-094,H1-2026,4.2,Exceeds,79,0,Risk
+493,20260315,EMP-095,H1-2026,3.6,Meets Expectations,75,0,Under-performer
+494,20260315,EMP-096,H1-2026,3.8,Exceeds,67,0,Eff. Contributor
+495,20260315,EMP-097,H1-2026,3.2,Meets Expectations,84,0,Backbone
+496,20260315,EMP-098,H1-2026,2.0,Needs Improvement,71,0,Backbone
+497,20260315,EMP-099,H1-2026,2.8,Meets Expectations,58,0,Risk
+498,20260315,EMP-100,H1-2026,2.9,Meets Expectations,57,0,Core Asset
+499,20260315,EMP-101,H1-2026,3.6,Meets Expectations,41,0,Enigma
+500,20260315,EMP-102,H1-2026,4.9,Outstanding,74,0,Core Asset
+501,20260315,EMP-103,H1-2026,4.1,Exceeds,67,0,Core Asset
+502,20260315,EMP-105,H1-2026,4.3,Exceeds,89,0,Eff. Contributor
+503,20260315,EMP-106,H1-2026,4.8,Outstanding,72,0,Core Asset
+504,20260315,EMP-107,H1-2026,2.7,Needs Improvement,66,0,Backbone
+505,20260315,EMP-108,H1-2026,3.9,Exceeds,89,0,Backbone
+506,20260315,EMP-109,H1-2026,3.3,Meets Expectations,68,0,Eff. Contributor
+507,20260315,EMP-110,H1-2026,4.3,Exceeds,66,0,Star
+508,20260315,EMP-111,H1-2026,3.2,Meets Expectations,70,0,Enigma
+509,20260315,EMP-112,H1-2026,4.3,Exceeds,91,0,Core Asset
+510,20260315,EMP-113,H1-2026,2.2,Needs Improvement,85,1,Backbone
+511,20260315,EMP-114,H1-2026,3.8,Exceeds,44,0,Promotable
+512,20260315,EMP-115,H1-2026,3.4,Meets Expectations,71,0,Core Asset
+513,20260315,EMP-116,H1-2026,3.5,Meets Expectations,54,0,Eff. Contributor
+514,20260315,EMP-117,H1-2026,2.9,Meets Expectations,91,0,Core Asset
+515,20260315,EMP-118,H1-2026,3.7,Meets Expectations,59,0,Core Asset
+516,20260315,EMP-119,H1-2026,4.3,Exceeds,45,0,Eff. Contributor
+517,20260315,EMP-120,H1-2026,2.7,Needs Improvement,47,0,Core Asset
+518,20260315,EMP-121,H1-2026,2.7,Needs Improvement,75,0,Under-performer
+519,20260315,EMP-122,H1-2026,3.5,Meets Expectations,59,0,Star
+520,20260315,EMP-123,H1-2026,3.9,Exceeds,46,0,Promotable
+521,20260315,EMP-127,H1-2026,4.7,Outstanding,68,0,Core Asset
+522,20260315,EMP-128,H1-2026,4.0,Exceeds,87,0,Backbone
+523,20260315,EMP-129,H1-2026,2.8,Meets Expectations,46,0,Eff. Contributor
+524,20260315,EMP-130,H1-2026,3.2,Meets Expectations,72,0,Core Asset
+525,20260315,EMP-131,H1-2026,3.3,Meets Expectations,47,0,Core Asset
+526,20260315,EMP-132,H1-2026,4.5,Outstanding,76,0,Eff. Contributor
+527,20260315,EMP-133,H1-2026,3.6,Meets Expectations,80,0,Eff. Contributor
+528,20260315,EMP-134,H1-2026,3.0,Meets Expectations,84,0,Promotable
+529,20260315,EMP-137,H1-2026,3.5,Meets Expectations,70,0,Enigma
+530,20260315,EMP-138,H1-2026,4.5,Outstanding,46,0,Risk
+531,20260315,EMP-139,H1-2026,3.1,Meets Expectations,77,0,Core Asset
+532,20260315,EMP-140,H1-2026,3.6,Meets Expectations,61,0,Core Asset
+533,20260315,EMP-141,H1-2026,3.0,Meets Expectations,53,0,Core Asset
+534,20260315,EMP-142,H1-2026,2.6,Needs Improvement,78,0,Promotable
+535,20260315,EMP-144,H1-2026,4.0,Exceeds,49,0,Growth
+536,20260315,EMP-145,H1-2026,3.3,Meets Expectations,69,0,Promotable
+537,20260315,EMP-146,H1-2026,3.3,Meets Expectations,72,0,Eff. Contributor
+538,20260315,EMP-149,H1-2026,4.1,Exceeds,47,0,Backbone
+539,20260315,EMP-150,H1-2026,3.9,Exceeds,71,0,Core Asset
